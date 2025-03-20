@@ -38,6 +38,22 @@ function createTable() {
                 if (err) throw new Error(err);
                 console.log("Part number column added");
             });
+        
+        connection.query(`
+            ALTER TABLE parts
+            ADD COLUMN IF NOT EXISTS model VARCHAR(255)
+            `, (err) => {
+                if (err) throw new Error(err);
+                console.log("Model column added");
+            });
+        connection.query(`
+            ALTER TABLE parts
+            ADD COLUMN IF NOT EXISTS quantity INT
+            `, (err) => {
+                if (err) throw new Error(err);
+                console.log("Quantity column added");
+            });
+
     });
 }
 
