@@ -46,8 +46,6 @@ router.post('/parts', (req, res) => {
     });
 });
 
-
-
 router.get('/parts', (req, res) => {
     connection.query('SELECT * FROM parts', (err, results) => {
         if (err) {
