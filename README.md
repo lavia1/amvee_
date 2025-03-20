@@ -1,3 +1,3 @@
 # AmVee
  
-##Tietokanta rakenne
+Tietokanta
