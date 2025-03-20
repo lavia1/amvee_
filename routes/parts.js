@@ -34,7 +34,7 @@ router.post('/parts', (req, res) => {
         );
         } else {
             const part = { name, model, part_number, description, price, stock: quantity, category, image_url, part_number };
-
+            // Add part if not existed
             connection.query('INSERT INTO parts SET ?', part, (err, results) => {
                 if (err) {
                 console.error("Database error:", err);
