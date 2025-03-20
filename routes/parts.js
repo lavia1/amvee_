@@ -3,13 +3,13 @@ const router = express.Router();
 const connection = require('../db');
 
 router.post('/parts', (req, res) => {
-    const { name, description, price, stock, category, image_url } = req.body;
+    const { name, description, price, stock, category, image_url, part_number } = req.body;
 
     if (!name || !price) {
         return res.status(400).json({ error: "Name and price are required" });
     }
 
-    const part = { name, description, price, stock, category, image_url };
+    const part = { name, description, price, stock, category, image_url, part_number };
 
     connection.query('INSERT INTO parts SET ?', part, (err, results) => {
         if (err) {
@@ -29,5 +29,7 @@ router.get('/parts', (req, res) => {
         res.json(results);
     });
 });
+
+
 
 module.exports = router;

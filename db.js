@@ -30,6 +30,14 @@ function createTable() {
     )`, (err) => {
         if (err) throw new Error(err);
         console.log("Table created/exists");
+
+        connection.query(`
+            ALTER TABLE parts
+            ADD COLUMN IF NOT EXISTS part_number INT
+            `, (err) => {
+                if (err) throw new Error(err);
+                console.log("Part number column added");
+            });
     });
 }
 
