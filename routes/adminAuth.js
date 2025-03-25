@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 const router = express.Router();
-
+// Login only for admin
 const ADMIN_CREDENTIALS = {
     username: process.env.ADMIN_USERNAME,
     password: process.env.ADMIN_PASSWORD

@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const connection = require('../db');
+const verifyAdmin = require('../middleware/authMiddleware');
 
-router.post('/parts', (req, res) => {
+router.post('/parts', verifyAdmin, (req, res) => {
     const { name, model, part_number, description, price, stock, category, image_url, quantity } = req.body;
 
     if (!name || !price) {
