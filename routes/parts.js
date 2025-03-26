@@ -47,33 +47,29 @@ router.post('/', verifyAdmin, (req, res) => {
     });
 });
 
-router.delete('/', verifyAdmin, (req, res) => {
-    const { part_number } = req.body;
+router.delete('/:part_number', verifyAdmin, (req, res) => {
+    const { part_number } = req.params;
 
-    if (!part_number) {
-        return res.status(400).json({error: "Part number required"});
-    }
-
-    connection.query('SELECT * FROM PARTS WHERE part_number = ?', [part_number], (err, results) => {
+    connection.query('SELECT * FROM parts WHERE part_number = ?', [part_number], (err, results) => {
         if (err) {
             console.error("Database error:", err);
-            return res.status(500).json({error: "Database error"});
+            return res.status(500).json({ error: "Database error" });
         }
 
         if (results.length === 0) {
-            return res.status(404).json({error: "Part not found"});
+            return res.status(404).json({ error: "Part not found" });
         }
 
         connection.query('DELETE FROM parts WHERE part_number = ?', [part_number], (err, deleteResults) => {
-            if (err){
+            if (err) {
                 console.error("Database error:", err);
-                return res.status(500).json({error: "Database error"});
+                return res.status(500).json({ error: "Database error" });
             }
-            res.json({message: "Part deleted successfully"});
+            res.json({ message: "Part deleted successfully" });
         });
     });
 });
-
+// Gets all 
 router.get('/', (req, res) => {
     connection.query('SELECT * FROM parts', (err, results) => {
         if (err) {
@@ -83,5 +79,22 @@ router.get('/', (req, res) => {
         res.json(results);
     });
 });
+router.get('/:part_number', (req, res) => {
+    const {part_number} = req.params;
+
+    connection.query('SELECT * FROM parts WHERE part_number = ?', [part_number], (err, results) => {
+        if (err) {
+            console.log("Database error:", err);
+            return res.status(500).json({error:"Database error"});
+        }
+        
+        if (results.length === 0) {
+            return res.status(404).json({error: "Part not found"});
+        }
+
+        res.json(results[0]);
+    });
+});
+
 
 module.exports = router;
