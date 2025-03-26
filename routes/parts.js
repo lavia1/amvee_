@@ -46,7 +46,7 @@ router.post('/', verifyAdmin, (req, res) => {
         }
     });
 });
-
+// Delete with part number 
 router.delete('/:part_number', verifyAdmin, (req, res) => {
     const { part_number } = req.params;
 
