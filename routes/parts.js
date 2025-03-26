@@ -47,6 +47,33 @@ router.post('/parts', verifyAdmin, (req, res) => {
     });
 });
 
+router.delete('/parts', verifyAdmin, (req, res) => {
+    const { part_number } = req.body;
+
+    if (!part_number) {
+        return res.status(400).json({error: "Part number required"});
+    }
+
+    connection.query('SELECT * FROM PARTS WHERE part_number = ?', [part_number], (err, results) => {
+        if (err) {
+            console.error("Database error:", err);
+            return res.status(500).json({error: "Database error"});
+        }
+
+        if (results.length === 0) {
+            return res.status(404).json({error: "Part not found"});
+        }
+
+        connection.query('DELETE FROM parts WHERE part_number = ?', [part_number], (err, deleteResults) => {
+            if (err){
+                console.error("Database error:", err);
+                return res.status(500).json({error: "Database error"});
+            }
+            res.json({message: "Part deleted successfully"});
+        });
+    });
+});
+
 router.get('/parts', (req, res) => {
     connection.query('SELECT * FROM parts', (err, results) => {
         if (err) {
@@ -56,7 +83,5 @@ router.get('/parts', (req, res) => {
         res.json(results);
     });
 });
-
-
 
 module.exports = router;
