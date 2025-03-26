@@ -3,7 +3,7 @@ const router = express.Router();
 const connection = require('../db');
 const verifyAdmin = require('../middleware/authMiddleware');
 
-router.post('/parts', verifyAdmin, (req, res) => {
+router.post('/', verifyAdmin, (req, res) => {
     const { name, model, part_number, description, price, stock, category, image_url, quantity } = req.body;
 
     if (!name || !price) {
@@ -47,7 +47,7 @@ router.post('/parts', verifyAdmin, (req, res) => {
     });
 });
 
-router.delete('/parts', verifyAdmin, (req, res) => {
+router.delete('/', verifyAdmin, (req, res) => {
     const { part_number } = req.body;
 
     if (!part_number) {
@@ -74,7 +74,7 @@ router.delete('/parts', verifyAdmin, (req, res) => {
     });
 });
 
-router.get('/parts', (req, res) => {
+router.get('/', (req, res) => {
     connection.query('SELECT * FROM parts', (err, results) => {
         if (err) {
             console.error("Database error:", err);

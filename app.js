@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api/auth', auth);
-app.use('/api', parts);
+app.use('/api/parts', parts);
 
 app.listen(3000, () => {
     console.log("Server running on http://localhost:3000");
