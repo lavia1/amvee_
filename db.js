@@ -26,33 +26,13 @@ function createTable() {
         category VARCHAR(100),
         image_url VARCHAR(255),
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        part_number INT,
+        model VARCHAR(255),
+        quantity INT
     )`, (err) => {
         if (err) throw new Error(err);
         console.log("Table created/exists");
-
-        connection.query(`
-            ALTER TABLE parts
-            ADD COLUMN IF NOT EXISTS part_number INT
-            `, (err) => {
-                if (err) throw new Error(err);
-                console.log("Part number column added");
-            });
-        
-        connection.query(`
-            ALTER TABLE parts
-            ADD COLUMN IF NOT EXISTS model VARCHAR(255)
-            `, (err) => {
-                if (err) throw new Error(err);
-                console.log("Model column added");
-            });
-        connection.query(`
-            ALTER TABLE parts
-            ADD COLUMN IF NOT EXISTS quantity INT
-            `, (err) => {
-                if (err) throw new Error(err);
-                console.log("Quantity column added");
-            });
     });
 
 // Create orders table
@@ -62,30 +42,22 @@ connection.query(`CREATE TABLE IF NOT EXISTS orders (
     full_name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     phone_number VARCHAR(20) NULL,
-    address TEXT NOT NULL,
     total_price DECIMAL(10,2) NOT NULL,
     status ENUM('pending', 'processing', 'shipped', 'delivered', 'cancelled') DEFAULT 'pending',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    klarna_order_id VARCHAR(255) NOT NULL,
+    payment_status ENUM('pending', 'approved', 'failed', 'cancelled') DEFAULT 'pending',
+    country VARCHAR(50) NOT NULL,
+    street_address VARCHAR(255) NOT NULL,
+    street_address2 VARCHAR(255) NOT NULL,
+    city VARCHAR(100) NOT NULL,
+    postal_code VARCHAR(20) NOT NULL,
+    region VARCHAR(50) NULL
 )`, (err) => {  // <-- Corrected callback syntax
     if (err) throw new Error(err);
     console.log("Table 'orders' created/exists");
-
-    connection.query(`
-        ALTER TABLE orders
-        ADD COLUMN IF NOT EXISTS klarna_order_id VARCHAR(255) NOT NULL
-        `, (err) => {
-            if (err) throw new Error(err);
-            console.log("Klarna order id column added");
-        });
-    connection.query(`
-        ALTER TABLE orders
-        ADD COLUMN IF NOT EXISTS payment_status ENUM('pending', 'approved', 'failed', 'cancelled') DEFAULT 'pending' 
-        `, (err) => {
-            if (err) throw new Error(err);
-            console.log("Payment status column added");
-        });
 });
-
+// Create order items table
 connection.query(`CREATE TABLE IF NOT EXISTS order_items (
     id INT AUTO_INCREMENT PRIMARY KEY,
     order_id INT NOT NULL,
@@ -98,8 +70,6 @@ connection.query(`CREATE TABLE IF NOT EXISTS order_items (
         if (err) throw new Error(err);
         console.log("Table 'order_items' create/exists");
     });
-
 }
-
 
 module.exports = connection;
