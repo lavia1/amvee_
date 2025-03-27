@@ -25,9 +25,9 @@ function createTable() {
         stock INT NOT NULL DEFAULT 0,
         category VARCHAR(100),
         image_url VARCHAR(255),
+        part_id INT,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-        part_number INT,
         model VARCHAR(255),
         quantity INT
     )`, (err) => {
@@ -60,7 +60,7 @@ connection.query(`CREATE TABLE IF NOT EXISTS orders (
     if (err) throw new Error(err);
     console.log("Table 'orders' created/exists");
     });
-    
+
 // Create order items table
 connection.query(`CREATE TABLE IF NOT EXISTS order_items (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -70,10 +70,13 @@ connection.query(`CREATE TABLE IF NOT EXISTS order_items (
     price DECIMAL(10,2) NOT NULL,
     FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
     FOREIGN KEY (part_id) REFERENCES parts(id)
-    )`, (err) => {
+    )`
+    , (err) => {
         if (err) throw new Error(err);
         console.log("Table 'order_items' create/exists");
+
+        
+        
     });
 }
-
 module.exports = connection;

@@ -4,13 +4,13 @@ const connection = require('../db');
 const verifyAdmin = require('../middleware/authMiddleware');
 
 router.post('/', verifyAdmin, (req, res) => {
-    const { name, model, part_number, description, price, stock, category, image_url, quantity } = req.body;
+    const { name, model, part_id, description, price, stock, category, image_url, quantity } = req.body;
 
     if (!name || !price) {
         return res.status(400).json({ error: "Name and price are required" });
     }
 
-    connection.query('SELECT * FROM parts WHERE part_number = ?', [part_number], (err, results) => {
+    connection.query('SELECT * FROM parts WHERE part_id = ?', [part_id], (err, results) => {
         if (err) {
             console.error("Database error:", err);
             return res.status(500).json({error: "Database error"});
@@ -23,8 +23,8 @@ router.post('/', verifyAdmin, (req, res) => {
         
 
         connection.query(
-            'UPDATE parts SET stock = ? WHERE part_number = ?',
-            [newStock, part_number],
+            'UPDATE parts SET stock = ? WHERE part_id = ?',
+            [newStock, part_id],
             (err, updateResults) => {
                 if (err) {
                     console.log("Database error:", err);
@@ -34,7 +34,7 @@ router.post('/', verifyAdmin, (req, res) => {
             }
         );
         } else {
-            const part = { name, model, part_number, description, price, stock: quantity, category, image_url, part_number };
+            const part = { name, model, part_id, description, price, stock: quantity, category, image_url, part_id };
             // Add part if not existed
             connection.query('INSERT INTO parts SET ?', part, (err, results) => {
                 if (err) {
@@ -47,10 +47,10 @@ router.post('/', verifyAdmin, (req, res) => {
     });
 });
 // Delete with part number 
-router.delete('/:part_number', verifyAdmin, (req, res) => {
-    const { part_number } = req.params;
+router.delete('/:part_id', verifyAdmin, (req, res) => {
+    const { part_id } = req.params;
 
-    connection.query('SELECT * FROM parts WHERE part_number = ?', [part_number], (err, results) => {
+    connection.query('SELECT * FROM parts WHERE part_id = ?', [part_id], (err, results) => {
         if (err) {
             console.error("Database error:", err);
             return res.status(500).json({ error: "Database error" });
@@ -60,7 +60,7 @@ router.delete('/:part_number', verifyAdmin, (req, res) => {
             return res.status(404).json({ error: "Part not found" });
         }
 
-        connection.query('DELETE FROM parts WHERE part_number = ?', [part_number], (err, deleteResults) => {
+        connection.query('DELETE FROM parts WHERE part_id = ?', [part_id], (err, deleteResults) => {
             if (err) {
                 console.error("Database error:", err);
                 return res.status(500).json({ error: "Database error" });
@@ -79,10 +79,10 @@ router.get('/', (req, res) => {
         res.json(results);
     });
 });
-router.get('/:part_number', (req, res) => {
-    const {part_number} = req.params;
+router.get('/:part_id', (req, res) => {
+    const {part_id} = req.params;
 
-    connection.query('SELECT * FROM parts WHERE part_number = ?', [part_number], (err, results) => {
+    connection.query('SELECT * FROM parts WHERE part_id = ?', [part_id], (err, results) => {
         if (err) {
             console.log("Database error:", err);
             return res.status(500).json({error:"Database error"});
