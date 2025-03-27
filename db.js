@@ -45,18 +45,22 @@ connection.query(`CREATE TABLE IF NOT EXISTS orders (
     total_price DECIMAL(10,2) NOT NULL,
     status ENUM('pending', 'processing', 'shipped', 'delivered', 'cancelled') DEFAULT 'pending',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    klarna_order_id VARCHAR(255) NOT NULL,
+    klarna_order_id VARCHAR(255) NULL,
     payment_status ENUM('pending', 'approved', 'failed', 'cancelled') DEFAULT 'pending',
     country VARCHAR(50) NOT NULL,
     street_address VARCHAR(255) NOT NULL,
-    street_address2 VARCHAR(255) NOT NULL,
+    street_address2 VARCHAR(255) NULL,
     city VARCHAR(100) NOT NULL,
     postal_code VARCHAR(20) NOT NULL,
-    region VARCHAR(50) NULL
-)`, (err) => {  // <-- Corrected callback syntax
+    region VARCHAR(50) NULL,
+    authorization_token VARCHAR(255),
+    client_token VARCHAR(255),
+    captured_at TIMESTAMP NULL
+    )`, (err) => {  
     if (err) throw new Error(err);
     console.log("Table 'orders' created/exists");
-});
+    });
+    
 // Create order items table
 connection.query(`CREATE TABLE IF NOT EXISTS order_items (
     id INT AUTO_INCREMENT PRIMARY KEY,
