@@ -137,8 +137,36 @@ router.get('/', (req, res) => {
 });
 
 // Get order with order id
-router.get('/', (req, res) => {
+router.get('/:order_id', (req, res) =>{
+    const {order_id} = req.params;
 
+    const orderQuery = `SELECT * FROM orders WHERE id = ?`;
+
+    connection.query(orderQuery, [order_id], (err, orderResult) => {
+        if (err) {
+            console.log("Error fetching order:",err);
+            return res.status(500).json({error:"Databse error while fetching order"});
+        }
+        if (orderResult.length === 0) {
+            return res.status(404).json({error:"Order not found"});
+        }
+        // Fetch the order items associated with the order
+        const orderItemsQuery = 'SELECT * FROM order_items WHERE order_id = ?';
+
+        connection.query(orderItemsQuery, [order_id], (err, orderItemsResult) => {
+            if (err) {
+                console.error("Error fetching order items:", err);
+                return res.status(500).json({error:"Databse error while fetching order items"});
+            }
+
+            const orderDetails = {
+                order: orderResult[0],
+                items: orderItemsResult
+            };
+
+            res.json(orderDetails);
+        });
+    });
 });
 
 module.exports = router;
