@@ -13,7 +13,7 @@ connection.connect((err) => {
             if (err) throw new Error(err);
             createTable();
         });
-    })
+    });
 });
 // Create part table
 function createTable() {
@@ -25,7 +25,7 @@ function createTable() {
         stock INT NOT NULL DEFAULT 0,
         category VARCHAR(100),
         image_url VARCHAR(255),
-        part_id INT,
+        part_number INT,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         model VARCHAR(255),
