@@ -55,6 +55,9 @@ nav li:first-child img:hover {
     align-items: flex-start;
     justify-content: flex-start;
 }
+.sidebar.show {
+    display: flex;
+}
 .sidebar li{
     width: 100%;
 }
