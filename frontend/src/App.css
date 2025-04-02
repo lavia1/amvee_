@@ -1,0 +1,15 @@
+/* Apply a global reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Apply the font globally */
+body {
+  min-height: 100vh;
+  font-family: 'Big Shoulders', sans-serif;  /* Apply the font */
+  background-color: #000000;  /* Optional background color */
+  color: #bac3cb;  /* Text color */
+}
+
