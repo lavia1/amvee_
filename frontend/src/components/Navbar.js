@@ -1,8 +1,25 @@
-import { useState} from "react";
+import { useEffect, useState} from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./Nav.css";
 
 export default function Navbar() {
     const [sidebarVisible, setSidebarVisible] = useState(false);
+    // const [isAdmin, setIsAdmin] = useState(false);
+    // const navigate = useNavigate();
+
+     {/*
+    useEffect(() => {
+        // Check is admin is logged in 
+        const token = localStorage.getItem("token");
+        setIsAdmin(!token);
+    }, []);
+   
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        setIsAdmin(false); 
+        navigate("/")
+    };
+    */}
 
     const showSidebar = () => {
         setSidebarVisible(true);
@@ -25,12 +42,28 @@ export default function Navbar() {
                     height="26" />
                 </a>
             </li>
-            <li><a href="/HomePage" >Etusivu</a></li>
-            <li><a href="/Services" >Palvelut</a></li>
-            <li><a href="/Prices" >Hinnasto</a></li>
-            <li><a href="/CarParts" >Osat</a></li>
-            <li><a href="/Contact" >Yhteistiedot</a></li>
+            <li><NavLink to ="/HomePage" className={(navData) => (navData.isActive ? "active-link" : "")}>Etusivu</NavLink></li>
+            <li><NavLink to ="/Services" className={(navData) => (navData.isActive ? "active-link" : "")}>Palvelut</NavLink></li>
+            <li><NavLink to ="/Prices" className={(navData) => (navData.isActive ? "active-link" : "")}>Hinnasto</NavLink></li>
+            <li>
+                <NavLink to="/CarParts" className={(navData) => (navData.isActive ? "active-link" : "")}>
+                    Osat
+                </NavLink>
+            </li>
+            <li><NavLink to ="/Contact" className={(navData) => (navData.isActive ? "active-link" : "")}>Yhteistiedot</NavLink></li>
+
+            {/* Admin Login / Logout option 
+            {isAdmin ? (
+                <>
+                    <li><NavLink to="/admin/dashboard">Admin Dashboard</NavLink></li>
+                    <li><button onClick={handleLogout} className="logout-btn">Logout</button></li>
+                </>
+            ) : (
+                <li><NavLink to="/admin/login">Admin Login</NavLink></li>
+            )}
+            */}
         </ul>
+
         <ul>
             <li><a href="/HomePage">
                     <img 
@@ -41,11 +74,28 @@ export default function Navbar() {
                     />
                 </a>
             </li>
-            <li className="hideOnMobile"><a href ="/HomePage">Etusivu</a></li>
-            <li className="hideOnMobile"><a href ="/Services">Palvelut</a></li>
-            <li className="hideOnMobile"><a href ="/Prices">Hinnasto</a></li>
-            <li className="hideOnMobile"><a href ="/CarParts">Osat</a></li>
-            <li className="hideOnMobile"><a href ="/Contact">Yhteistiedot</a></li>
+            <li className="hideOnMobile"><NavLink to ="/HomePage" className={(navData) => (navData.isActive ? "active-link" : "")}>Etusivu</NavLink></li>
+            <li className="hideOnMobile"><NavLink to ="/Services" className={(navData) => (navData.isActive ? "active-link" : "")}>Palvelut</NavLink></li>
+            <li className="hideOnMobile"><NavLink to ="/Prices" className={(navData) => (navData.isActive ? "active-link" : "")}>Hinnasto</NavLink></li>
+            <li className="hideOnMobile">
+                <NavLink to="/CarParts" className={(navData) => (navData.isActive ? "active-link" : "")}>
+                    Osat
+                </NavLink>
+            </li>
+            <li className="hideOnMobile"><NavLink to ="/Contact" className={(navData) => (navData.isActive ? "active-link" : "")}>Yhteistiedot</NavLink></li>
+
+            {/* Show admin options only if logged in 
+            {isAdmin ? (
+                <>
+                    <li className="hideOnMobile"><NavLink to ="admin/dashboard">Admin Dashboard</NavLink></li>
+                    <li className="hideOnMobile"><button onClick={handleLogout} className="logout-btn"></button></li>
+                </>
+            ) : (
+                <li className="hideOnMobile"><NavLink to="/admin/login">Admin Login</NavLink></li>
+            )}
+            */}
+
+
             <li className="menu-button" onClick={showSidebar}>
                 <a href="#">
                     <img src = "/assets/menu_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg"

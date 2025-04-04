@@ -28,6 +28,9 @@ nav a:hover{
     text-shadow: 5px 5px 20px rgba(33, 89, 135, 0.8);
     color: #2f7bb9;
 }
+.active-link {
+    color: #2f7bb9;
+}
 nav li:first-child{ /*ÄmVee logo oikeaan reunaan navigaatiossa */
     margin-right: auto; 
     
