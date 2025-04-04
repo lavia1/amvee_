@@ -1,3 +1,3 @@
 # AmVee
  
-Tietokanta
+Tietokanta ja frontend
