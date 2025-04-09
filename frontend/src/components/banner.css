@@ -1,0 +1,46 @@
+.banner {
+    background-size: cover;
+    background-color: black;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 300px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    padding: 20px;
+    width: 100%;
+}
+.banner-overlay {
+    padding: 10px;
+    border-radius: 8px;
+    max-width: 80%;
+    margin: 0;
+    font-size: 2rem ;
+    text-align: left;
+    position: relative;
+}
+.banner-overlay h1{
+    margin:30px;
+    animation: glow 1.5s ease-in-out infinite alternate;
+    letter-spacing: 3px;
+}
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #ffffff45, 0 0 20px #ffffff45, 0 0 30px #2f7bb9, 0 0 40px #2f7bb9, 0 0 50px #2f7bb9, 0 0 60px #2f7bb9, 0 0 70px #2f7bb9;
+  }
+  to {
+    text-shadow: 0 0 20px #ffffff45, 0 0 30px #055C9D, 0 0 40px #055C9D, 0 0 50px #055C9D, 0 0 60px #055C9D, 0 0 70px #055C9D, 0 0 80px #055C9D;
+  }
+}
+@media (max-width: 768px) {
+    .banner {
+      height: 300px; /* Adjust height for tablet screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .banner {
+      height: 200px; /* Adjust height for mobile screens */
+    }
+  }

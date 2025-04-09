@@ -1,0 +1,53 @@
+.column{
+    flex: 1 1 50%;
+    padding: 0 10px;
+}
+.column-smaller{
+    flex: 1 1 5%; 
+    margin-left: 10px;
+}
+.row{
+    display: flex;
+    margin-top:70px;
+    margin-left:5px;
+    margin-right:5px;
+    margin-bottom: 200px;
+    align-items: stretch;
+}
+.card {
+    box-shadow: 4px 8px 16px 4px rgba(47, 123, 185, 0.2);
+    padding: 16px;
+    text-align:center;
+    background-color: #2b2b2b94;
+    display: flex;
+    flex-direction: column
+}
+.card h2{
+    color:#2f7bb9;
+    text-align: left;
+    margin-left: 30px;
+    margin-bottom:30px;
+}
+.card a{
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    gap: 20px; 
+    color: #bac3cb;     
+    text-decoration: none;  
+    transition: color 0.4s;
+    margin-bottom: 20px;
+    margin-left: 30px;
+    margin-top:15px;
+}
+.card a:hover {
+    color: #2f7bb9 ;  
+}
+@media screen and (max-width: 600px)
+{
+    .column {
+        width: 100%;
+        display:block;
+        margin-bottom:20px;
+    }
+}

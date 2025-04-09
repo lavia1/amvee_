@@ -34,7 +34,7 @@ export default function Navbar() {
         {/* Navigaatio pienemmillä näytöillä */}
         <ul className={`sidebar ${sidebarVisible ? "show" : ""}`}> 
             <li onClick={hideSidebar}>
-                <a href="/HomePage">
+                <a href="#">
                     <img src="/assets/close_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" 
                     alt="Close Icon" 
                     viewBox="0 96 960 960" 

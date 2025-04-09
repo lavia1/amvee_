@@ -27,6 +27,7 @@ nav a{
 nav a:hover{
     text-shadow: 5px 5px 20px rgba(33, 89, 135, 0.8);
     color: #2f7bb9;
+    transition: color 0.5s;
 }
 .active-link {
     color: #2f7bb9;
