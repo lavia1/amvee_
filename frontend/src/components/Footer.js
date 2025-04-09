@@ -18,7 +18,7 @@ const Footer = () => {
                 <span className="footer-text">Ruuskanpääntie 99 85660 Nivala</span>
             </a>
             <a href="tel:+358443430792" className="footer-link">
-                 <i className="fa fa-phone"></i>
+                <i className="fa fa-phone"></i>
                 <span className="footer-text">0443430792</span>
             </a>
             <a href="https://wa.me/+358443430792" className="footer-link">
