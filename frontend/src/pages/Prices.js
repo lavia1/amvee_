@@ -9,7 +9,7 @@ const Pricing = () => {
                 title="Hinnasto"
                 imageUrl="/assets/banner.JPG"
             />
-        
+        <div className="priceContainer">
         {/* Pricing page content */}  
         <table className = "priceTable">
             <tbody>
@@ -26,7 +26,7 @@ const Pricing = () => {
                     <td>390 euroa</td>
                 </tr>
                 <tr>
-                    <td>Moottoriohjelmointi n47, n57</td>
+                    <td>Moottoriohjelmointi N47, N57</td>
                     <td>450 euroa</td>
                 </tr>
                 <tr>
@@ -39,13 +39,14 @@ const Pricing = () => {
                 </tr>
             </tbody>
         </table>  
-        <div className="priceContainer">
-            <p>Suuremmat remontit / toimenpiteet olethan yhteydessä niin sovimme urakkahinnan</p>
-            <p>Hinnat sisältävät alv 25.5%</p>
+        </div>
+        <div className="infoContainer">
+            <h2>Suuremmat remontit / toimenpiteet olethan yhteydessä niin sovimme urakkahinnan</h2>
+            <h2>Hinnat sisältävät alv 25.5%</h2>
         
         </div>
         </div>
-    )
+    );
 }
 
 export default Pricing

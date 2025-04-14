@@ -28,6 +28,7 @@
     display: flex;
     align-items: center;
 }
+
 .footer-icon {
     width: 25px;
     height: 25px;
@@ -38,7 +39,7 @@
     margin-top:20px;
 }
 .social-media-links a{
-    font-size: 30px;
+    font-size: 27px;
     color: #bac3cb;
     transition: 0.4s;
 }

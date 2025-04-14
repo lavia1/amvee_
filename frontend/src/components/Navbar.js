@@ -32,25 +32,36 @@ export default function Navbar() {
 
     return <nav className="nav">
         {/* Navigaatio pienemmillä näytöillä */}
+        <div className={`overlay ${sidebarVisible ? "show" : ""}`} onClick={hideSidebar}></div>
         <ul className={`sidebar ${sidebarVisible ? "show" : ""}`}> 
-            <li onClick={hideSidebar}>
-                <a href="#">
-                    <img src="/assets/close_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" 
+            <li className="menu-button" onClick={hideSidebar}>
+                <button type="button" className="menu-button-icon">
+                    <i className="fa fa-fw fa-window-close" 
                     alt="Close Icon" 
-                    viewBox="0 96 960 960" 
-                    width="26" 
-                    height="26" />
-                </a>
+                    ></i> 
+                </button>
+                
             </li>
-            <li><NavLink to ="/HomePage" className={(navData) => (navData.isActive ? "active-link" : "")}>Etusivu</NavLink></li>
-            <li><NavLink to ="/Services" className={(navData) => (navData.isActive ? "active-link" : "")}>Palvelut</NavLink></li>
-            <li><NavLink to ="/Prices" className={(navData) => (navData.isActive ? "active-link" : "")}>Hinnasto</NavLink></li>
+        
+            <li><NavLink to="/HomePage" onClick={hideSidebar} className={(navData) => (navData.isActive ? "active-link" : "")}>Etusivu</NavLink></li>
+            <li><NavLink to ="/Services" onClick={hideSidebar} className={(navData) => (navData.isActive ? "active-link" : "")}>Palvelut</NavLink></li>
+            <li><NavLink to ="/Prices"  onClick={hideSidebar} className={(navData) => (navData.isActive ? "active-link" : "")}>Hinnasto</NavLink></li>
             <li>
-                <NavLink to="/CarParts" className={(navData) => (navData.isActive ? "active-link" : "")}>
+                <NavLink to="/CarParts"  onClick={hideSidebar} className={(navData) => (navData.isActive ? "active-link" : "")}>
                     Osat
                 </NavLink>
             </li>
-            <li><NavLink to ="/Contact" className={(navData) => (navData.isActive ? "active-link" : "")}>Yhteistiedot</NavLink></li>
+            <li><NavLink to ="/Contact"  onClick={hideSidebar} className={(navData) => (navData.isActive ? "active-link" : "")}>Yhteistiedot</NavLink></li>
+            <li>
+                <NavLink
+                    to="/ShoppingCart"
+                    onClick={hideSidebar}
+                    className={(navData) => (navData.isActive ? "active-link" : "")}
+                >
+                    <i className="fa fa-fw fa-shopping-cart"></i>
+                </NavLink>
+            </li>
+
 
             {/* Admin Login / Logout option 
             {isAdmin ? (
@@ -83,6 +94,14 @@ export default function Navbar() {
                 </NavLink>
             </li>
             <li className="hideOnMobile"><NavLink to ="/Contact" className={(navData) => (navData.isActive ? "active-link" : "")}>Yhteistiedot</NavLink></li>
+            <li className="hideOnMobile">
+                <NavLink
+                    to="/ShoppingCart"
+                    className={(navData) => (navData.isActive ? "active-link" : "")}
+                >
+                    <i className="fa fa-fw fa-shopping-cart"></i>
+                </NavLink>
+            </li>
 
             {/* Show admin options only if logged in 
             {isAdmin ? (
@@ -97,14 +116,11 @@ export default function Navbar() {
 
 
             <li className="menu-button" onClick={showSidebar}>
-                <a href="#">
-                    <img src = "/assets/menu_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg"
+                <button type="button" className="menu-button-icon">
+                    <i className = "fa fa-bars"
                     alt="Menu Icon" 
-                    viewBox="0 96 960 960" 
-                    width="26" 
-                    height="26" 
-                    />
-                </a>
+                    ></i>
+                </button>
             </li>
         </ul>
 

@@ -1,0 +1,74 @@
+.serviceColumn{
+    float: left;
+    width:25%;
+    margin-bottom:16px;
+    padding: 15px 10px;
+}
+.rowHeader {
+    text-align: left;
+    margin-bottom: 10px;
+    padding-left:25px;
+}
+
+.rowHeader h2 {
+    margin-bottom: 5px;
+    padding-top: 40px;
+}
+.rowHeader h3 {
+    color: #2f7bb9;
+}
+.serviceCard {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: #2b2b2b94;
+    padding-bottom: 10px;
+}
+.serviceCard img {
+    width: 100%;
+}
+.serviceContainer h2{
+    text-align: center;
+    margin-top:10px;
+}
+.serviceContainer a{
+    color:#bac3cb;
+    text-decoration: none;
+    display: inline-flex;
+    gap:10px;
+}
+.serviceContainer a i{
+    font-size: 25px;
+}
+.serviceContainer a:hover {
+    color: #2f7bb9;
+    transition:1s;  
+  }
+.title {
+    color:grey;
+    padding-bottom: 5px;
+}
+
+.serviceContainer p{
+    font-size: 19px;
+    margin-bottom: 15px;
+}
+.serviceContainer::after, .row1::after {
+    content:"";
+    clear:both;
+    display:table;
+}
+.serviceContainer::after, .row2::after {
+    content:"";
+    clear:both;
+    display:table;
+}
+.serviceContainer::after, .row3::after {
+    content:"";
+    clear:both;
+    display:table;
+}
+@media screen and (max-width: 650px) {
+    .serviceColumn {
+        width: 100%;
+        display:block;
+    }
+}
