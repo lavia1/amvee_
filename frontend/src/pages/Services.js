@@ -38,7 +38,6 @@ const Services = () => {
                     />
                     <div className="serviceContainer">
                         <h2>Johtotehtävät</h2>
-                        <p className="title">Jotain</p>
                         <p>Peräkontin piuhasarjan uusiminen</p>
                         <p>Poikkimenneen piuhasarjan vaihtaminen</p>
                     </div>
@@ -52,7 +51,6 @@ const Services = () => {
                     />
                     <div className="serviceContainer">
                         <h2>Koodaaminen</h2>
-                        <p className="title">Jotain</p>
                         <p>Jenkkiparkkien aktivointi</p>
                         <p>Tervetulo -valojen koodaus</p>
                         <p>Päiväajovalot takavalojen kanssa</p>
@@ -75,7 +73,6 @@ const Services = () => {
                     />
                     <div className="serviceContainer">
                         <h2>Jälkivarustelu eli retrofit, esimerkiksi</h2>
-                        <p className="title">Jotain</p>
                         <p>Ajotietokoneen jälkiasennus</p>
                         <p>Penkkien jälkiasennus</p>
                         <p>Vakionopeuden säätimien jälkiasennus</p>
@@ -151,7 +148,6 @@ const Services = () => {
                     />
                     <div className="serviceContainer">
                         <h2>Öljynvaihto</h2>
-                        <p className="title">bababa</p>
                         <p>Moottorin öljynvaihto (Valvoline -öljy) 100 euroa</p>
                         <p>Automaattivaihdelaatikon öljynvaihto 150 euroa</p>
                         <p>Manuaalivaihdelaatikon öljynvaihto 60 euroa</p>
