@@ -6,15 +6,23 @@ const connection = mysql.createConnection(config.db);
 connection.connect((err) => {
     if (err) throw new Error(err);
     console.log("Connected");
-    connection.query('CREATE DATABASE  IF NOT EXISTS car_parts', () => {
-        if (err) throw new Error(err);
+
+    // Create the database if it doesn't exist
+    connection.query('CREATE DATABASE IF NOT EXISTS car_parts', (err) => {
+        if (err) throw new Error(err);  // Correctly handle errors inside the query callback
         console.log("Database created/exists");
+
+        // Change to the 'car_parts' database
         connection.changeUser({ database: 'car_parts' }, (err) => {
             if (err) throw new Error(err);
+            console.log("Using car_parts database");
+
+            // Now create the necessary tables
             createTable();
         });
     });
 });
+
 // Create part table
 function createTable() {
     connection.query(`CREATE TABLE IF NOT EXISTS parts (

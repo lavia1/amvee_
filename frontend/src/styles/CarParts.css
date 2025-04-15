@@ -1,0 +1,21 @@
+.carParts-container {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap:20px;
+    padding:20px;
+}
+.carParts-container .card {
+    flex: 0 0 calc(25% - 40px);
+    box-sizing: border-box;
+}
+@media (max-width: 900px) {
+    .carParts-container .card {
+        flex: 0 0 calc(50% - 40px);
+    }
+}
+@media (max-width: 600px) {
+    .carParts-container .card {
+        flex: 0 0 100%;
+    }
+}

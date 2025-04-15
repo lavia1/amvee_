@@ -46,29 +46,45 @@ router.post('/', verifyAdmin, (req, res) => {
         }
     });
 });
-// Delete with part number 
+// Delete with part number
 router.delete('/:part_number', verifyAdmin, (req, res) => {
-    const { part_number } = req.params;
+    const { part_number } = req.params; // Get the part_number from the URL
+    const { name } = req.body; // Get the name from the body, if provided
 
-    connection.query('SELECT * FROM parts WHERE part_number = ?', [part_number], (err, results) => {
+    let query = 'SELECT * FROM parts WHERE part_number = ?';
+    let queryParams = [part_number];
+
+    // If name is provided, modify the query to search by part_number and name
+    if (name) {
+        query = 'SELECT * FROM parts WHERE part_number = ? AND name = ?';
+        queryParams = [part_number, name];
+    }
+
+    // Check if the part exists first
+    connection.query(query, queryParams, (err, results) => {
         if (err) {
             console.error("Database error:", err);
             return res.status(500).json({ error: "Database error" });
         }
 
         if (results.length === 0) {
+            // If no part was found
             return res.status(404).json({ error: "Part not found" });
         }
 
+        // If the part exists, proceed to delete it
         connection.query('DELETE FROM parts WHERE part_number = ?', [part_number], (err, deleteResults) => {
             if (err) {
                 console.error("Database error:", err);
                 return res.status(500).json({ error: "Database error" });
             }
+
+            // Successfully deleted the part
             res.json({ message: "Part deleted successfully" });
         });
     });
 });
+
 // Gets all 
 router.get('/', (req, res) => {
     connection.query('SELECT * FROM parts', (err, results) => {
