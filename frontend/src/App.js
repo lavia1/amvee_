@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Services from "./pages/Services";
 import CarParts from './pages/CarParts';
+import PartDetailsPage from "./pages/PartDetailsPage";
 import Pricing from "./pages/Prices";
 import Contact from "./pages/Contact";
 import ShoppingCart from "./pages/ShoppingCart";
@@ -18,7 +19,7 @@ const App = () => {
         <Route path="/Services" element={<Services />} />
         <Route path="/Prices" element={<Pricing />}/>
         <Route path="/CarParts" element={<CarParts />} />
-       
+        <Route path="/parts/:partNumber" element={<PartDetailsPage />} />
         <Route path="/Contact" element={<Contact />}/>
         <Route path="/ShoppingCart" element={<ShoppingCart />}></Route>
       </Routes>

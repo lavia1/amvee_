@@ -43,6 +43,17 @@ function createTable() {
         console.log("Table created/exists");
     });
 
+// Create part images table
+connection.query(`CREATE TABLE IF NOT EXISTS part_images (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    part_id INT NOT NULL,
+    image_url VARCHAR(255) NOT NULL,
+    FOREIGN KEY (part_id) REFERENCES parts(id) ON DELETE CASCADE
+)`, (err) => {
+    if (err) throw new Error(err);
+    console.log("Table part_images created/exists");
+});
+
 // Create orders table
 connection.query(`CREATE TABLE IF NOT EXISTS orders (
     id INT AUTO_INCREMENT PRIMARY KEY,

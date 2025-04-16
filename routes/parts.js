@@ -3,6 +3,7 @@ const router = express.Router();
 const connection = require('../db');
 const verifyAdmin = require('../middleware/authMiddleware');
 
+// POST route for adding parts and images
 router.post('/', verifyAdmin, (req, res) => {
     const { name, model, part_number, description, price, stock, category, image_url, quantity } = req.body;
 
@@ -46,6 +47,7 @@ router.post('/', verifyAdmin, (req, res) => {
         }
     });
 });
+
 // Delete with part number
 router.delete('/:part_number', verifyAdmin, (req, res) => {
     const { part_number } = req.params; // Get the part_number from the URL
