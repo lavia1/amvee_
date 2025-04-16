@@ -87,6 +87,7 @@ router.delete('/:part_number', verifyAdmin, (req, res) => {
     });
 });
 
+
 // Gets all 
 router.get('/', (req, res) => {
     connection.query('SELECT * FROM parts', (err, results) => {
