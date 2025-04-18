@@ -4,8 +4,12 @@ const connection = require('../db'); // Regular MySQL (No .promise())
 
 // Create Order (POST /api/orders)
 router.post('/', (req, res) => {
-    const { session_id, full_name, email, phone_number, country, street_address, city, postal_code, region, items } = req.body;
+    const { session_id, full_name, email, phone_number, country, street_address, city, postal_code, region, items, shipping_method } = req.body;
 
+    // shipping method is either pickup or delivery
+    if (!['pickup', 'delivery'].includes(shipping_method)) {
+        return res.status(400).json({error: "Invalid shipping method"});
+    }
     if (!items || items.length === 0) {
         return res.status(400).json({ error: "Order must have at least one item" });
     }
@@ -55,6 +59,9 @@ router.post('/', (req, res) => {
                 new_stock: currentStock - item.quantity
             });
         }
+        // Set shipping cost based on shipping method 
+        const shippingCost = (shipping_method === 'pickup') ? 0.00 : 10.00;
+        const grandTotal = totalPrice + shippingCost;
 
         // Transaction to ensure both the order and stock updates are consistent
         connection.beginTransaction((err) => {
@@ -64,12 +71,12 @@ router.post('/', (req, res) => {
 
             // Insert order into database
             const orderQuery = `
-                INSERT INTO orders (session_id, full_name, email, phone_number, total_price, country, street_address, city, postal_code, region, status) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending')
+                INSERT INTO orders (session_id, full_name, email, phone_number, total_price, shipping_cost, grand_total, shipping_method, country, street_address, city, postal_code, region, status) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending')
             `;
 
             connection.query(orderQuery, 
-                [session_id, full_name, email, phone_number, totalPrice, country, street_address, city, postal_code, region], 
+                [session_id, full_name, email, phone_number, totalPrice, shippingCost, grandTotal, shipping_method, country, street_address, city, postal_code, region], 
                 (err, orderResult) => {
                     if (err) {
                         return connection.rollback(() => {
@@ -115,7 +122,7 @@ router.post('/', (req, res) => {
                             }
 
                             // Success if order is created 
-                            res.json({ success: true, message: "Order created", orderId, total_price: totalPrice });
+                            res.json({ success: true, message: "Order created", orderId, total_price: totalPrice, shipping_cost: shippingCost, grand_total: grandTotal, shipping_method });
                         });
                     });
                 }
