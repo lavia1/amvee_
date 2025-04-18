@@ -93,8 +93,6 @@ connection.query(`CREATE TABLE IF NOT EXISTS order_items (
     , (err) => {
         if (err) throw new Error(err);
         console.log("Table 'order_items' create/exists");
-
-        
         
     });
 }

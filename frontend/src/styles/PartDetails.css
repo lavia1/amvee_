@@ -16,14 +16,20 @@
     margin-top:15px;
 }
 .part-description{
-    font-size:20px;
+    font-size:22px;
     margin-top:25px;
     text-align: left;
     align-items: center;
 }
+.detail-description {
+    text-align: left;
+    font-size: 20px;
+    align-items: center;
+    margin-top: 15px;
+}
 .price{
     font-size: 1.5rem;
-    color:antiquewhite
+    color:#bac3cb
 }
 .detail-container button{
     padding: 10px 16px;
@@ -54,6 +60,8 @@
     line-height: 1.2;
     vertical-align: middle;
     margin-top:10px;
+    background-color: #bac3cb;
+
 }
 .quantity-container button{
     padding: 5px 10px;
@@ -61,12 +69,17 @@
     cursor:pointer;
     line-height: 1.2;
 }
-.add-to-cart{
-    padding: 10px 16px;
-    border: none;
-    background-color: #2f7bb9;
-    border-radius: 4px;
-    color:#bac3cb ;
-    cursor: pointer;
+.purchase-container .btn-hover.color-9 {
+    width: auto;
+    padding: 12px 20px;
+    font-size: 15px;
+    margin-top: 16px;
+    color: #bac3cb;
+}
+.inline-message {
+    
+    color: white;
+    padding: 10px;
     margin-top: 10px;
+    border-radius: 5px;
 }

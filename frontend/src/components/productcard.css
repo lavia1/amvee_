@@ -13,6 +13,15 @@
     height: auto;
     object-fit: contain;
 }
+.card .btn-hover.color-9 {
+    width: auto;
+    padding: 12px 20px;
+    font-size: 15px;
+    margin-top: 16px;
+    color: #bac3cb;
+}
+
+
 .card-link{
     text-decoration: none;
     color:inherit;
@@ -26,13 +35,4 @@
 }
 .card .price {
     font-weight: bold;
-}
-.card button{
-    padding: 10px 16px;
-    border: none;
-    background-color: #2f7bb9;
-    border-radius: 4px;
-    color:#bac3cb ;
-    cursor: pointer;
-    margin-top: 10px;
 }

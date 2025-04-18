@@ -1,9 +1,13 @@
 import { useEffect, useState} from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 import "./Nav.css";
 
 export default function Navbar() {
     const [sidebarVisible, setSidebarVisible] = useState(false);
+    const {cart} = useCart();
+
+    const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
     // const [isAdmin, setIsAdmin] = useState(false);
     // const navigate = useNavigate();
 
@@ -59,6 +63,7 @@ export default function Navbar() {
                     className={(navData) => (navData.isActive ? "active-link" : "")}
                 >
                     <i className="fa fa-fw fa-shopping-cart"></i>
+                    <span>{totalItems}</span>
                 </NavLink>
             </li>
 
@@ -100,6 +105,7 @@ export default function Navbar() {
                     className={(navData) => (navData.isActive ? "active-link" : "")}
                 >
                     <i className="fa fa-fw fa-shopping-cart"></i>
+                    <span>{totalItems}</span>
                 </NavLink>
             </li>
 

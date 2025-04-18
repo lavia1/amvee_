@@ -2,11 +2,14 @@ import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import Axios from "axios";
 import "../styles/PartDetails.css";
+import { useCart } from "../context/CartContext";
 
 const PartDetailsPage = () => {
     const {partNumber} = useParams();
     const [part, setPart] = useState(null);
     const [quantity, setQuantity] = useState(1);
+    const {addToCart} = useCart();
+    const [message, setMessage] = useState("");
 
 
     useEffect(() => {
@@ -36,8 +39,13 @@ const PartDetailsPage = () => {
     };
 
     const handleAddToCart = () => {
-        console.log(`Lisätty ${quantity} ${part.name} ostoskoriin`);
-    }
+        addToCart(part, quantity);
+        setMessage(`${quantity} x ${part.name} lisätty ostoskoriin`);
+
+        setTimeout(() => {
+            setMessage("")
+        }, 4000);
+    };
 
     if (!part) return <div>Lataa...</div>;
 
@@ -45,12 +53,11 @@ const PartDetailsPage = () => {
         <div className="detail-container">
             <img src={part.image_url || "placeholder.jpg"} alt={part.name} />
             <h1>{part.name}</h1>
-            <p className="price">${part.price.toFixed(2)}</p>
+            <p className="price">{part.price.toFixed(2)} € </p>
             <p>Varaosanumero: {part.part_number}</p>
             <p>Määrä: {part.stock}</p>
-            <p className="part-description">
-                Kuvaus: <br />{part.description}
-            </p>
+            <p className="part-description">Kuvaus:</p>
+            <p className="detail-description">{part.description}</p>   
     
             {/* ✅ Wrap quantity + button in one container */}
             <div className="purchase-container">
@@ -69,9 +76,10 @@ const PartDetailsPage = () => {
                     <button onClick={increaseQty}>+</button>
                 </div>
     
-                <button className="add-to-cart" onClick={handleAddToCart}>
+                <button className="btn-hover color-9 card-btn" onClick={handleAddToCart}>
                     Lisää ostoskoriin
                 </button>
+                {message&&<div className="inline-message">{message}</div>}
             </div>
         </div>
     );
