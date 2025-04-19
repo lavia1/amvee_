@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { useCart } from "../context/CartContext";
-import "../styles/ShoppingCart.css"; // Make sure to style your page
+import "../styles/ShoppingCart.css"; 
+import CheckoutForm from "../components/CheckoutForm";
 
 const ShoppingCart = () => {
   const { cart, removeFromCart, clearCart, updateQuantity } = useCart();
+
+  const [showCheckout, setShowCheckout] = useState(false);
 
   // Calculate the total price of all items in the cart
   const totalPrice = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
@@ -22,8 +25,30 @@ const ShoppingCart = () => {
     setShippingMethod(event.target.value);
   };
 
+  const handleCheckoutClick = () => {
+    setShowCheckout(true);
+  };
+
+  const handleCancelCheckout = () => {
+    setShowCheckout(false);
+  };
+
   if (cart.length === 0) {
     return <div className="cart-empty">Ostoskorisi on tyhjä.</div>;
+  }
+
+  if (showCheckout) {
+    return (
+      <CheckoutForm 
+        cartTotal={totalPrice}
+        shippingCost={shippingCost}
+        grandTotal={grandTotal}
+        shippingMethod={shippingMethod}
+        onCancel={handleCancelCheckout}
+        cartItems={cart}
+        clearCart={clearCart}
+      />
+    );
   }
 
   return (
@@ -106,8 +131,8 @@ const ShoppingCart = () => {
         <button className="clear-cart-btn" onClick={clearCart}>
           Tyhjennä kori
         </button>
-        {/* You could add a checkout button here */}
-        <button className="checkout-btn">
+    
+        <button className="checkout-btn" onClick={handleCheckoutClick}>
           Kassa
         </button>
       </div>

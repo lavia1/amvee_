@@ -74,23 +74,13 @@ connection.query(`CREATE TABLE IF NOT EXISTS orders (
     region VARCHAR(50) NULL,
     authorization_token VARCHAR(255),
     client_token VARCHAR(255),
-    captured_at TIMESTAMP NULL
+    captured_at TIMESTAMP NULL,
+    grand_total DECIMAL (10,2) DEFAULT 0.00,
+    shipping_cost DECIMAL (10,2) DEFAULT 10.00,
+    shipping_method ENUM('pickup', 'delivery') DEFAULT 'delivery'
     )`, (err) => {  
     if (err) throw new Error(err);
     console.log("Table 'orders' created/exists");
-    
-    connection.query(`
-        ALTER TABLE orders
-        ADD COLUMN shipping_cost DECIMAL (10,2) DEFAULT 10.00,
-        ADD COLUMN grand_total DECIMAL (10,2) DEFAULT 0.00,
-        ADD COLUMN shipping_method ENUM('pickup', 'delivery') DEFAULT 'delivery'
-        `, (err) => {
-            if (err && err.code !== 'ER_DUP_FIELDNAME') {
-                console.error("Error adding columns", err);
-            } else {
-                console.log("Column shipping_cost, grand_total and shipping_method exists or added succesfully");
-            }
-        })
     });
 
 // Create order items table

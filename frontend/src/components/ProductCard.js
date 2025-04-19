@@ -1,17 +1,21 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import "./productcard.css";
 import { useCart } from "../context/CartContext";
 
 const ProductCard = ({ part }) => {
   const {addToCart} = useCart();
+  const [message, setMessage] = useState("");
 
   const handleAddToCart = () => {
     const quantity = 1;
 
     addToCart(part, quantity);
 
-    alert(`${part.name} has been added to the cart!`);
+    setMessage(`${quantity} x ${part.name} lisätty ostoskoriin`);
+    setTimeout(() => {
+      setMessage("")
+  }, 4000);
   };
 
   return (
@@ -23,6 +27,7 @@ const ProductCard = ({ part }) => {
         <p className="description">{part.description}</p>
       </Link>
       <button className="btn-hover color-9 card-btn" onClick={handleAddToCart}>Lisää ostoskoriin</button>
+      {message&&<div className="inline-message">{message}</div>}
     </div>
 
     

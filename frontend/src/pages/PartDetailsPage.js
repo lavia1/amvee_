@@ -37,7 +37,7 @@ const PartDetailsPage = () => {
             setQuantity(prev => prev -1);
         }
     };
-
+    
     const handleAddToCart = () => {
         addToCart(part, quantity);
         setMessage(`${quantity} x ${part.name} lisätty ostoskoriin`);

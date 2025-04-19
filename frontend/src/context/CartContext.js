@@ -6,7 +6,7 @@ export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
-
+ 
   // Load cart from LocalStorage on first render
   useEffect(() => {
     try {
