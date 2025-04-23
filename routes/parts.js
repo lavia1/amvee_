@@ -98,6 +98,39 @@ router.get('/', (req, res) => {
         res.json(results);
     });
 });
+
+// Search by name or part number (or both)
+router.get('/search', (req, res) => {
+    const { name, part_number } = req.query;
+
+    let query = 'SELECT * FROM parts WHERE 1=1';
+    const queryParams = [];
+
+    if (name) {
+        query += ' AND name LIKE ?';
+        queryParams.push(`%${name}%`);
+    }
+
+    if (part_number) {
+        query += ' AND part_number LIKE ?';
+        queryParams.push(`%${part_number}%`);
+    }
+
+    connection.query(query, queryParams, (err, results) => {
+        if (err) {
+            console.log("Database error", err);
+            return res.status(500).json({ error: "Database error" });
+        }
+
+        if (results.length === 0) {
+            return res.status(404).json({ error: "Part not found" });
+        }
+
+        res.json(results);
+    });
+});
+
+
 router.get('/:part_number', (req, res) => {
     const {part_number} = req.params;
 

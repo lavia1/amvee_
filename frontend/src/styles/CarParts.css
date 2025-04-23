@@ -9,6 +9,50 @@
     flex: 0 0 calc(25% - 40px);
     box-sizing: border-box;
 }
+.pagination-container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:20px;
+    margin-bottom: 40px;
+}
+.page-item{
+    list-style-type: none;
+    margin: 0 5px;
+}
+
+.page-link{
+    text-decoration: none;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color:#bac3cb;
+    font-size: 16px;
+    cursor:pointer;
+    transition: background-color 0.3s, color 0.3s
+}
+.page-link svg {
+    vertical-align: middle;
+    font-size: 15px;
+}
+.active .page-link{
+    background-color: #2f7bb9;
+    color:white;
+}
+.page-link:hover {
+    background-color:#2f7bb9 ;
+}
+.page-item.disabled .page-link{
+    background-color: #000000;
+    color:#000000;    
+    cursor: not-allowed;
+    border-color: #000000;
+}
+
+.pagination-container li {
+    list-style-type: none;
+}
+  
 @media (max-width: 900px) {
     .carParts-container .card {
         flex: 0 0 calc(50% - 40px);
