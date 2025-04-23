@@ -12,7 +12,7 @@ const Services = () => {
 
         {/*Ensimmäinen rivi */}
         <div className="rowHeader">
-        <h2>Asennus- ja vianhakutyöt, koodaus sekä jälkivarustelu</h2>
+        <h1 className="h2">Asennus- ja vianhakutyöt, koodaus sekä jälkivarustelu</h1>
         </div>
         
         <div className="row1">
@@ -84,7 +84,7 @@ const Services = () => {
 
          {/*Toinen rivi */}
         <div className="rowHeader">
-        <h2>Ohjelmointi</h2>
+        <h1>Ohjelmointi</h1>
         </div>
         
         <div className="row2">
@@ -136,8 +136,8 @@ const Services = () => {
 
          {/*Kolmas rivi */}
         <div className="rowHeader">
-        <h2>Teemme muutakin kuin sähkökorjauksia, myös muihinkin autoihin kuin BMW</h2>
-        <h3>Esimerkkejä töistä:</h3>
+        <h1>Teemme muutakin kuin sähkökorjauksia, myös muihinkin autoihin kuin BMW</h1>
+        <h2 className="esimerkki">Esimerkkejä töistä:</h2>
         </div>
         
         <div className="row3">

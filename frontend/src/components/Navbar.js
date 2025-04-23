@@ -6,6 +6,9 @@ import "./Nav.css";
 export default function Navbar() {
     const [sidebarVisible, setSidebarVisible] = useState(false);
     const {cart} = useCart();
+    const [showCartModal, setShowCartModal] = useState(false);
+
+    const totalPrice = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
     const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
     // const [isAdmin, setIsAdmin] = useState(false);
@@ -99,15 +102,58 @@ export default function Navbar() {
                 </NavLink>
             </li>
             <li className="hideOnMobile"><NavLink to ="/Contact" className={(navData) => (navData.isActive ? "active-link" : "")}>Yhteistiedot</NavLink></li>
-            <li className="hideOnMobile">
-                <NavLink
-                    to="/ShoppingCart"
-                    className={(navData) => (navData.isActive ? "active-link" : "")}
-                >
-                    <i className="fa fa-fw fa-shopping-cart"></i>
-                    <span>{totalItems}</span>
-                </NavLink>
-            </li>
+            
+            <li className="hideOnMobile cart-icon-wrapper"
+                style={{ position: "relative" }}
+                onMouseEnter={() => setShowCartModal(true)}
+                onMouseLeave={() => setShowCartModal(false)}
+            >
+            <NavLink
+                to="#"
+                onClick={(e) => e.preventDefault()}
+                style={{ display: "flex", alignItems: "center" }}
+            >
+            <i className="fa fa-fw fa-shopping-cart"></i>
+            <span>{totalItems}</span>
+            </NavLink>
+
+            {showCartModal && (
+            <div className="cart-modal">
+                <h4>Ostoskori</h4>
+
+                {cart.length === 0 ? (
+                <p>Ostoskori on tyhjä</p>
+            ) : (
+            <>
+            <ul className="cart-item-list">
+                {cart.map((item, index) => (
+                <li key={index} className="cart-item">
+                    <span className="item-name">{item.name}</span>
+                    <span className="item-qty-price">{item.quantity} x {item.price}€</span>
+                </li>
+            ))}
+            </ul>
+
+            <div className="cart-total">
+                <strong>Yhteensä: {totalPrice.toFixed(2)} €</strong>
+            </div>
+            </>
+            )}
+
+            <div className="cart-modal-buttons">
+            <NavLink to="/ShoppingCart">Näytä ostoskori</NavLink>
+            <NavLink to="/Checkout">Kassa</NavLink>
+            </div>
+        </div>
+        )}
+        </li>
+
+    
+
+
+
+    
+
 
             {/* Show admin options only if logged in 
             {isAdmin ? (

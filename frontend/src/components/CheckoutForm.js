@@ -82,66 +82,77 @@ const CheckoutForm = ({
 
     return (
         <div className="checkout-form">
-            <h1>Tilauksen tiedot</h1>
+            <div className="checkout-formContainer">
+            <h1>Laskutustiedot</h1>
             <form onSubmit={handleSubmit}>
+                <label htmlFor="name">Nimi *</label>
                 <input
                     name="full_name"
                     onChange={handleChange}
-                    placeholder="Nimi"
+                    placeholder="Etu- ja sukunimi"
                     required
                 />
+                <label htmlFor="email">Sähköpostiosoite *</label>
                 <input
+                    
                     name="email"
                     type="email"
                     onChange={handleChange}
-                    placeholder="Sähköposti"
+                    placeholder="..."
                     required
                 />
+                <label htmlFor="phonenumber">Puhelinnumero *</label>
                 <input
                     name="phone_number"
                     onChange={handleChange}
-                    placeholder="Puhelinnumero"
+                    placeholder="..."
                     required
                 />
+                <label htmlFor="address">Katuosoite *</label>
                 <input
                     name="street_address"
                     onChange={handleChange}
-                    placeholder="Katuosoite"
+                    placeholder="Kadunnimi ja talon numero"
                     required
                 />
                 <input
                     name="street_address2"
                     onChange={handleChange}
-                    placeholder="Osoiterivi 2"
+                    placeholder="Huoneisto, yksikkö jne. (valinnainen)"
                 />
+                <label htmlFor="postal_code">Postinumero *</label>
                 <input
                     name="postal_code"
                     onChange={handleChange}
-                    placeholder="Postinumero"
+                    placeholder="..."
                     required
                 />
+                <label htmlFor="city">Postitoimipaikka *</label>
                 <input
+                    
                     name="city"
                     onChange={handleChange}
-                    placeholder="Kaupunki"
+                    placeholder="..."
                     required
                 />
+                <label htmlFor="name">Alue</label>
                 <input
                     name="region"
                     onChange={handleChange}
-                    placeholder="Alue"
+                    placeholder="Alue (valinnainen)"
                 />
+                <label htmlFor="country">Maa</label>
                 <input
                     name="country"
                     onChange={handleChange}
-                    placeholder="Maa"
+                    placeholder="Maa (valinnainen)"
                     required
                 />
 
                 <div className="summary">
                     <p>Tuotteet: {cartTotal.toFixed(2)} €</p>
                     <p>Toimitus: {shippingCost.toFixed(2)} €</p>
-                    <strong>Yhteensä: {grandTotal.toFixed(2)} €</strong>
+                    <strong className="total">Yhteensä: {grandTotal.toFixed(2)} €</strong>
                 </div>
 
                 {error && <div className="error">{error}</div>}
@@ -153,6 +164,7 @@ const CheckoutForm = ({
                     Takaisin
                 </button>
             </form>
+        </div>
         </div>
     );
 };
