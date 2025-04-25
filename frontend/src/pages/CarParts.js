@@ -5,6 +5,7 @@ import ReactPaginate from "react-paginate";
 import Banner from "../components/Banner";
 import ProductCard from '../components/ProductCard';
 import Search from '../components/Search';
+import Dropdown from '../components/Dropdown';
 import "../styles/CarParts.css";
 
 const CarParts = () => {
@@ -45,10 +46,13 @@ const CarParts = () => {
   
     return (
       <div>
-        <Banner title="Osat" imageUrl="/assets/banner.JPG">
+        <Banner title="Osat" imageUrl="/assets/bmw_logo_banner.jpg">
           {/* Pass the handleSearchResults function to Search component */}
         </Banner>
-        <Search onSearchResults={handleSearchResults} />
+        <div className="filters-bar">
+          <Search onSearchResults={handleSearchResults} />
+          <Dropdown parts={parts} onFilter={handleSearchResults} />
+        </div>
         
         <div className="carParts-container">
           {currentParts.length > 0 ? (

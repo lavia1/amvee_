@@ -52,6 +52,18 @@
 .pagination-container li {
     list-style-type: none;
 }
+.filters-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem; /* or 2rem for more space */
+    padding: 1rem 0;
+  }
+  
+  .filters-bar > * {
+    flex: 1;
+    min-width: 250px; /* Ensures they don’t get too narrow on small screens */
+  }
   
 @media (max-width: 900px) {
     .carParts-container .card {

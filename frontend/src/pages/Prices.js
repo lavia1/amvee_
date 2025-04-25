@@ -7,7 +7,7 @@ const Pricing = () => {
         <div>
             <Banner 
                 title="Hinnasto"
-                imageUrl="/assets/banner.JPG"
+                imageUrl="/assets/m_logo_banner.jpg"
             />
         <div className="priceContainer">
         {/* Pricing page content */}  
@@ -15,7 +15,7 @@ const Pricing = () => {
             <tbody>
                 <tr>
                     <td>Tuntiveloitus</td>
-                    <td>55e/h</td>
+                    <td>55 e/h</td>
                 </tr>
                 <tr>
                     <td>Vikakoodien luku ja nollaus</td>

@@ -8,7 +8,7 @@ const Contact = () => {
         <div>
             <Banner
                 title="Yhteystiedot"
-                imageUrl="/assets/banner.JPG"
+                imageUrl="/assets/interior_banner.jpg"
             />
            <ContactForm />
           

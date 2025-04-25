@@ -1,7 +1,7 @@
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    box-sizing: border-box; /* standard box-sizing */
+    box-sizing: border-box; 
   }
   
 .container {
@@ -100,7 +100,7 @@ h2{
     margin-bottom: 15px;
 }
 .icon-link i {
-    font-size: 26px; /* Adjust size as needed */
+    font-size: 26px; 
 }
 
 .col-25 {
@@ -130,12 +130,16 @@ h2{
     .container {
         flex-direction: column; 
     }
+    h2 {
+        font-size: 22px; 
+    }
 
     .form-section,
     .contacts-section {
         flex: 1;
         width: 100%;
         margin-bottom: 20px; 
+        font-size: 16px;
     }
 
     .form-row {
@@ -149,11 +153,29 @@ h2{
     }
     
     .inputBox {
-        width: 100%; 
+        font-size: 14px; 
+        padding: 12px; 
     }
 
     input[type=submit] {
         width: 100%; 
         float: none; 
+    }
+}
+@media screen and (max-width: 480px) {
+    h2 {
+        font-size: 20px; 
+    }
+
+    .contacts-section a {
+        font-size: 18px; 
+    }
+
+    .inputBox {
+        font-size: 12px; 
+        padding: 10px; 
+    }
+    .btn-hover {
+        font-size: 12px; 
     }
 }

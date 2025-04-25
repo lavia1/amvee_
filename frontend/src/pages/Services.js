@@ -7,19 +7,19 @@ const Services = () => {
         <div>
             <Banner 
                 title="Palvelut"
-                imageUrl="/assets/banner.JPG"
+                imageUrl="/assets/wheel_banner.jpg"
             />
 
         {/*Ensimmäinen rivi */}
         <div className="rowHeader">
-        <h1 className="h2">Asennus- ja vianhakutyöt, koodaus sekä jälkivarustelu</h1>
+        <h1>Asennus- ja vianhakutyöt, koodaus sekä jälkivarustelu</h1>
         </div>
         
         <div className="row1">
             <div className="serviceColumn">
                 <div className="serviceCard">
-                    <img src="assets/banner.JPG"
-                        alt="" 
+                    <img src="assets/startstop.jpg"
+                        alt="Moottorin starttaus -nappi" 
                     />
                     <div className="serviceContainer">
                         <h2>Sähköjärjestelmien vianhaku ja korjaus</h2>
@@ -90,8 +90,8 @@ const Services = () => {
         <div className="row2">
             <div className="serviceColumn">
                 <div className="serviceCard">
-                    <img src="assets/banner.JPG"
-                        alt="" 
+                    <img src="assets/engine.jpg"
+                        alt="BMW -moottori" 
                     />
                     <div className="serviceContainer">
                         <h2>Moottorin ohjelmointi</h2>
@@ -105,8 +105,8 @@ const Services = () => {
 
             <div className="serviceColumn">
                 <div className="serviceCard">
-                    <img src="assets/banner.JPG"
-                        alt="" 
+                    <img src="assets/car.jpg"
+                        alt="BMW -auto" 
                     />
                     <div className="serviceContainer">
                         <h2>xHP vaihdelaatikko-ohjelmat</h2>

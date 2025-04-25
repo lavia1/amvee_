@@ -95,10 +95,13 @@
     }
 
     .search-input {
-        max-width: 150px; 
+        max-width: 250px; 
     }
 
     .search-button {
         max-width: 90px; 
     }
+    .search-input::placeholder {
+        font-size: 0.85rem;
+      }
 }

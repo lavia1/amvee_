@@ -46,6 +46,7 @@ const Footer = () => {
                     <i className="fab fa-youtube"></i>
                 </a>
             </div>
+           
             <p className="copyright">Copyright © 2025 ÄmVee Tmi</p>
         </div>
     )

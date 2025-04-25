@@ -49,16 +49,6 @@ export default function Navbar() {
                 </button>
                 
             </li>
-        
-            <li><NavLink to="/HomePage" onClick={hideSidebar} className={(navData) => (navData.isActive ? "active-link" : "")}>Etusivu</NavLink></li>
-            <li><NavLink to ="/Services" onClick={hideSidebar} className={(navData) => (navData.isActive ? "active-link" : "")}>Palvelut</NavLink></li>
-            <li><NavLink to ="/Prices"  onClick={hideSidebar} className={(navData) => (navData.isActive ? "active-link" : "")}>Hinnasto</NavLink></li>
-            <li>
-                <NavLink to="/CarParts"  onClick={hideSidebar} className={(navData) => (navData.isActive ? "active-link" : "")}>
-                    Osat
-                </NavLink>
-            </li>
-            <li><NavLink to ="/Contact"  onClick={hideSidebar} className={(navData) => (navData.isActive ? "active-link" : "")}>Yhteistiedot</NavLink></li>
             <li>
                 <NavLink
                     to="/ShoppingCart"
@@ -69,6 +59,16 @@ export default function Navbar() {
                     <span>{totalItems}</span>
                 </NavLink>
             </li>
+            <li><NavLink to="/" onClick={hideSidebar} className={(navData) => (navData.isActive ? "active-link" : "")}>Etusivu</NavLink></li>
+            <li><NavLink to ="/Services" onClick={hideSidebar} className={(navData) => (navData.isActive ? "active-link" : "")}>Palvelut</NavLink></li>
+            <li><NavLink to ="/Prices"  onClick={hideSidebar} className={(navData) => (navData.isActive ? "active-link" : "")}>Hinnasto</NavLink></li>
+            <li>
+                <NavLink to="/CarParts"  onClick={hideSidebar} className={(navData) => (navData.isActive ? "active-link" : "")}>
+                    Osat
+                </NavLink>
+            </li>
+            <li><NavLink to ="/Contact"  onClick={hideSidebar} className={(navData) => (navData.isActive ? "active-link" : "")}>Yhteistiedot</NavLink></li>
+         
 
 
             {/* Admin Login / Logout option 
@@ -84,7 +84,7 @@ export default function Navbar() {
         </ul>
 
         <ul>
-            <li><a href="/HomePage">
+            <li><a href="/">
                     <img 
                         src="/assets/logo.png"
                         alt ="Logo"
@@ -93,7 +93,7 @@ export default function Navbar() {
                     />
                 </a>
             </li>
-            <li className="hideOnMobile"><NavLink to ="/HomePage" className={(navData) => (navData.isActive ? "active-link" : "")}>Etusivu</NavLink></li>
+            <li className="hideOnMobile"><NavLink to ="/" className={(navData) => (navData.isActive ? "active-link" : "")}>Etusivu</NavLink></li>
             <li className="hideOnMobile"><NavLink to ="/Services" className={(navData) => (navData.isActive ? "active-link" : "")}>Palvelut</NavLink></li>
             <li className="hideOnMobile"><NavLink to ="/Prices" className={(navData) => (navData.isActive ? "active-link" : "")}>Hinnasto</NavLink></li>
             <li className="hideOnMobile">

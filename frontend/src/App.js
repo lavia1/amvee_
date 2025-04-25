@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import HomePage from "./pages/HomePage";
 import Footer from "./components/Footer";
 import Services from "./pages/Services";
 import CarParts from './pages/CarParts';
@@ -18,6 +19,7 @@ const App = () => {
       <Router>
         <Navbar />
         <Routes>
+          <Route path="/" element={<HomePage />} />
           <Route path="/Services" element={<Services />} />
           <Route path="/Prices" element={<Pricing />}/>
           <Route path="/CarParts" element={<CarParts />} />

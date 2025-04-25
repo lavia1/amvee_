@@ -1,15 +1,14 @@
 .banner {
     background-size: cover;
-    background-color: black;
     background-position: center;
     background-repeat: no-repeat;
-    height: 300px;
+    aspect-ratio: 2340 / 786;
+    width: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     position: relative;
     padding: 20px;
-    width: 100%;
 }
 .banner-overlay {
     padding: 10px;
@@ -21,26 +20,51 @@
     position: relative;
 }
 .banner-overlay h1{
-    margin:30px;
-    animation: glow 1.5s ease-in-out infinite alternate;
-    letter-spacing: 3px;
+    margin:60px;
+    animation: glow 2s ease-in-out infinite;
+    color:#ffffff;
+    letter-spacing:8px;
+    font-size: 3rem;
+    word-break: break-word;
 }
 @keyframes glow {
-  from {
-    text-shadow: 0 0 10px #ffffff45, 0 0 20px #ffffff45, 0 0 30px #2f7bb9, 0 0 40px #2f7bb9, 0 0 50px #2f7bb9, 0 0 60px #2f7bb9, 0 0 70px #2f7bb9;
+  0% {
+    text-shadow: 0 0 10px #bac3cb66, 0 0 20px #bac3cb66, 0 0 30px #bac3cbaa;
   }
-  to {
-    text-shadow: 0 0 20px #ffffff45, 0 0 30px #055C9D, 0 0 40px #055C9D, 0 0 50px #055C9D, 0 0 60px #055C9D, 0 0 70px #055C9D, 0 0 80px #055C9D;
+  50% {
+    text-shadow: 0 0 20px #2f7bb9aa, 0 0 30px #2f7bb9cc, 0 0 40px #2f7bb9;
+  }
+  100% {
+    text-shadow: 0 0 10px #bac3cb66, 0 0 20px #bac3cb66, 0 0 30px #bac3cbaa;
   }
 }
-@media (max-width: 768px) {
-    .banner {
-      height: 300px; /* Adjust height for tablet screens */
-    }
+@media screen and (max-width: 768px) {
+  .banner {
+    justify-content: flex-start;
+    padding:10px;
   }
-  
-  @media (max-width: 480px) {
-    .banner {
-      height: 200px; /* Adjust height for mobile screens */
-    }
+  .banner-overlay{
+    max-width: 90%;
+    font-size:1rem;
+    padding:8px;
+    text-align: left;
+    align-items: flex-end;
   }
+  .banner-overlay h1 {
+    margin:20px 0;
+    font-size: 1.8rem;
+    letter-spacing: 4px;
+    text-align: left;
+  }
+}
+@media screena and (max-width: 480px) {
+  .banner-overlay {
+    font-size: 0.9rem;
+    padding:6px;
+    text-align: left;
+  }
+  .banner-overlay h1{
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+  }
+}
