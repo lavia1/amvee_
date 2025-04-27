@@ -5,7 +5,7 @@ import "./Nav.css";
 
 export default function Navbar() {
     const [sidebarVisible, setSidebarVisible] = useState(false);
-    const {cart} = useCart();
+    const {cart, removeFromCart} = useCart();
     const [showCartModal, setShowCartModal] = useState(false);
 
     const totalPrice = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
@@ -108,6 +108,8 @@ export default function Navbar() {
                 onMouseEnter={() => setShowCartModal(true)}
                 onMouseLeave={() => setShowCartModal(false)}
             >
+            
+            {/* SHOPPING CART MODAL*/}
             <NavLink
                 to="#"
                 onClick={(e) => e.preventDefault()}
@@ -130,6 +132,12 @@ export default function Navbar() {
                 <li key={index} className="cart-item">
                     <span className="item-name">{item.name}</span>
                     <span className="item-qty-price">{item.quantity} x {item.price}€</span>
+                    <button
+                        className="delete-btn"
+                        onClick={() => removeFromCart(item.part_id)}
+                        >
+                            <i className="fa fa-trash"></i>
+                        </button>
                 </li>
             ))}
             </ul>

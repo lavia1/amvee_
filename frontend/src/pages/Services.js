@@ -33,7 +33,7 @@ const Services = () => {
 
             <div className="serviceColumn">
                 <div className="serviceCard">
-                    <img src="assets/banner.JPG"
+                    <img src="assets/bmw_speeder.jpg"
                         alt="" 
                     />
                     <div className="serviceContainer">
@@ -68,8 +68,8 @@ const Services = () => {
 
             <div className="serviceColumn">
                 <div className="serviceCard">
-                    <img src="assets/banner.JPG"
-                        alt="" 
+                    <img src="assets/speeder.jpg"
+                        alt="Nopeusmittari" 
                     />
                     <div className="serviceContainer">
                         <h2>Jälkivarustelu eli retrofit, esimerkiksi</h2>
@@ -105,13 +105,13 @@ const Services = () => {
 
             <div className="serviceColumn">
                 <div className="serviceCard">
-                    <img src="assets/car.jpg"
-                        alt="BMW -auto" 
+                    <img src="assets/gearbox.jpg"
+                        alt="Vaihdelaatikko" 
                     />
                     <div className="serviceContainer">
                         <h2>xHP vaihdelaatikko-ohjelmat</h2>
-                        <h2>JBPerformance GM vaihtelaatikko-ohjelmat</h2>
-                        <p className="title">Tekee kuminauhavaihdelaatikosta napakan, <br></br> fiksun ja luotettavan</p>
+                        <h2>JBPerformance GM vaihdelaatikko-ohjelmat</h2>
+                        <p>Tekee kuminauhavaihdelaatikosta napakan, <br></br> fiksun ja luotettavan</p>
                         <p className="title">220 euroa</p>
                         <p>BMW vuosimalleista 1995-2025</p>
                         <p>Vain GM -vaihdelaatikot 1995-2003</p>
@@ -122,8 +122,8 @@ const Services = () => {
 
             <div className="serviceColumn">
                 <div className="serviceCard">
-                    <img src="assets/banner.JPG"
-                        alt="" 
+                    <img src="assets/car.jpg"
+                        alt="BMW -auto" 
                     />
                     <div className="serviceContainer">
                         <h2>Auton ohjelmiston päivittäminen</h2>
@@ -143,16 +143,16 @@ const Services = () => {
         <div className="row3">
             <div className="serviceColumn">
                 <div className="serviceCard">
-                    <img src="assets/banner.JPG"
-                        alt="" 
+                    <img src="assets/engine_bmw.jpg"
+                        alt="BMW -moottori" 
                     />
                     <div className="serviceContainer">
                         <h2>Öljynvaihto</h2>
-                        <p>Moottorin öljynvaihto (Valvoline -öljy) 100 euroa</p>
-                        <p>Automaattivaihdelaatikon öljynvaihto 150 euroa</p>
-                        <p>Manuaalivaihdelaatikon öljynvaihto 60 euroa</p>
-                        <p>Perä öljynvaihto 60 euroa</p>
-                        <p>Jakolaatikon öljynvaihto 80 euroa</p>
+                        <p>Moottorin öljynvaihto (Valvoline -öljy) 100 €</p>
+                        <p>Automaattivaihdelaatikon öljynvaihto 150 €</p>
+                        <p>Manuaalivaihdelaatikon öljynvaihto 60 €</p>
+                        <p>Perä öljynvaihto 60 €</p>
+                        <p>Jakolaatikon öljynvaihto 80 €</p>
                     </div>
                 </div>
             </div>
@@ -181,8 +181,8 @@ const Services = () => {
 
             <div className="serviceColumn">
                 <div className="serviceCard">
-                    <img src="assets/banner.JPG"
-                        alt="" 
+                    <img src="assets/bmw_wheel.jpg"
+                        alt="BMW -vanne" 
                     />
                     <div className="serviceContainer">
                         <h2>Esimerkkejä muista töistä</h2>
@@ -199,13 +199,13 @@ const Services = () => {
 
             <div className="serviceColumn">
                 <div className="serviceCard">
-                    <img src="assets/banner.JPG"
+                    <img src="assets/bmw_lights_front.jpg"
                         alt="" 
                     />
                     <div className="serviceContainer">
                         <h2>Soittaja on voittaja</h2>
-                        <p className="title">Kaikki muu mikä mieleen juolahtaa</p>
-                        <p className="title">Ota rohkeasti yhteyttä:</p>
+                        <p>Kaikki muu mikä mieleen juolahtaa</p>
+                        <p>Ota rohkeasti yhteyttä:</p>
                         <p>
                             <a href="tel:+358443430792">
                                 <i className="fa fa-phone"></i>

@@ -65,7 +65,7 @@ const Dropdown = ({parts, onFilter}) => {
                 setIsModelOpen(false);
               }}
             >
-              Kategoria 
+              {selectedCategory || 'Kategoria'}
             </button>
             {isCategoryOpen && (
               <div className="dropdown-content">
@@ -74,6 +74,7 @@ const Dropdown = ({parts, onFilter}) => {
                     <input 
                       type="radio"
                       name="category"
+                      placeholder="kategoria"
                       value={category}
                       checked={selectedCategory === category}
                       onChange={() => handleCategorySelect(category)}
@@ -103,7 +104,7 @@ const Dropdown = ({parts, onFilter}) => {
                 setIsCategoryOpen(false);
               }}
             >
-              Malli 
+              {selectedModel || 'Malli'} 
             </button>
             {isModelOpen && (
               <div className="dropdown-content">

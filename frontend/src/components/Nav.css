@@ -140,7 +140,7 @@ nav li:first-child img:hover {
 }
 .cart-modal h4{
     margin: 0 ;
-    font-size: 16px;
+    font-size: 18px;
 }
 .cart-item-list {
     list-style: none;
@@ -156,11 +156,22 @@ nav li:first-child img:hover {
     display: flex;
     justify-content: space-between;
     margin-bottom: 5px;
-    font-size: 14px;
+    font-size: 18px;
     padding:6px 10px;
     border-radius: 6px;
     width: 100%;
     border-color: #bac3cb;
+}
+.delete-btn{
+    background: none;
+    border:none;
+    color:#2f7bb9;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.delete-btn:hover{
+    color:#D52827;
 }
 .item-name {
     font-weight: 500;
@@ -185,7 +196,7 @@ nav li:first-child img:hover {
 }
 
 .cart-modal-buttons a:hover {
-    background-color: #265d91;
+    background-color: black;
 }
 @media(max-width: 800px){
     .hideOnMobile{

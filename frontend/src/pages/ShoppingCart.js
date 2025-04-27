@@ -8,16 +8,16 @@ const ShoppingCart = () => {
 
   const [showCheckout, setShowCheckout] = useState(false);
 
-  // Calculate the total price of all items in the cart
+  // Calculate total price of items in the cart
   const totalPrice = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
-  // Shipping method state (default to delivery)
+  // Default shipping method: 'delivery'
   const [shippingMethod, setShippingMethod] = useState('delivery');
-
-  // Shipping cost based on shipping method
+  
+  // Set shipping cost based on method
   const shippingCost = shippingMethod === 'pickup' ? 0.00 : 10.00;
 
-  // Grand total
+  // Calculate grand total (including shipping)
   const grandTotal = totalPrice + shippingCost;
 
   // Handle shipping method change
@@ -25,18 +25,22 @@ const ShoppingCart = () => {
     setShippingMethod(event.target.value);
   };
 
+  // Show checkout form
   const handleCheckoutClick = () => {
     setShowCheckout(true);
   };
 
+  // Cancel checkout and return to cart
   const handleCancelCheckout = () => {
     setShowCheckout(false);
   };
 
+  // If cart is empty, show a message
   if (cart.length === 0) {
     return <div className="cart-empty">Ostoskorisi on tyhjä.</div>;
   }
 
+  // If checkout is active, show the checkout form
   if (showCheckout) {
     return (
       <CheckoutForm 
@@ -55,45 +59,30 @@ const ShoppingCart = () => {
     <div className="shopping-cart">
       <h1>Ostoskori</h1>
       <div className="cart-items">
+        {/* Display cart items */}
         {cart.map((item) => (
           <div key={item.part_id} className="cart-item">
-          <img src={item.image_url || "placeholder.jpg"} alt={item.name} />
-          <div className="cart-item-details">
-
-            <h2>{item.name}</h2>
-            <p>Hinta: {item.price.toFixed(2)} €</p>
-            <div className="quantity-container">
-              <button
-                onClick={() =>
-                  updateQuantity(item.part_id, Math.max(1, item.quantity - 1))
-                }
-              >
-                -
-              </button>
-              <span style={{ margin: "0 10px" }}>{item.quantity}</span>
-              <button
-                onClick={() =>
-                  updateQuantity(item.part_id, item.quantity + 1)
-                }
-              >
-                +
-              </button>
+            <img src={item.image_url || "placeholder.jpg"} alt={item.name} />
+            <div className="cart-item-details">
+              <h2>{item.name}</h2>
+              <p>Hinta: {item.price.toFixed(2)} €</p>
+              <div className="quantity-container">
+                <button onClick={() => updateQuantity(item.part_id, Math.max(1, item.quantity - 1))}>-</button>
+                <span>{item.quantity}</span>
+                <button onClick={() => updateQuantity(item.part_id, item.quantity + 1)}>+</button>
+              </div>
             </div>
+            <button onClick={() => removeFromCart(item.part_id)} className="remove-btn">Poista</button>
           </div>
-          <button onClick={() => removeFromCart(item.part_id)} className="remove-btn">
-            Poista
-          </button>
-        </div>
-        
         ))}
-
       </div>
 
+      {/* Show total price */}
       <div className="total-price">
         <p>Yhteensä: {totalPrice.toFixed(2)} €</p>
       </div>
 
-      {/*Shipping method selection */}
+      {/* Shipping method selection */}
       <div className="shipping-method">
         <h3>Valitse toimitustapa:</h3>
         <label>
@@ -104,7 +93,7 @@ const ShoppingCart = () => {
             checked={shippingMethod === 'delivery'}
             onChange={handleShippingMethodChange}
           />
-          Postimaksu (10,00e)
+          Postimaksu (10,00€)
         </label>
         <label>
           <input 
@@ -118,25 +107,21 @@ const ShoppingCart = () => {
         </label>
       </div>
 
+      {/* Shipping cost */}
       <div className="shipping-cost">
-        <p>Toimituskulut: {shippingCost.toFixed(2)} e</p>
+        <p>Toimituskulut: {shippingCost.toFixed(2)} €</p>
       </div>
 
-
+      {/* Grand total */}
       <div className="grand-total">
-        <p>Yhteensä toimituskulujen kanssa: {grandTotal.toFixed(2)} e</p>
+        <p>Yhteensä toimituskulujen kanssa: {grandTotal.toFixed(2)} €</p>
       </div>
 
+      {/* Checkout buttons */}
       <div className="checkout">
-        <button className="clear-cart-btn" onClick={clearCart}>
-          Tyhjennä kori
-        </button>
-    
-        <button className="checkout-btn" onClick={handleCheckoutClick}>
-          Kassa
-        </button>
+        <button className="clear-cart-btn" onClick={clearCart}>Tyhjennä kori</button>
+        <button className="checkout-btn" onClick={handleCheckoutClick}>Kassa</button>
       </div>
-
     </div>
   );
 };

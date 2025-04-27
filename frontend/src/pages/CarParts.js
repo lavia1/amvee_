@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 import ReactPaginate from "react-paginate"; 
@@ -6,83 +6,103 @@ import Banner from "../components/Banner";
 import ProductCard from '../components/ProductCard';
 import Search from '../components/Search';
 import Dropdown from '../components/Dropdown';
+import { useLocation, useNavigate } from 'react-router-dom';  
 import "../styles/CarParts.css";
 
 const CarParts = () => {
-    const [parts, setParts] = useState([]);
-    const [filteredParts, setFilteredParts] = useState([]);
-    const [currentPage, setCurrentPage] = useState(0);
-    const [partsPerPage] = useState(4);
+  const [parts, setParts] = useState([]);
+  const [filteredParts, setFilteredParts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [partsPerPage] = useState(4);
 
-    useEffect(() => {
-      const getData = async () => {
-        try {
-          const response = await Axios.get("http://localhost:3000/api/parts");
-          setParts(response.data);
-          setFilteredParts(response.data);
-        } catch (error) {
-          console.error("Error fetching parts: ", error);
-        }
-      };
+  const location = useLocation();  
+  const navigate = useNavigate();  
 
-      getData();
-    }, []);
-
-    // Update filtered parts based on search query
-    const handleSearchResults = (results) => {
-      setFilteredParts(results);
-      setCurrentPage(0);
+  // Fetch parts from the API
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await Axios.get("http://localhost:3000/api/parts");
+        const availableParts = response.data.filter(part => part.stock > 0);
+        setParts(availableParts);
+        setFilteredParts(availableParts);
+      } catch (error) {
+        console.error("Error fetching parts: ", error);
+      }
     };
 
-    // Page change
-    const handlePageClick = (data) => {
-      setCurrentPage(data.selected);
-    };
+    getData();
+  }, []);
 
-    const currentParts = filteredParts.slice(
-      currentPage * partsPerPage,
-      (currentPage + 1) * partsPerPage
-    );
+  // Checking the current url and page
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const page = queryParams.get("page") || 0; 
+    setCurrentPage(Number(page));
+  }, [location]);  
+
   
-    return (
-      <div>
-        <Banner title="Osat" imageUrl="/assets/bmw_logo_banner.jpg">
-          {/* Pass the handleSearchResults function to Search component */}
-        </Banner>
-        <div className="filters-bar">
-          <Search onSearchResults={handleSearchResults} />
-          <Dropdown parts={parts} onFilter={handleSearchResults} />
-        </div>
-        
-        <div className="carParts-container">
-          {currentParts.length > 0 ? (
-            currentParts.map((part) => (
-              <ProductCard key={part.part_number} part={part} />
-            ))
-          ) : (
-            <p>Osaa ei löytynyt</p>
-          )}
-        </div>
-  
-        <div className="pagination-container">
-          <ReactPaginate
-            previousLabel={<FaArrowLeft />}
-            nextLabel={<FaArrowRight />}
-            pageCount={Math.ceil(filteredParts.length / partsPerPage)}  
-            onPageChange={handlePageClick}  
-            containerClassName={"pagination-container"}
-            pageClassName={"page-item"}
-            pageLinkClassName={"page-link"}
-            activeClassName={"active"}
-            
-            previousClassName={"page-item previous"}  
-            nextClassName={"page-item next"}
-            previousLinkClassName={"page-link previous"}
-            nextLinkClassName={"page-link next"}
-          />
-        </div>
-      </div>
-    );
+  const handleSearchResults = (results) => {
+    const availableParts = results.filter(part => part.stock > 0);
+    setFilteredParts(availableParts);
+    setCurrentPage(0);  
   };
+
+ 
+  const handlePageClick = (data) => {
+    const selectedPage = data.selected;
+    setCurrentPage(selectedPage);
+    
+    // Update the URL with the new page number
+    navigate(`?page=${selectedPage}`);  
+  };
+
+  // Get the parts for the current page
+  const currentParts = filteredParts.slice(
+    currentPage * partsPerPage,
+    (currentPage + 1) * partsPerPage
+  );
+
+  return (
+    <div>
+      <Banner title="Osat" imageUrl="/assets/bmw_logo_banner.jpg">
+        
+      </Banner>
+      <div className="filters-bar">
+        <Search onSearchResults={handleSearchResults} />
+        <Dropdown parts={parts} onFilter={handleSearchResults} />
+      </div>
+      
+      <div className="carParts-container">
+        {currentParts.length > 0 ? (
+          currentParts.map((part) => (
+            <ProductCard key={part.part_number} part={part} />
+          ))
+        ) : (
+          <p>Osaa ei löytynyt</p>
+        )}
+      </div>
+
+      <div className="pagination-container">
+        <ReactPaginate
+          previousLabel={<FaArrowLeft />}
+          nextLabel={<FaArrowRight />}
+          pageCount={Math.ceil(filteredParts.length / partsPerPage)}  
+          onPageChange={handlePageClick}  
+          containerClassName={"pagination-container"}
+          pageClassName={"page-item"}
+          pageLinkClassName={"page-link"}
+          activeClassName={"active"}  
+          
+          forcePage={currentPage}  
+          previousClassName={"page-item previous"}  
+          nextClassName={"page-item next"}
+          previousLinkClassName={"page-link previous"}
+          nextLinkClassName={"page-link next"}
+        />
+      </div>
+    </div>
+  );
+};
 
 export default CarParts;

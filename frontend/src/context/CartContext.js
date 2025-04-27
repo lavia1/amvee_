@@ -6,27 +6,29 @@ export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
- 
-  // Load cart from LocalStorage on first render
+
+  
   useEffect(() => {
     try {
       const storedCart = localStorage.getItem("cart");
       if (storedCart) {
-        setCart(JSON.parse(storedCart));
+        setCart(JSON.parse(storedCart));  
       }
     } catch (error) {
       console.error("Error loading cart from LocalStorage", error);
     }
-  }, []);
+  }, []); 
 
-  // Save cart to LocalStorage whenever it changes
+  
   useEffect(() => {
-    try {
-      localStorage.setItem("cart", JSON.stringify(cart));
-    } catch (error) {
-      console.error("Error saving cart to LocalStorage", error);
+    if (cart.length > 0) {
+      try {
+        localStorage.setItem("cart", JSON.stringify(cart));  
+      } catch (error) {
+        console.error("Error saving cart to LocalStorage", error);
+      }
     }
-  }, [cart]);
+  }, [cart]); 
 
   // Add a part to the cart or update the quantity if it's already in the cart
   const addToCart = (part, quantity) => {
@@ -54,13 +56,20 @@ export const CartProvider = ({ children }) => {
 
   // Remove a part from the cart
   const removeFromCart = (part_id) => {
-    setCart((prev) => prev.filter((item) => item.part_id !== part_id));
-  };
+    setCart((prev) => {
+      const updatedCart = prev.filter((item) => item.part_id !== part_id);
+  
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+    
+      return updatedCart;
+  });
+};
+
 
   // Clear the entire cart
   const clearCart = () => {
-    localStorage.removeItem("cart");  // Remove cart from localStorage
-    setCart([]);
+    localStorage.removeItem("cart"); 
+    setCart([]);  
   };
 
   // Update the quantity of a part in the cart

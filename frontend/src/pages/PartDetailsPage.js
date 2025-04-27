@@ -9,7 +9,8 @@ const PartDetailsPage = () => {
     const [part, setPart] = useState(null);
     const [quantity, setQuantity] = useState(1);
     const {addToCart} = useCart();
-    const [message, setMessage] = useState("");
+    const [isAdded, setIsAdded] = useState(false);
+    const [popKey, setPopKey] = useState(0);
 
 
     useEffect(() => {
@@ -40,12 +41,13 @@ const PartDetailsPage = () => {
     
     const handleAddToCart = () => {
         addToCart(part, quantity);
-        setMessage(`${quantity} x ${part.name} lisätty ostoskoriin`);
-
+    
+        setIsAdded(true);
+        setPopKey(prev => prev +1);
         setTimeout(() => {
-            setMessage("")
-        }, 4000);
-    };
+          setIsAdded(false);
+      }, 2000);
+      };
 
     if (!part) return <div>Lataa...</div>;
 
@@ -76,10 +78,15 @@ const PartDetailsPage = () => {
                     <button onClick={increaseQty}>+</button>
                 </div>
     
-                <button className="btn-hover color-9 card-btn" onClick={handleAddToCart}>
-                    Lisää ostoskoriin
+                <button 
+                    className="btn-hover color-9 card-btn" 
+                    onClick={handleAddToCart}>
+                    {isAdded ? (
+                        <i key={popKey} className="fa fa-fw fa-check icon-pop"></i> 
+                    ) : (
+                        <i className="fa fa-fw fa-shopping-cart"></i>
+                    )}
                 </button>
-                {message&&<div className="inline-message">{message}</div>}
             </div>
         </div>
     );
