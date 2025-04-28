@@ -76,7 +76,7 @@ const Services = () => {
                         <p>Ajotietokoneen jälkiasennus</p>
                         <p>Penkkien jälkiasennus</p>
                         <p>Vakionopeuden säätimien jälkiasennus</p>
-                        <p>Ajovalojen jälkiasaennus</p>
+                        <p>Ajovalojen jälkiasennus</p>
                     </div>
                 </div>
             </div>
@@ -95,8 +95,8 @@ const Services = () => {
                     />
                     <div className="serviceContainer">
                         <h2>Moottorin ohjelmointi</h2>
-                        <p className="title">Ota kaikki irti autostasi</p>
-                        <p>BMW-dieselmoottoreiden optimointi <br></br>(mm. M57, N57)</p>
+                        <p className="title">Ota kaikki irti autostasi. Alkaen 390 euroa</p>
+                        <p>BMW-dieselmoottoreiden optimointi <br></br>(mm. M47, M57, N47, N57)</p>
                         <p>Tieliikennekäytössä olevien ajoneuvojen päivitys mahdollista ainoastaan ECE -hyväksytyillä osilla</p>
                         <p>Emme poista saastalaitteita</p>
                     </div>
@@ -109,13 +109,12 @@ const Services = () => {
                         alt="Vaihdelaatikko" 
                     />
                     <div className="serviceContainer">
-                        <h2>xHP vaihdelaatikko-ohjelmat</h2>
-                        <h2>JBPerformance GM vaihdelaatikko-ohjelmat</h2>
+                        <h2>Vaihdelaatikko-ohjelmat</h2>
+                        <h2>JBPerformance GM, 6hp sekä 8hp vaihdelaatikko-ohjelmat</h2>
+                        <p className="title">Alkaen 210 euroa</p>
                         <p>Tekee kuminauhavaihdelaatikosta napakan, <br></br> fiksun ja luotettavan</p>
-                        <p className="title">220 euroa</p>
+                       
                         <p>BMW vuosimalleista 1995-2025</p>
-                        <p>Vain GM -vaihdelaatikot 1995-2003</p>
-                        <p>2003 eteenpäin onnistuu kaikki</p>
                     </div>
                 </div>
             </div>
@@ -190,6 +189,7 @@ const Services = () => {
                         <p>Diagnostiikka -työt kaiken maailman muihin vikoihin</p>
                         <p>Muiden kuin BMW -merkkisten autojen sähkövikojen korjaus</p>
                         <p>Jakoketjun/hihnan vaihdot</p>
+                        <p>Katsastusremontit</p>
                         <p>Tukivarsien vaihdot</p>
                         <p>Iskareiden vaihdot</p>
                         <p>Jarrujen korjaus</p>

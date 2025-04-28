@@ -30,8 +30,16 @@ const Pricing = () => {
                     <td>450 euroa</td>
                 </tr>
                 <tr>
-                    <td>Xhp ja JBPerformance vaihdelaatikko-ohjelma</td>
-                    <td>240 euroa</td>
+                    <td>JBPerformance GM vaihdelaatikko-ohjelma</td>
+                    <td>210 euroa</td>
+                </tr>
+                <tr>
+                    <td>6hp -vaihdelaatikko-ohjelma</td>
+                    <td>220 euroa</td>
+                </tr>
+                <tr>
+                    <td>8hp -vaihdelaatikko-ohjelma</td>
+                    <td>Alkaen 310 euroa</td>
                 </tr>
                 <tr>
                     <td>Koko auton ohjelmiston päivitys</td>
