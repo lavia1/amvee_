@@ -1,7 +1,29 @@
 const express = require('express');
 const router = express.Router();
+const path = require('path');
+const multer = require('multer');
 const connection = require('../db');
 const verifyAdmin = require('../middleware/authMiddleware');
+
+// Multer configuration
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/');
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + path.extname(file.originalname));
+    }
+});
+
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype.startsWith('image/')) {
+        cb(null, true);
+    } else {
+        cb(new Error('Only image files are allowed'), false);
+    }
+};
+
+const upload = multer({ storage, fileFilter });
 
 // POST route for adding parts and images
 router.post('/', verifyAdmin, upload.array('images', 10), (req, res) => {
@@ -12,7 +34,7 @@ router.post('/', verifyAdmin, upload.array('images', 10), (req, res) => {
     }
 
     const imageUrls = req.files.map(file => `/uploads/${file.filename}`);
-    const mainImage = imageUrls[0] || null; // You can customize which is "main"
+    const mainImage = imageUrls[0] || null;
 
     connection.query('SELECT * FROM parts WHERE part_number = ?', [part_number], (err, results) => {
         if (err) return res.status(500).json({ error: "Database error" });
@@ -47,7 +69,6 @@ router.post('/', verifyAdmin, upload.array('images', 10), (req, res) => {
 
                 const partId = result.insertId;
 
-                // Save additional images
                 const imageInsertValues = imageUrls.map(url => [partId, url]);
                 if (imageInsertValues.length > 0) {
                     connection.query('INSERT INTO part_images (part_id, image_url) VALUES ?', [imageInsertValues], (err) => {
@@ -61,58 +82,44 @@ router.post('/', verifyAdmin, upload.array('images', 10), (req, res) => {
     });
 });
 
-// Delete with part number
+// Delete by part_number
 router.delete('/:part_number', verifyAdmin, (req, res) => {
-    const { part_number } = req.params; // Get the part_number from the URL
-    const { name } = req.body; // Get the name from the body, if provided
+    const { part_number } = req.params;
+    const { name } = req.body;
 
     let query = 'SELECT * FROM parts WHERE part_number = ?';
     let queryParams = [part_number];
 
-    // If name is provided, modify the query to search by part_number and name
     if (name) {
         query = 'SELECT * FROM parts WHERE part_number = ? AND name = ?';
         queryParams = [part_number, name];
     }
 
-    // Check if the part exists first
     connection.query(query, queryParams, (err, results) => {
-        if (err) {
-            console.error("Database error:", err);
-            return res.status(500).json({ error: "Database error" });
-        }
+        if (err) return res.status(500).json({ error: "Database error" });
 
         if (results.length === 0) {
-            // If no part was found
             return res.status(404).json({ error: "Part not found" });
         }
 
-        // If the part exists, proceed to delete it
-        connection.query('DELETE FROM parts WHERE part_number = ?', [part_number], (err, deleteResults) => {
-            if (err) {
-                console.error("Database error:", err);
-                return res.status(500).json({ error: "Database error" });
-            }
+        connection.query('DELETE FROM parts WHERE part_number = ?', [part_number], (err) => {
+            if (err) return res.status(500).json({ error: "Database error" });
 
-            // Successfully deleted the part
             res.json({ message: "Part deleted successfully" });
         });
     });
 });
 
-
-// Gets all 
+// Get all parts
 router.get('/', (req, res) => {
     connection.query('SELECT * FROM parts', (err, results) => {
-        if (err) {
-            console.error("Database error:", err);
-            return res.status(500).json({error: "Database error"});
-        }
+        if (err) return res.status(500).json({ error: "Database error" });
+
         res.json(results);
     });
 });
 
-// Search by name or part number (or both)
+// Search parts
 router.get('/search', (req, res) => {
     const { name, part_number } = req.query;
 
@@ -130,10 +137,7 @@ router.get('/search', (req, res) => {
     }
 
     connection.query(query, queryParams, (err, results) => {
-        if (err) {
-            console.log("Database error", err);
-            return res.status(500).json({ error: "Database error" });
-        }
+        if (err) return res.status(500).json({ error: "Database error" });
 
         if (results.length === 0) {
             return res.status(404).json({ error: "Part not found" });
@@ -143,23 +147,19 @@ router.get('/search', (req, res) => {
     });
 });
 
-
+// Get specific part by part_number
 router.get('/:part_number', (req, res) => {
-    const {part_number} = req.params;
+    const { part_number } = req.params;
 
     connection.query('SELECT * FROM parts WHERE part_number = ?', [part_number], (err, results) => {
-        if (err) {
-            console.log("Database error:", err);
-            return res.status(500).json({error:"Database error"});
-        }
-        
+        if (err) return res.status(500).json({ error: "Database error" });
+
         if (results.length === 0) {
-            return res.status(404).json({error: "Part not found"});
+            return res.status(404).json({ error: "Part not found" });
         }
 
         res.json(results[0]);
     });
 });
-
 
 module.exports = router;
