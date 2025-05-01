@@ -11,10 +11,10 @@ export default function Navbar() {
     const totalPrice = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
     const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
-    // const [isAdmin, setIsAdmin] = useState(false);
-    // const navigate = useNavigate();
+    const [isAdmin, setIsAdmin] = useState(false);
+    const navigate = useNavigate();
 
-     {/*
+     
     useEffect(() => {
         // Check is admin is logged in 
         const token = localStorage.getItem("token");
@@ -26,7 +26,7 @@ export default function Navbar() {
         setIsAdmin(false); 
         navigate("/")
     };
-    */}
+    
 
     const showSidebar = () => {
         setSidebarVisible(true);
@@ -71,7 +71,7 @@ export default function Navbar() {
          
 
 
-            {/* Admin Login / Logout option 
+            Admin Login / Logout option 
             {isAdmin ? (
                 <>
                     <li><NavLink to="/admin/dashboard">Admin Dashboard</NavLink></li>
@@ -80,7 +80,7 @@ export default function Navbar() {
             ) : (
                 <li><NavLink to="/admin/login">Admin Login</NavLink></li>
             )}
-            */}
+            
         </ul>
 
         <ul>
@@ -163,7 +163,7 @@ export default function Navbar() {
     
 
 
-            {/* Show admin options only if logged in 
+            {/* Show admin options only if logged in */}
             {isAdmin ? (
                 <>
                     <li className="hideOnMobile"><NavLink to ="admin/dashboard">Admin Dashboard</NavLink></li>
@@ -172,7 +172,7 @@ export default function Navbar() {
             ) : (
                 <li className="hideOnMobile"><NavLink to="/admin/login">Admin Login</NavLink></li>
             )}
-            */}
+            
 
 
             <li className="menu-button" onClick={showSidebar}>

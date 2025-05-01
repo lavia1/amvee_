@@ -22,7 +22,12 @@ const ProductCard = ({ part }) => {
   return (
     <div className="card">
       <Link to={`/parts/${part.part_number}`} className="card-link">
-        <img src={part.image_url || "placeholder.jpg"} alt={part.name} />
+      <img 
+  src={part.image_url ? `http://localhost:3000${part.image_url}` : "/assets/placeholder.jpg"} 
+  alt={part.name} 
+  onError={(e) => { e.target.onerror = null; e.target.src = "/assets/placeholder.jpg"; }} 
+/>
+
         <h2>{part.name}</h2>
         <p className="description">{part.description}</p>
         <p className="price">{part.price.toFixed(2)} €</p>

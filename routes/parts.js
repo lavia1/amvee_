@@ -4,45 +4,58 @@ const connection = require('../db');
 const verifyAdmin = require('../middleware/authMiddleware');
 
 // POST route for adding parts and images
-router.post('/', verifyAdmin, (req, res) => {
-    const { name, model, part_number, description, price, stock, category, image_url, quantity } = req.body;
+router.post('/', verifyAdmin, upload.array('images', 10), (req, res) => {
+    const { name, model, part_number, description, price, quantity, category } = req.body;
 
     if (!name || !price) {
         return res.status(400).json({ error: "Name and price are required" });
     }
 
+    const imageUrls = req.files.map(file => `/uploads/${file.filename}`);
+    const mainImage = imageUrls[0] || null; // You can customize which is "main"
+
     connection.query('SELECT * FROM parts WHERE part_number = ?', [part_number], (err, results) => {
-        if (err) {
-            console.error("Database error:", err);
-            return res.status(500).json({error: "Database error"});
-        }
+        if (err) return res.status(500).json({ error: "Database error" });
 
         if (results.length > 0) {
             // Update stock if part exists
             const existingPart = results[0];
-            const newStock = existingPart.stock + quantity;
-        
+            const newStock = existingPart.stock + Number(quantity);
 
-        connection.query(
-            'UPDATE parts SET stock = ? WHERE part_number = ?',
-            [newStock, part_number],
-            (err, updateResults) => {
-                if (err) {
-                    console.log("Database error:", err);
-                    return res.status(500).json({error: "Database error"});
+            connection.query(
+                'UPDATE parts SET stock = ? WHERE part_number = ?',
+                [newStock, part_number],
+                (err) => {
+                    if (err) return res.status(500).json({ error: "Database error" });
+                    res.json({ message: "Part stock updated successfully", partId: existingPart.id });
                 }
-                res.json({message: "Part stock updated successfully", partId: existingPart.id });
-            }
-        );
+            );
         } else {
-            const part = { name, model, part_number, description, price, stock: quantity, category, image_url, part_number };
-            // Add part if not existed
-            connection.query('INSERT INTO parts SET ?', part, (err, results) => {
-                if (err) {
-                console.error("Database error:", err);
-                return res.status(500).json({ error: "Database error" });
-            }
-            res.json({ message: "Part added successfully", partId: results.insertId });
+            const newPart = {
+                name,
+                model,
+                part_number,
+                description,
+                price,
+                stock: Number(quantity),
+                category,
+                image_url: mainImage,
+            };
+
+            connection.query('INSERT INTO parts SET ?', newPart, (err, result) => {
+                if (err) return res.status(500).json({ error: "Database error" });
+
+                const partId = result.insertId;
+
+                // Save additional images
+                const imageInsertValues = imageUrls.map(url => [partId, url]);
+                if (imageInsertValues.length > 0) {
+                    connection.query('INSERT INTO part_images (part_id, image_url) VALUES ?', [imageInsertValues], (err) => {
+                        if (err) console.error("Error saving images:", err);
+                    });
+                }
+
+                res.json({ message: "Part and images added", partId });
             });
         }
     });
