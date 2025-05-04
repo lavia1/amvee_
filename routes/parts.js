@@ -3,7 +3,7 @@ const router = express.Router();
 const path = require('path');
 const multer = require('multer');
 const verifyAdmin = require('../middleware/authMiddleware');
-const pool = require('../db'); // pg Pool
+const pool = require('../db'); 
 
 // Multer configuration for handling multiple files
 const storage = multer.diskStorage({
@@ -72,6 +72,66 @@ router.post('/', verifyAdmin, upload.array('images', 5), async (req, res) => {
 });
 
 
+// Get specific part by part_number
+router.get('/:part_number', async (req, res) => {
+    const { part_number } = req.params;
+
+    try {
+        const result = await pool.query('SELECT * FROM parts WHERE part_number = $1', [part_number]);
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({ error: "Part not found" });
+        }
+
+        res.json(result.rows[0]);
+    } catch (err) {
+        res.status(500).json({ error: "Database error" });
+    }
+});
+
+// Put route for updating a part 
+router.put('/:part_number', verifyAdmin, upload.array('images, 5'), async (req, res) => {
+    const {part_number} = req.params;
+    const {name, model, description, price, quantity, category} = req.body;
+
+    const imageUrls = req.files ? req.files.map(file => `/uploads/${file.filename}`) : null;
+
+    if (!name || !price) {
+        return res.status(400).json({error: "Nimi ja hinta tarvitaan"});
+    }
+
+    try {
+        const existing = await pool.query('SELECT * FROM parts WHERE part_number = $1', [part_number]);
+
+        if (existing.rows.length === 0) {
+            return res.status(400).json({error: "Part not found"});
+        }
+
+        const updateQuery= `
+            UPDATE parts
+            SET name = $1, model = $2, description = $3, price = $4, stock = $5, category = $6, image_url = $7
+            WHERE part_number = $8
+            RETURNING id
+        `;
+        const updateValues = [name, model, description, price, quantity, category,imageUrls, part_number];
+
+        const updateResult = await pool.query(updateQuery, updateValues);
+        res.json({message: "Osa päivitetty onnistuneesti", partId: updateResult.rows[0].id});
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({error: "Database error"});
+    }
+});
+
+// Get all parts
+router.get('/', async (req, res) => {
+    try {
+        const result = await pool.query('SELECT * FROM parts');
+        res.json(result.rows);
+    } catch (err) {
+        res.status(500).json({ error: "Database error" });
+    }
+});
 
 // Delete by part_number
 router.delete('/:part_number', verifyAdmin, async (req, res) => {
@@ -102,15 +162,6 @@ router.delete('/:part_number', verifyAdmin, async (req, res) => {
     }
 });
 
-// Get all parts
-router.get('/', async (req, res) => {
-    try {
-        const result = await pool.query('SELECT * FROM parts');
-        res.json(result.rows);
-    } catch (err) {
-        res.status(500).json({ error: "Database error" });
-    }
-});
 
 // Search parts
 router.get('/search', async (req, res) => {
@@ -138,23 +189,6 @@ router.get('/search', async (req, res) => {
         res.json(result.rows);
     } catch (err) {
         console.error(err);
-        res.status(500).json({ error: "Database error" });
-    }
-});
-
-// Get specific part by part_number
-router.get('/:part_number', async (req, res) => {
-    const { part_number } = req.params;
-
-    try {
-        const result = await pool.query('SELECT * FROM parts WHERE part_number = $1', [part_number]);
-
-        if (result.rows.length === 0) {
-            return res.status(404).json({ error: "Part not found" });
-        }
-
-        res.json(result.rows[0]);
-    } catch (err) {
         res.status(500).json({ error: "Database error" });
     }
 });

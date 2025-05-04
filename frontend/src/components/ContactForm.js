@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import emailjs from "emailjs-com";
 import "./contactform.css";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import { faEnvelope, faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
 
 const ContactForm = () => {
