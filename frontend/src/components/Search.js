@@ -27,32 +27,34 @@ const Search = ({ onSearchResults }) => {
       onSearchResults([]);
       return;
     }
-
+  
     setError('');
-
+  
     const fuseOptions = {
       includeScore: true,
       keys: ["name", "part_number"], 
       threshold: 0.3, 
     };
-
+  
     const fuse = new Fuse(parts, fuseOptions);
     let results = fuse.search(searchQuery).map(result => result.item);
-
+  
     if (!results.length) {
+      // Filter parts only if part_number is not null or undefined
       const partNumberResults = parts.filter(part =>
-        part.part_number.toString().includes(searchQuery)
+        part.part_number && part.part_number.toString().includes(searchQuery)
       );
       results = results.concat(partNumberResults);
     }
-
+  
+    // Remove duplicate parts based on their `id`
     results = Array.from(new Set(results.map(a => a.id))).map(id =>
       results.find(a => a.id === id)
     );
-
+  
     onSearchResults(results);  
   };
-
+  
   return (
     <div className="search-container">
       <div className="search-input-container">

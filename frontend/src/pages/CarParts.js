@@ -22,7 +22,7 @@ const CarParts = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await Axios.get("http://localhost:3000/api/parts");
+        const response = await Axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/parts`);
         const availableParts = response.data.filter(part => part.stock > 0);
         setParts(availableParts);
         setFilteredParts(availableParts);
@@ -41,20 +41,21 @@ const CarParts = () => {
     setCurrentPage(Number(page));
   }, [location]);  
 
-  
   const handleSearchResults = (results) => {
     const availableParts = results.filter(part => part.stock > 0);
     setFilteredParts(availableParts);
     setCurrentPage(0);  
   };
 
- 
   const handlePageClick = (data) => {
     const selectedPage = data.selected;
-    setCurrentPage(selectedPage);
     
-    // Update the URL with the new page number
-    navigate(`?page=${selectedPage}`);  
+    // Ensure that the selected page is within bounds
+    if (selectedPage < Math.ceil(filteredParts.length / partsPerPage)) {
+      setCurrentPage(selectedPage);
+      // Update the URL with the new page number
+      navigate(`?page=${selectedPage}`);
+    }
   };
 
   // Get the parts for the current page
@@ -63,10 +64,11 @@ const CarParts = () => {
     (currentPage + 1) * partsPerPage
   );
 
+  const pageCount = Math.ceil(filteredParts.length / partsPerPage);
+
   return (
     <div>
       <Banner title="Osat" imageUrl="/assets/bmw_logo_banner.jpg">
-        
       </Banner>
       <div className="filters-bar">
         <Search onSearchResults={handleSearchResults} />
@@ -87,14 +89,13 @@ const CarParts = () => {
         <ReactPaginate
           previousLabel={<FaArrowLeft />}
           nextLabel={<FaArrowRight />}
-          pageCount={Math.ceil(filteredParts.length / partsPerPage)}  
+          pageCount={pageCount}  // Safe page count
           onPageChange={handlePageClick}  
           containerClassName={"pagination-container"}
           pageClassName={"page-item"}
           pageLinkClassName={"page-link"}
           activeClassName={"active"}  
-          
-          forcePage={currentPage}  
+          forcePage={currentPage}  // Ensure the page index is within bounds
           previousClassName={"page-item previous"}  
           nextClassName={"page-item next"}
           previousLinkClassName={"page-link previous"}

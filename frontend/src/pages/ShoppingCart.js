@@ -61,20 +61,26 @@ const ShoppingCart = () => {
       <div className="cart-items">
         {/* Display cart items */}
         {cart.map((item) => (
-          <div key={item.part_id} className="cart-item">
-            <img src={item.image_url || "placeholder.jpg"} alt={item.name} />
-            <div className="cart-item-details">
-              <h2>{item.name}</h2>
-              <p>Hinta: {item.price.toFixed(2)} €</p>
-              <div className="quantity-container">
-                <button onClick={() => updateQuantity(item.part_id, Math.max(1, item.quantity - 1))}>-</button>
-                <span>{item.quantity}</span>
-                <button onClick={() => updateQuantity(item.part_id, item.quantity + 1)}>+</button>
-              </div>
-            </div>
-            <button onClick={() => removeFromCart(item.part_id)} className="remove-btn">Poista</button>
+        <div key={item.part_id} className="cart-item">
+          <img
+            src={item.image_url ? `${process.env.REACT_APP_API_BASE_URL}${item.image_url}` : "placeholder.jpg"}
+            alt={item.name}
+          />
+
+
+          <div className="cart-item-details">
+            <h2>{item.name}</h2>
+            <p>Hinta: {Number(item.price).toFixed(2)} €</p> {/* Ensure item.price is a number */}
+          <div className="quantity-container">
+            <button onClick={() => updateQuantity(item.part_id, Math.max(1, item.quantity - 1))}>-</button>
+            <span>{item.quantity}</span>
+            <button onClick={() => updateQuantity(item.part_id, item.quantity + 1)}>+</button>
           </div>
-        ))}
+        </div>
+    <button onClick={() => removeFromCart(item.part_id)} className="remove-btn">Poista</button>
+  </div>
+))}
+
       </div>
 
       {/* Show total price */}

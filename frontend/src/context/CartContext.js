@@ -47,12 +47,13 @@ export const CartProvider = ({ children }) => {
           part_id: part.id,
           name: part.name,
           price: part.price,
-          image_url: part.image_url,
+          image_url: Array.isArray(part.image_url) ? part.image_url[0] : part.image_url,
           quantity,
         },
       ];
     });
   };
+  
 
   // Remove a part from the cart
   const removeFromCart = (part_id) => {

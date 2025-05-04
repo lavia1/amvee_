@@ -39,7 +39,7 @@ const AdminDashboard = () => {
         try {
             const token = localStorage.getItem("token");
 
-            const response = await Axios.post("http://localhost:3000/api/parts", formData, {
+            const response = await Axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/parts`, formData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     "Content-Type":"multipart/form-data"

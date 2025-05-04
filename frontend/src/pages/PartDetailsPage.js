@@ -11,7 +11,7 @@ const PartDetailsPage = () => {
     const { addToCart } = useCart();
     const [isAdded, setIsAdded] = useState(false);
     const [popKey, setPopKey] = useState(0);
-    const [currentImageIndex, setCurrentImageIndex] = useState(0); // Track the currently displayed image
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     useEffect(() => {
         const fetchPart = async () => {
@@ -26,7 +26,6 @@ const PartDetailsPage = () => {
         fetchPart();
     }, [partNumber]);
 
-    // Määrän lisäys ostoskoria varten
     const increaseQty = () => {
         if (quantity < part.stock) {
             setQuantity(prev => prev + 1);
@@ -51,15 +50,16 @@ const PartDetailsPage = () => {
 
     if (!part) return <div>Ladataan...</div>; // "Loading..." in Finnish
 
-    // Image Slider Logic
-    const handlePrevImage = () => {
+    const price = isNaN(part.price) ? 0 : Number(part.price); // Set price to 0 if it's not a valid number
+
+    const goToPreviousImage = () => {
         if (currentImageIndex > 0) {
             setCurrentImageIndex(currentImageIndex - 1);
         }
     };
 
-    const handleNextImage = () => {
-        if (currentImageIndex < part.image_urls.length - 1) {
+    const goToNextImage = () => {
+        if (currentImageIndex < part.image_url.length - 1) {
             setCurrentImageIndex(currentImageIndex + 1);
         }
     };
@@ -67,18 +67,23 @@ const PartDetailsPage = () => {
     return (
         <div className="detail-container">
             {/* Image Slider */}
-            <div className="image-slider">
-                <button className="prev-button" onClick={handlePrevImage}>&#10094;</button>
-                <img
-                    src={part.image_urls[currentImageIndex] ? `http://localhost:3000${part.image_urls[currentImageIndex]}` : "/assets/placeholder.jpg"}
-                    alt={part.name}
-                    onError={(e) => { e.target.onerror = null; e.target.src = "/assets/placeholder.jpg"; }}
-                />
-                <button className="next-button" onClick={handleNextImage}>&#10095;</button>
+            <div className="image-container">
+                {part.image_url && Array.isArray(part.image_url) && part.image_url.length > 0 ? (
+                    <div className="slider">
+                        <button onClick={goToPreviousImage} className="prev-btn">Prev</button>
+                        <img
+                            src={`${process.env.REACT_APP_API_BASE_URL}${part.image_url[currentImageIndex]}`}
+                            alt={part.name}
+                        />
+                        <button onClick={goToNextImage} className="next-btn">Next</button>
+                    </div>
+                ) : (
+                    <img src="/assets/placeholder.jpg" alt="Placeholder" />
+                )}
             </div>
 
             <h1>{part.name}</h1>
-            <p className="price">{part.price.toFixed(2)} € </p>
+            <p className="price">{price.toFixed(2)} € </p>
             <p>Varaosanumero: {part.part_number}</p>
             <p>Määrä: {part.stock}</p>
             <p className="part-description">Kuvaus:</p>
