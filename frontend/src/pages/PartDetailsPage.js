@@ -12,6 +12,7 @@ const PartDetailsPage = () => {
     const [isAdded, setIsAdded] = useState(false);
     const [popKey, setPopKey] = useState(0);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [recommendedParts, setRecommendedParts] = useState([]);
 
     useEffect(() => {
         const fetchPart = async () => {
@@ -26,6 +27,22 @@ const PartDetailsPage = () => {
         fetchPart();
     }, [partNumber]);
 
+    useEffect(() => {
+        const fetchRecommendedParts = async () => {
+            try {
+                const response = await Axios.get("http://localhost:3000/api/parts");
+                const filtered = response.data
+                    .filter(p => p.part_number !== partNumber && p.stock > 0)
+                    .slice(0, 4); // take 4 parts only
+                setRecommendedParts(filtered);
+            } catch (error) {
+                console.error("Error fetching recommended parts:", error);
+            }
+        };
+    
+        if (part) fetchRecommendedParts(); // only fetch once main part is loaded
+    }, [part, partNumber]);
+    
     const increaseQty = () => {
         if (quantity < part.stock) {
             setQuantity(prev => prev + 1);
@@ -120,7 +137,31 @@ const PartDetailsPage = () => {
                 </button>
                 </div>
             </div>
+            
+            {/* Recommended parts 
+            {recommendedParts.length > 0 && (
+                <div className="recommended-container">
+                    <h2>Suositellut osat</h2>
+                    <div className="recommended-grid">
+                        {recommendedParts.map((item) => (
+                            <div key={item.part_number} className="recommended-card">
+                                <img 
+                                src={item.image_url && item.image_url[0] 
+                                    ? `${process.env.REACT_APP_API_BASE_URL}${item.image_url[0]}` 
+                                    : "/assets/placeholder.jpg"} 
+                                alt={item.name} 
+                                />
+                                <h3>{item.name}</h3>
+                                <p>{parseFloat(item.price).toFixed(2)} €</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}*/}
+
         </div>
+
+        
     );
 };
 

@@ -67,7 +67,7 @@ const AdminDashboard = () => {
     return (
         <div className="admin-dashboard">
             <h2 className="dashboard-header">Lisää osa </h2>
-            <form onSubmit={handleSubmit} encType ="multipart/form-data">
+            <form className="admin-form" onSubmit={handleSubmit} encType ="multipart/form-data">
                 <label htmlFor="part-name">Nimi</label><input type="text" name="name" value={form.name} onChange={handleChange} placeholder="..." required />
                 <label htmlFor="model">Malli</label><input type="text" name="model" value={form.model} onChange={handleChange} placeholder="..." required />
                 <label htmlFor="category">Kategoria</label><input type="text" name="category" value={form.category} onChange={handleChange} placeholder="..." required />

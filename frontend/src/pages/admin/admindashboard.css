@@ -17,19 +17,19 @@
     border-radius: 5px;
     outline: none;
 }
-form{
+.admin-form{
     display: flex;
     flex-direction: column;
     background-color: #2b2b2b94;
     padding:10px;
     border-radius: 5px;
 }
-label {
+.admin-form label {
     margin-top: 12px;
     font-weight: 600;
     color:#bac3cb;
 }
-textarea{
+.admin-form textarea{
     padding:10px;
     margin-top: 4px;
     margin-bottom: 10px;
