@@ -37,7 +37,6 @@ const ProductCard = ({ part }) => {
           <img src="/assets/placeholder.jpg" alt="Placeholder" />
         )}
         <h2>{part.name}</h2>
-        <p className="description">{part.description}</p>
         <p className="price">{formattedPrice} €</p>
       </Link>
 

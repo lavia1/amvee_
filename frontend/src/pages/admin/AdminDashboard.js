@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import Axios from 'axios';
+import "./admindashboard.css";
 
 const AdminDashboard = () => {
     const [form, setForm] = useState ({
@@ -65,23 +66,31 @@ const AdminDashboard = () => {
 
     return (
         <div className="admin-dashboard">
-            <h2>Lisää osa </h2>
+            <h2 className="dashboard-header">Lisää osa </h2>
             <form onSubmit={handleSubmit} encType ="multipart/form-data">
-                <input type="text" name="name" value={form.name} onChange={handleChange} placeholder="nimi" required />
-                <input type="text" name="model" value={form.model} onChange={handleChange} placeholder="malli" required />
-                <input type="text" name="part_number" value={form.part_number} onChange={handleChange} placeholder="varaosanumero" required />
-                <input type="text" name="description" value={form.description} onChange={handleChange} placeholder="kuvaus" required />
-                <input type="number" name="price" value={form.price} onChange={handleChange} placeholder="hinta" required />
-                <input type="number" name="quantity" value={form.quantity} onChange={handleChange} placeholder="määrä" required />
-                <input type="text" name="category" value={form.category} onChange={handleChange} placeholder="kategoria" required />
+                <label htmlFor="part-name">Nimi</label><input type="text" name="name" value={form.name} onChange={handleChange} placeholder="..." required />
+                <label htmlFor="model">Malli</label><input type="text" name="model" value={form.model} onChange={handleChange} placeholder="..." required />
+                <label htmlFor="category">Kategoria</label><input type="text" name="category" value={form.category} onChange={handleChange} placeholder="..." required />
+                <label htmlFor="part_number">Varaosanumero</label><input type="text" name="part_number" value={form.part_number} onChange={handleChange} placeholder="..." required />
+                <label htmlFor="price">Hinta</label><input type="number" name="price" value={form.price} onChange={handleChange} placeholder="..." required />
+                <label htmlFor="quantity">Määrä</label><input type="number" name="quantity" value={form.quantity} onChange={handleChange} placeholder="..." required />
+                <label htmlFor="description">Kuvaus</label>
+                    <textarea 
+                        name="description" 
+                        value={form.description} 
+                        onChange={handleChange} 
+                        placeholder="..." 
+                        rows="5"
+                       
+                    />
 
-                <input 
+                <input className="image-input"
                     type="file" 
                     name="images" 
                     onChange={handleChange} 
                     accept="image/*" 
                     multiple
-                    required />
+                    />
 
                 <button type ="submit">Lisää osa</button>
             </form>

@@ -10,6 +10,7 @@ import Contact from "./pages/Contact";
 import ShoppingCart from "./pages/ShoppingCart";
 import AdminLogin from "./pages/admin/AdminLoginPage";
 import AdminDashboard from "./pages/admin/AdminDashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
 import { CartProvider } from "./context/CartContext";
 import './App.css';
 
@@ -28,8 +29,10 @@ const App = () => {
           <Route path="/parts/:partNumber" element={<PartDetailsPage />} />
           <Route path="/Contact" element={<Contact />}/>
           <Route path="/ShoppingCart" element={<ShoppingCart />}></Route>
-          <Route path="/admin/login" element={<AdminLogin />} />
-          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/login/456759" element={<AdminLogin />} />
+
+          <Route path="/admin/dashboard" element={ <ProtectedRoute ><AdminDashboard /> </ProtectedRoute>} />
+
         </Routes>
         <Footer />
       </Router>

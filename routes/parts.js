@@ -155,7 +155,7 @@ router.delete('/:part_number', verifyAdmin, async (req, res) => {
 
         await pool.query('DELETE FROM parts WHERE part_number = $1', [part_number]);
 
-        res.json({ message: "Part deleted successfully" });
+        res.json({ message: "Osa poistettu onnistuneesti" });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Database error" });

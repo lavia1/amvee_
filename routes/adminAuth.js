@@ -1,5 +1,6 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
+const rateLimit = require('express-rate-limit');
 require('dotenv').config();
 
 const router = express.Router();
@@ -9,7 +10,16 @@ const ADMIN_CREDENTIALS = {
     password: process.env.ADMIN_PASSWORD
 };
 
-router.post('/login', (req, res) => {
+// Rate limiter for the login route
+const loginRateLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 5,
+    message: "Liian monta yritystä tästä IP -osoitteesta.",
+    headers: true,
+
+});
+
+router.post('/login', loginRateLimiter, (req, res) => {
     const { username, password } = req.body;
 
     if(username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {

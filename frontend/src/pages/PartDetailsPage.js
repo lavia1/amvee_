@@ -46,41 +46,48 @@ const PartDetailsPage = () => {
         setTimeout(() => {
             setIsAdded(false);
         }, 2000);
-    };
-
-    if (!part) return <div>Ladataan...</div>; // "Loading..." in Finnish
-
-    const price = isNaN(part.price) ? 0 : Number(part.price); // Set price to 0 if it's not a valid number
+    }; 
 
     const goToPreviousImage = () => {
-        if (currentImageIndex > 0) {
-            setCurrentImageIndex(currentImageIndex - 1);
-        }
+        setCurrentImageIndex(prev =>
+            prev > 0 ? prev - 1: part.image_url.length -1
+        );
+        
     };
 
     const goToNextImage = () => {
-        if (currentImageIndex < part.image_url.length - 1) {
-            setCurrentImageIndex(currentImageIndex + 1);
-        }
+        setCurrentImageIndex(prev => 
+            prev < part.image_url.length - 1 ? prev + 1 : 0
+        );
     };
+
+    if (!part) return <div>Ladataan...</div>; 
+
+    const price = isNaN(part.price) ? 0 : Number(part.price);
 
     return (
         <div className="detail-container">
             {/* Image Slider */}
             <div className="image-container">
-                {part.image_url && Array.isArray(part.image_url) && part.image_url.length > 0 ? (
-                    <div className="slider">
-                        <button onClick={goToPreviousImage} className="prev-btn">Prev</button>
-                        <img
-                            src={`${process.env.REACT_APP_API_BASE_URL}${part.image_url[currentImageIndex]}`}
-                            alt={part.name}
-                        />
-                        <button onClick={goToNextImage} className="next-btn">Next</button>
-                    </div>
-                ) : (
-                    <img src="/assets/placeholder.jpg" alt="Placeholder" />
+            {part.image_url && Array.isArray(part.image_url) && part.image_url.length > 0 ? (
+                <div className="slider">
+                    <img
+                        src={`${process.env.REACT_APP_API_BASE_URL}${part.image_url[currentImageIndex]}`}
+                        alt={part.name}
+                        className="slider-image"
+                    />
+                {part.image_url.length > 1 && (
+                    <>
+                        <button onClick={goToPreviousImage} className="slider-btn left">&#8249;</button>
+                        <button onClick={goToNextImage} className="slider-btn right">&#8250;</button>
+                    </>
                 )}
             </div>
+            ) : (
+            <img src="/assets/placeholder.jpg" alt="Placeholder" className="slider-image"/>
+            )}
+        </div>
+
 
             <h1>{part.name}</h1>
             <p className="price">{price.toFixed(2)} € </p>
@@ -92,7 +99,7 @@ const PartDetailsPage = () => {
             {/* Quantity and Add to Cart */}
             <div className="purchase-container">
                 <div className="quantity-container">
-                    <button onClick={decreaseQty}>-</button>
+                    <button className="quantity-button" onClick={decreaseQty}>-</button>
                     <input
                         type="number"
                         value={quantity}
@@ -103,7 +110,7 @@ const PartDetailsPage = () => {
                         min="1"
                         max={part.stock}
                     />
-                    <button onClick={increaseQty}>+</button>
+                    <button className="quantity-button" onClick={increaseQty}>+</button>
                 </div>
 
                 <button className="btn-hover color-9 card-btn" onClick={handleAddToCart}>

@@ -1,5 +1,5 @@
-import { useEffect, useState} from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useState} from "react";
+import { NavLink } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import "./Nav.css";
 
@@ -11,22 +11,6 @@ export default function Navbar() {
     const totalPrice = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
     const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
-    const [isAdmin, setIsAdmin] = useState(false);
-    const navigate = useNavigate();
-
-     
-    useEffect(() => {
-        // Check is admin is logged in 
-        const token = localStorage.getItem("token");
-        setIsAdmin(!token);
-    }, []);
-   
-    const handleLogout = () => {
-        localStorage.removeItem("token");
-        setIsAdmin(false); 
-        navigate("/")
-    };
-    
 
     const showSidebar = () => {
         setSidebarVisible(true);
@@ -71,15 +55,7 @@ export default function Navbar() {
          
 
 
-            Admin Login / Logout option 
-            {isAdmin ? (
-                <>
-                    <li><NavLink to="/admin/dashboard">Admin Dashboard</NavLink></li>
-                    <li><button onClick={handleLogout} className="logout-btn">Logout</button></li>
-                </>
-            ) : (
-                <li><NavLink to="/admin/login">Admin Login</NavLink></li>
-            )}
+        
             
         </ul>
 
@@ -155,23 +131,6 @@ export default function Navbar() {
         </div>
         )}
         </li>
-
-    
-
-
-
-    
-
-
-            {/* Show admin options only if logged in */}
-            {isAdmin ? (
-                <>
-                    <li className="hideOnMobile"><NavLink to ="admin/dashboard">Admin Dashboard</NavLink></li>
-                    <li className="hideOnMobile"><button onClick={handleLogout} className="logout-btn"></button></li>
-                </>
-            ) : (
-                <li className="hideOnMobile"><NavLink to="/admin/login">Admin Login</NavLink></li>
-            )}
             
 
 
