@@ -25,33 +25,38 @@ const ProductCard = ({ part }) => {
 
   return (
     <div className="card">
-      <Link to={`/parts/${part.part_number}`} className="card-link">
-        {/* Display only the first image */}
-        {part.image_url && Array.isArray(part.image_url) && part.image_url.length > 0 ? (
-          <img 
-            src={part.image_url ? `${process.env.REACT_APP_API_BASE_URL}${part.image_url[0]}` : "placeholder.jpg"} 
-            alt={part.name} 
-          />
-        
-        ) : (
-          <img src="/assets/placeholder.jpg" alt="Placeholder" />
-        )}
-        <h2>{part.name}</h2>
-        <p className="price">{formattedPrice} €</p>
-      </Link>
-
-      <button 
-        className="btn-hover color-9 card-btn" 
-        onClick={handleAddToCart}
-      >
-        {isAdded ? (
-          <i key={popKey} className="fa fa-fw fa-check icon-pop"></i> 
-        ) : (
-          <i className="fa fa-fw fa-shopping-cart"></i>
-        )}
-      </button>
+      <div className="productcard-container">
+        <Link to={`/parts/${part.part_number}`} className="card-link">
+          {part.image_url && Array.isArray(part.image_url) && part.image_url.length > 0 ? (
+            <img 
+              src={
+                part.image_url
+                  ? `${process.env.REACT_APP_API_BASE_URL}${part.image_url[0]}`
+                  : "/assets/placeholder.jpg"
+              } 
+              alt={part.name} 
+            />
+          ) : (
+            <img src="/assets/placeholder.jpg" alt="Placeholder" />
+          )}
+          <h2>{part.name}</h2>
+          <p className="price">{formattedPrice} €</p>
+        </Link>
+  
+        <button 
+          className="btn-hover color-9 card-btn" 
+          onClick={handleAddToCart}
+        >
+          {isAdded ? (
+            <i key={popKey} className="fa fa-fw fa-check icon-pop"></i> 
+          ) : (
+            <i className="fa fa-fw fa-shopping-cart"></i>
+          )}
+        </button>
+      </div>
     </div>
   );
+  
 };
 
 

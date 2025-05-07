@@ -13,7 +13,7 @@ const CarParts = () => {
   const [parts, setParts] = useState([]);
   const [filteredParts, setFilteredParts] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
-  const [partsPerPage] = useState(4);
+  const [partsPerPage] = useState(12);
 
   const location = useLocation();  
   const navigate = useNavigate();  

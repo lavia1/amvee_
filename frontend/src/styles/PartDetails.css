@@ -1,79 +1,106 @@
 .detail-container {
-    padding: 2rem;
-    max-width: 800px;
+    padding: 0.5rem;
+    max-width: 700px;
     margin:auto;
     margin-top:50px;
-    margin-bottom:50px;
+    margin-bottom:60px;
     background-color: #2b2b2b94;
     border-radius:12px;
 }
+.container-background {
+    background-color: black;
+    padding-left:15px;
+    padding-top:5px;
+    padding-right:15px;
+    border-radius: 5px;
+}
 .detail-container img{
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
+    padding:15px;
+    margin-bottom: 30px;
 }
 .detail-container h1{
-    margin-top:15px;
+    margin-bottom:5px;
+    margin-top:10px;
+    margin-left:15px;
+    
 }
-.part-description{
-    font-size:22px;
-    margin-top:25px;
-    text-align: left;
-    align-items: center;
-}
+
 .detail-description {
     text-align: left;
     font-size: 20px;
     align-items: center;
-    margin-top: 15px;
+    margin-top:30px;
+    border-radius: 5px;
+    padding:10px;
+    margin-left:10px;
+    background-color: #2b2b2b60;
 }
 .price{
     font-size: 1.5rem;
-    color:#bac3cb
+    color:#bac3cb;
 }
-.detail-container .quantitybutton{
-    padding: 10px 16px;
-    border: none;
-   
-    border-radius: 4px;
-    color:#bac3cb ;
-    cursor: pointer;
-    margin-top: 10px;
-}
+
 .purchase-container {
     display:flex;
     align-items: center;
-    gap:20px;
+    justify-content: center;
+    gap:10px;
+    padding-left:10px;
     margin:1rem 0;
     flex-wrap: wrap;
+    max-width: 200px;
+    border-radius:5px ;
+    margin-bottom:5px;
+    padding-bottom: 5px;
 }
 .quantity-container{
-    display:flex;
-    align-items:center;
-    gap:10px;
+    display: inline-flex;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease
 }
 .quantity-container input {
-    width: 50px;
+    width: 40px;
     text-align: center;
-    padding:5px;
-    font-size: 1rem;
-    line-height: 1.2;
-    vertical-align: middle;
-    margin-top:10px;
-    background-color: #bac3cb;
+    border: none;
+    padding: 8px 10px;
+    font-size: 16px;
+    outline: none;
+    background: #2b2b2b94;
+    color:#bac3cb;
 
 }
-.quantity-container button{
-    padding: 5px 10px;
-    font-size: 1.2rem;
-    cursor:pointer;
-    line-height: 1.2;
+.quantity-container input::-webkit-inner-spin-button,
+.input-box::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
+
+.quantity-button {
+  background-color: #2f7bb9;
+  color: #bac3cb;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  width: 30px;
+  height: auto;
+  text-align: center;
+  transition: background-color 0.2s;
+}
+.quantity-button:hover {
+    background-color: #2980b9;
+}
+.quantity-button:active {
+    transform: scale(0.95);
+  }
 .purchase-container .btn-hover.color-9 {
     width: auto;
     padding: 12px 20px;
     font-size: 15px;
-    margin-top: 16px;
     color: #bac3cb;
 }
 .inline-message {
@@ -104,7 +131,7 @@
     transform: translateY(-50%); 
     font-size: 2rem;
     background-color: transparent; 
-    color: white;
+    color: #bac3cb;
     border: none;
     padding: 0.5rem 1rem;
     cursor: pointer;
@@ -120,4 +147,56 @@
 
 .slider-btn.right {
     right: 10px; 
+}
+@media (max-width: 600px) {
+    .detail-container {
+        padding:0.75rem;
+        margin-top:30px;
+    }
+    .detail-description {
+        font-size: 1rem;
+        padding:8px;
+    }
+    .purchase-container {
+        flex-direction: row;
+    }
+    .quantity-container {
+        flex-direction: row;
+    }
+    .quantity-container input {
+        font-size: 14px;
+        width: 35px;
+    }
+    .quantity-button {
+        font-size: 18px;
+        width:28px;
+        padding:5px;
+        
+    }
+    .purchase-container .btn-hover.color-9{
+        
+        text-align: center;
+        padding-left:10px;
+        padding-right:10px;
+        padding-top:5px;
+        padding-bottom:5px;
+    }
+    .slider-btn{
+        font-size: 1.5rem;
+        padding:0.4rem 0.8rem;
+    }
+    .detail-container  h1 {
+        font-size: 1.5rem;
+        margin-left:10px;
+    }
+    .detail-container p{
+        font-size: 0.9rem;
+    }
+    .slider-image{
+        max-height: 250px;
+    }
+    .price{
+        font-size: 1.3rem;
+    }
+
 }

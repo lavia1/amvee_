@@ -67,6 +67,8 @@ const PartDetailsPage = () => {
 
     return (
         <div className="detail-container">
+            <div className="container-background">
+            <h1>{part.name}</h1>
             {/* Image Slider */}
             <div className="image-container">
             {part.image_url && Array.isArray(part.image_url) && part.image_url.length > 0 ? (
@@ -88,13 +90,9 @@ const PartDetailsPage = () => {
             )}
         </div>
 
-
-            <h1>{part.name}</h1>
             <p className="price">{price.toFixed(2)} € </p>
             <p>Varaosanumero: {part.part_number}</p>
-            <p>Määrä: {part.stock}</p>
-            <p className="part-description">Kuvaus:</p>
-            <p className="detail-description">{part.description}</p>
+            <p className="detail-description">{part.description} </p>
 
             {/* Quantity and Add to Cart */}
             <div className="purchase-container">
@@ -120,6 +118,7 @@ const PartDetailsPage = () => {
                         <i className="fa fa-fw fa-shopping-cart"></i>
                     )}
                 </button>
+                </div>
             </div>
         </div>
     );

@@ -2,11 +2,12 @@
 .filter-dropdown {
     display: flex;
     gap: 20px;
-    padding: 16px;
+    padding: 11px;
     flex-wrap: wrap;
     background-color: #2b2b2b94;
     margin-top:40px;
     border-radius: 8px;
+    margin-right:10px;
 
   }
   
@@ -49,7 +50,7 @@
     border-radius: 0.5rem;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     padding: 0.5rem 1rem;
-    width:100%;
+    width:50%;
     overflow-y: auto;
     animation: fadeIn 0.2s ease-in-out;
   }

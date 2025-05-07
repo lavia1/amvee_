@@ -1,17 +1,19 @@
 .card {
     width:300px;
     border: 1px solid black;
-    border-radius: 8px;
-    padding:16px;
+    border-radius: 5px;
+    padding:12px;
     margin:10px;
     margin-bottom:30px;
     text-align: center;
     background-color: #2b2b2b94;
+    
 }
 .card img{
     width: 100%;
     height: auto;
     object-fit: contain;
+    border-radius: 5px;
 }
 .card .btn-hover.color-9 {
     width: auto;
@@ -19,22 +21,27 @@
     font-size: 15px;
     margin-top: 16px;
     color: #bac3cb;
+    margin-bottom:15px;
 }
 
-
+.productcard-container{
+    background-color: black;
+    border-radius: 5px;
+    padding-bottom:5px;
+    margin-top:10px;
+}
 .card-link{
     text-decoration: none;
     color:inherit;
 }
 .card h2 {
-    font-size:1.5rem;
+    font-size:1.7rem;
     margin: 10px 0;
-}
-.description {
-    font-size: 17px;
-}
-.card .price {
     font-weight: bold;
+}
+
+.card .price {
+    font-size: 22px;
 }
 @keyframes pop {
     0% {
