@@ -6,7 +6,7 @@ const Services = () => {
     return(
         <div>
             <Banner 
-                title="Palvelut"
+                
                 imageUrl="/assets/wheel_banner.jpg"
             />
 

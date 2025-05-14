@@ -7,7 +7,7 @@ const Contact = () => {
     return (
         <div>
             <Banner
-                title="Yhteystiedot"
+                
                 imageUrl="/assets/interior_banner.jpg"
             />
            <ContactForm />

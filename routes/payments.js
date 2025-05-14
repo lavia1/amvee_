@@ -48,46 +48,60 @@ router.post('/payment-intent', async (req, res) => {
 });
 
 // CHECKOUT SESSION (STRIPE HOSTED PAGE)
-router.post('/create-checkout-session', async (req, res) => {
-    const { items, shipping_cost } = req.body;
-
-    try {
-        const line_items = items.map(item => ({
-            price_data: {
-                currency: 'eur',
-                product_data: {
-                    name: item.name,
-                },
-                unit_amount: Math.round(item.price * 100),
-            },
-            quantity: item.quantity,
-        }));
-
-        if (shipping_cost > 0) {
-            line_items.push({
-                price_data: {
-                    currency: 'eur',
-                    product_data: {
-                        name: 'Toimituskulut',
-                    },
-                    unit_amount: Math.round(shipping_cost * 100),
-                },
-                quantity: 1,
-            });
-        }
-
-        const session = await stripe.checkout.sessions.create({
-            payment_method_types: ['card'],
-            mode: 'payment',
-            line_items,
-            success_url: 'http://localhost:3001/success',
-            cancel_url: 'http://localhost:3001/cancel',
-        });
-        res.json({ id: session.id });
-    } catch (err) {
-        console.error('Stripe session error:', err);
-        res.status(500).json({ error: 'Maksun luonti epäonnistui' });
+router.post("/create-checkout-session", async (req, res) => {
+    const { items, customerData, shippingMethod } = req.body;
+  
+    const lineItems = items.map((item) => ({
+      price_data: {
+        currency: "eur",
+        product_data: {
+          name: item.name,
+        },
+        unit_amount: Math.round(item.price * 100), // in cents
+      },
+      quantity: item.quantity,
+    }));
+  
+    // Add shipping as an extra item
+    if (shippingMethod === "delivery") {
+      lineItems.push({
+        price_data: {
+          currency: "eur",
+          product_data: { name: "Shipping" },
+          unit_amount: 1000, // €10
+        },
+        quantity: 1,
+      });
     }
-});
+  
+    try {
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ["card"],
+        mode: "payment",
+        line_items: lineItems,
+        success_url: "http://localhost:3001/success",
+        cancel_url: "http://localhost:3001/cancel",
+        customer_email: customerData.email,
+        metadata: {
+          full_name: customerData.full_name,
+          phone_number: customerData.phone_number,
+          country: customerData.country,
+          street_address: customerData.street_address,
+          street_address2: customerData.street_address2 || "",
+          city: customerData.city,
+          postal_code: customerData.postal_code,
+          region: customerData.region,
+          shippingMethod: shippingMethod,
+          items: JSON.stringify(items),
+        },
+      });
+  
+      res.json({ id: session.id });
+    } catch (err) {
+      console.error("Stripe error", err);
+      res.status(500).json({ error: "Stripe session creation failed" });
+    }
+  });
+  
 
 module.exports = router;

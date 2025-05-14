@@ -68,7 +68,7 @@ const CarParts = () => {
 
   return (
     <div>
-      <Banner title="Osat" imageUrl="/assets/bmw_logo_banner.jpg">
+      <Banner imageUrl="/assets/bmw_logo_banner.jpg">
       </Banner>
       <div className="filters-bar">
         <Search onSearchResults={handleSearchResults} />

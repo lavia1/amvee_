@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const pool = require('../db'); // pg Pool
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 // Create Order (POST /api/orders)
 router.post('/', async (req, res) => {

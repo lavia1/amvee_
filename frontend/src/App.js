@@ -14,6 +14,19 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { CartProvider } from "./context/CartContext";
 import './App.css';
 
+const SuccesssPage = () => (
+  <div>
+      <h1>Maksu suoritettu onnistuneesti</h1>
+      <p>Kiitos tilauksestasi. Tilauksesi käsitellään.</p>
+  </div>
+);
+
+const CancelPage = () => (
+  <div>
+      <h1>Tilaus peruutettu</h1>
+      <p>Tilauksesi on peruutettu. Yritä uudelleen.</p>
+  </div>
+); 
 
 const App = () => {
 
@@ -32,7 +45,8 @@ const App = () => {
           <Route path="/admin/login/456759" element={<AdminLogin />} />
 
           <Route path="/admin/dashboard" element={ <ProtectedRoute ><AdminDashboard /> </ProtectedRoute>} />
-
+          <Route path="/success" element = {<SuccesssPage />} />
+          <Route path="/cancel" element = {<CancelPage />} />
         </Routes>
         <Footer />
       </Router>

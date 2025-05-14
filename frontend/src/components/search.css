@@ -86,20 +86,26 @@
 
 @media (max-width: 480px) {
     .search-container {
-        margin: 10px; 
+        margin: 10px auto;
+        padding: 0.75rem;
+        max-width: 95%; 
     }
 
     .search-input-container {
         flex-direction: row; 
         gap: 0.5rem; 
+        width: 100%;
     }
 
     .search-input {
         max-width: 250px; 
+        font-size: 0.95rem;
     }
 
     .search-button {
         max-width: 90px; 
+        font-size: 0.95rem;
+        padding:8px;
     }
     .search-input::placeholder {
         font-size: 0.85rem;

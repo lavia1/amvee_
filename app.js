@@ -6,6 +6,7 @@ const parts = require('./routes/parts');
 const auth = require('./routes/adminAuth');
 const orders = require('./routes/orders');
 const pool = require('./db');
+const checkout = require ('./routes/payments');
 
 const app = express();
 
@@ -27,7 +28,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/api/auth', auth);
 app.use('/api/parts', parts);
 app.use('/api/orders', orders);
-
+app.use('/api', checkout);
 
 app.listen(3000, () => {
     console.log("Server running on http://localhost:3000");

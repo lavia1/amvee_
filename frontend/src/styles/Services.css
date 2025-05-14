@@ -163,15 +163,15 @@
 @media screen and (max-width: 768px) {
     .serviceCard img {
       width: 100%;
-      height: auto; /* Keep aspect ratio intact */
-      object-fit: cover; /* Make sure the image doesn't stretch or squish */
+      height: auto; 
+      object-fit: cover; 
     }
   }
   
   @media screen and (max-width: 480px) {
     .serviceCard img {
       width: 100%;
-      height: auto; /* Keep aspect ratio intact */
-      object-fit: cover; /* Ensure the image covers the container well */
+      height: auto; 
+      object-fit: cover; 
     }
   }

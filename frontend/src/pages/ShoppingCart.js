@@ -70,12 +70,14 @@ const ShoppingCart = () => {
 
           <div className="cart-item-details">
             <h2>{item.name}</h2>
-            <p>Hinta: {Number(item.price).toFixed(2)} €</p> {/* Ensure item.price is a number */}
+            <p>Hinta: {Number(item.price).toFixed(2)} €</p> 
+
           <div className="quantity-container">
-            <button onClick={() => updateQuantity(item.part_id, Math.max(1, item.quantity - 1))}>-</button>
+            <button className="quantity-button" onClick={() => updateQuantity(item.part_id, Math.max(1, item.quantity - 1))}>-</button>
             <span>{item.quantity}</span>
-            <button onClick={() => updateQuantity(item.part_id, item.quantity + 1)}>+</button>
+            <button className="quantity-button" onClick={() => updateQuantity(item.part_id, item.quantity + 1)}>+</button>
           </div>
+
         </div>
     <button onClick={() => removeFromCart(item.part_id)} className="remove-btn">Poista</button>
   </div>

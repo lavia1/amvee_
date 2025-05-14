@@ -6,7 +6,7 @@ const Pricing = () => {
     return(
         <div>
             <Banner 
-                title="Hinnasto"
+                
                 imageUrl="/assets/m_logo_banner.jpg"
             />
         <div className="priceContainer">
