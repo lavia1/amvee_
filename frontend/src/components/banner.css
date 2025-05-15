@@ -15,29 +15,13 @@
     border-radius: 8px;
     max-width: 80%;
     margin: 0;
-    font-size: 2rem ;
+    font-size: 1.8rem ;
     text-align: left;
     position: relative;
+    color:#bac3cb;
+    margin-left:2.6px;
 }
-.banner-overlay h1{
-    margin:60px;
-    animation: glow 2s ease-in-out infinite;
-    color:#ffffff;
-    letter-spacing:8px;
-    font-size: 3rem;
-    word-break: break-word;
-}
-@keyframes glow {
-  0% {
-    text-shadow: 0 0 10px #bac3cb66, 0 0 20px #bac3cb66, 0 0 30px #bac3cbaa;
-  }
-  50% {
-    text-shadow: 0 0 20px #2f7bb9aa, 0 0 30px #2f7bb9cc, 0 0 40px #2f7bb9;
-  }
-  100% {
-    text-shadow: 0 0 10px #bac3cb66, 0 0 20px #bac3cb66, 0 0 30px #bac3cbaa;
-  }
-}
+
 @media screen and (max-width: 768px) {
   .banner {
     justify-content: flex-start;

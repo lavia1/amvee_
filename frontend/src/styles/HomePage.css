@@ -12,7 +12,7 @@
     
 }
 .view-all-button-wrapper{
-    margin-bottom:40px;
+    margin-bottom:50px;
     text-align: left;
     justify-content: left;
     margin-left: 2.5rem;
@@ -27,6 +27,7 @@
     font-weight: bold; 
     background-color: #2b2b2b94;
     border-radius: 5px;
+    cursor: pointer;
 }
 .view-all-button:hover {
     color: #2f7bb9;
@@ -36,8 +37,37 @@
     margin-left: 8px;
 }
 .information-container {
-    background-color: #2b2b2b94 ;
     padding: 1rem 2rem;
-    margin:40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2b2b2b94;
+    margin: 2.5rem;
     border-radius: 5px;
+}
+.information-image {
+    flex: 0 0 30%;
+   
+}
+.information-image img {
+    width: 100%;
+    height:auto;
+    border-radius: 5px;
+    object-fit: cover;
+}
+.information-text{
+    flex:1;
+}
+.information-text p {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    margin-left: 20px;
+    background-color: black;
+    padding: 2rem 2rem;
+}
+.information-link {
+    color:#bac3cb;
+    text-decoration: line;
+    margin-left:4px;
+    cursor: pointer;
 }

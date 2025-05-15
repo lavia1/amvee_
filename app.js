@@ -7,6 +7,7 @@ const auth = require('./routes/adminAuth');
 const orders = require('./routes/orders');
 const pool = require('./db');
 const checkout = require ('./routes/payments');
+const webhooks = require('./routes/webhooks');
 
 const app = express();
 
@@ -29,6 +30,7 @@ app.use('/api/auth', auth);
 app.use('/api/parts', parts);
 app.use('/api/orders', orders);
 app.use('/api', checkout);
+app.use('/api', webhooks);
 
 app.listen(3000, () => {
     console.log("Server running on http://localhost:3000");

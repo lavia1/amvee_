@@ -30,8 +30,28 @@ const HomePage = () => {
     return (
         <div>
              <Banner
+                title="ÄmVee Tmi - BMW sähkökorjaus, remontti ja varaosien myyntiliike"
                 imageUrl="/assets/car_bmw.jpg"
             />
+        <div className="information-container">
+            <div className="information-image">
+                <img src="assets/bmw-headlights.jpg" alt="BMW headlights" />
+            </div>
+            <div className="information-text">
+                <p>
+                    Hoidamme sähköjärjestelmien korjaukset, perus korjaukset, 
+                    huollot, jälkivarustelun, moottorin ja vaihdelaatikon ohjelmoinnit sekä leimaremontit.
+                    (Onnistuu muutkin merkit kuin BMW)
+                </p>
+                <p>Jos kiinnostuit
+                    <Link className="information-link" to = "/Contact">
+                    ota yhteyttä
+                    </Link> 
+                </p>
+            </div>
+        </div>
+
+        
         <div className="Carparts-section">
             <h1>Tutustu osiin: </h1>
                 <div className="parts-review-row">
@@ -49,13 +69,6 @@ const HomePage = () => {
                     </Link>
                 </div>
             </div>
-        <div className="information-container">
-            <div className="information-text">
-                <h2>maumaumau</h2>
-                <p>jfdkjfkdfjkdfjkdjfk</p>
-                <p>jfdkjfkdfjkdfjkdjfk</p>
-            </div>
-        </div>
         </div>
     );
 };
