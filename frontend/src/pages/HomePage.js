@@ -43,9 +43,9 @@ const HomePage = () => {
                     huollot, jälkivarustelun, moottorin ja vaihdelaatikon ohjelmoinnit sekä leimaremontit.
                     (Onnistuu muutkin merkit kuin BMW)
                 </p>
-                <p>Jos kiinnostuit
+                <p>Jos kiinnostuit 
                     <Link className="information-link" to = "/Contact">
-                    ota yhteyttä
+                    ota yhteyttä  
                     </Link> 
                 </p>
             </div>

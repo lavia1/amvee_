@@ -43,7 +43,8 @@ export default function Navbar() {
                     <span>{totalItems}</span>
                 </NavLink>
             </li>
-            <li><NavLink to="/" onClick={hideSidebar} className={(navData) => (navData.isActive ? "active-link" : "")}>Etusivu</NavLink></li>
+            <li><NavLink to ="/" onClick={hideSidebar} className={(navData) => (navData.isActive ? "active-link" : "")}>Etusivu</NavLink></li>
+
             <li><NavLink to ="/Services" onClick={hideSidebar} className={(navData) => (navData.isActive ? "active-link" : "")}>Palvelut</NavLink></li>
             <li><NavLink to ="/Prices"  onClick={hideSidebar} className={(navData) => (navData.isActive ? "active-link" : "")}>Hinnasto</NavLink></li>
             <li>
@@ -52,10 +53,6 @@ export default function Navbar() {
                 </NavLink>
             </li>
             <li><NavLink to ="/Contact"  onClick={hideSidebar} className={(navData) => (navData.isActive ? "active-link" : "")}>Yhteistiedot</NavLink></li>
-         
-
-
-        
             
         </ul>
 
@@ -131,9 +128,6 @@ export default function Navbar() {
         </div>
         )}
         </li>
-            
-
-
             <li className="menu-button" onClick={showSidebar}>
                 <button type="button" className="menu-button-icon">
                     <i className = "fa fa-bars"

@@ -78,10 +78,17 @@ router.post("/create-checkout-session", async (req, res) => {
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
         mode: "payment",
+        customer_email: customerData.email,
+        customer_creation:'always',
+        shipping_address_collection: {
+          allowed_countries: ['FI', 'SE', 'US', 'GB', 'DE']
+        }, 
+        phone_number_collection: {
+          enabled:true,
+        },
         line_items: lineItems,
         success_url: "http://localhost:3001/success",
         cancel_url: "http://localhost:3001/cancel",
-        customer_email: customerData.email,
         metadata: {
           full_name: customerData.full_name,
           phone_number: customerData.phone_number,

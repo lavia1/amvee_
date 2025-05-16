@@ -42,7 +42,7 @@
     align-items: center;
     justify-content: center;
     background-color: #2b2b2b94;
-    margin: 2.5rem;
+    background-image: linear-gradient(to right, black,#2b2b2b94);
     border-radius: 5px;
 }
 .information-image {
@@ -64,10 +64,73 @@
     margin-left: 20px;
     background-color: black;
     padding: 2rem 2rem;
+    border-radius: 5px;
 }
 .information-link {
     color:#bac3cb;
     text-decoration: line;
     margin-left:4px;
     cursor: pointer;
+    transition: color 0.4s ease;
+}
+.information-link:hover{
+    color: #2f7bb9;
+}
+.information-link-prices{
+    text-decoration:none;
+    color:#bac3cb;
+}
+@media (max-width: 1024px){
+    .parts-review-row{
+        grid-template-columns: repeat(2, 1fr);
+        padding: 1rem;
+    }
+    .information-container {
+        flex-direction: column;
+        text-align: center;
+        padding:1rem;
+    }
+    .information-text{
+        margin-left: 0;
+        padding:1.5rem;
+    }
+    .view-all-button-wrapper{
+        margin-left:1rem;
+    }
+    .Carparts-section h1 {
+        margin-left:1rem;
+    }
+}
+@media (max-width: 600px){
+    .parts-review-row{
+        grid-template-columns: 1fr;
+    }
+    .information-image{
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto ;
+    }
+    .information-image img {
+        width: 100%;
+        height: auto;
+      }
+    .information-text p {
+        font-size: 1.2rem;
+    }
+    .view-all-button{
+        font-size: 18px;
+        padding: 0.5rem 0.8rem;
+    }
+    .right-icon{
+        font-size: 1.2rem;
+    }
+    .view-all-button-wrapper {
+        margin-left: 1.5rem;
+        text-align: left;
+      }
+    
+      .Carparts-section h1 {
+        margin-left: 1.5rem;
+        font-size: 1.8rem;
+      }
 }

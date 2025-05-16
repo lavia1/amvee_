@@ -49,9 +49,10 @@ const CheckoutForm = ({
           name: item.name,
           price: item.price,
           quantity: item.quantity,
+
         })),
         customerData: formData,
-        shipping_cost: shippingMethod,
+        shippingMethod,
       });
 
       const sessionId = response.data.id;

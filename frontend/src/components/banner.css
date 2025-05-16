@@ -18,7 +18,11 @@
     font-size: 1.8rem ;
     text-align: left;
     position: relative;
-    color:#bac3cb;
+    background: linear-gradient(to right, #bac3cb 0%, gray 50%, #666666 100%);
+    background-clip:text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color:transparent;
     margin-left:2.6px;
 }
 
@@ -41,7 +45,7 @@
     text-align: left;
   }
 }
-@media screena and (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .banner-overlay {
     font-size: 0.9rem;
     padding:6px;

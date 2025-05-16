@@ -206,6 +206,13 @@ nav li:first-child img:hover {
     .menu-button{
         display:flex;
     }
+    nav li {
+        height:80px;
+    }
+    nav li:first-child img {
+        height:80px;
+    }
+    
 }
 @media(max-width: 300px){
     .sidebar{
