@@ -116,7 +116,7 @@ nav li:first-child img:hover {
 .cart-modal {
     position:absolute;
     top:100px;
-    right:0;
+    right:20px;
     background: #1a1a1a43;
     padding:10px;
     border-radius: 8px;
@@ -127,6 +127,7 @@ nav li:first-child img:hover {
     flex-direction:column;
     gap:8px;
     min-width: 220px;
+    width:300px;
     backdrop-filter: blur(8px);
     opacity:1;
     transform: translateY(-10px);
@@ -141,7 +142,9 @@ nav li:first-child img:hover {
 .cart-modal h4{
     margin: 0 ;
     font-size: 18px;
+    margin-bottom:12px;
 }
+
 .cart-item-list {
     list-style: none;
     padding: 0;
@@ -162,6 +165,15 @@ nav li:first-child img:hover {
     width: 100%;
     background-color: black;
 }
+.item-name-link{
+    text-decoration: none;
+    font-weight: 500;
+    flex:1;
+}
+.item-name-link:hover{
+    text-decoration: underline;
+    color:#2f7bb9;
+}
 .delete-btn{
     background: none;
     border:none;
@@ -173,11 +185,10 @@ nav li:first-child img:hover {
 .delete-btn:hover{
     color:#D52827;
 }
-.item-name {
-    font-weight: 500;
-}
 .item-qty-price {
     color:#bac3cb;
+    margin-right:8px;
+    white-space: nowrap;
 }
 .cart-modal-buttons {
     display: flex;

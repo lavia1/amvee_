@@ -45,6 +45,7 @@ export const CartProvider = ({ children }) => {
         ...prev,
         {
           part_id: part.id,
+          part_number: part.part_number || part.partNumber,
           name: part.name,
           price: part.price,
           image_url: Array.isArray(part.image_url) ? part.image_url[0] : part.image_url,

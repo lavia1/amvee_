@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useCart } from "../context/CartContext";
 import "../styles/ShoppingCart.css"; 
 import CheckoutForm from "../components/CheckoutForm";
+import { NavLink } from "react-router-dom";
 
 const ShoppingCart = () => {
   const { cart, removeFromCart, clearCart, updateQuantity } = useCart();
@@ -37,7 +38,7 @@ const ShoppingCart = () => {
 
   // If cart is empty, show a message
   if (cart.length === 0) {
-    return <div className="cart-empty">Ostoskorisi on tyhjä.</div>;
+    return <div className="cart-empty">Ostoskorisi on tyhjä. Siirry <NavLink className="to-shopping-link"to ="/Carparts" >ostoksille ;)</NavLink> </div>;
   }
 
   // If checkout is active, show the checkout form

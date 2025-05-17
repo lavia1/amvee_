@@ -103,7 +103,10 @@ export default function Navbar() {
             <ul className="cart-item-list">
                 {cart.map((item, index) => (
                 <li key={index} className="cart-item">
+                    <NavLink to = {`/parts/${item.part_number}`} className="item-name-link">
                     <span className="item-name">{item.name}</span>
+                    </NavLink>
+                    
                     <span className="item-qty-price">{item.quantity} x {item.price}€</span>
                     <button
                         className="delete-btn"
