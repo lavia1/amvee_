@@ -57,11 +57,12 @@
 }
 .information-text{
     flex:1;
+    margin-right: 20px;
 }
 .information-text p {
     font-size: 1.5rem;
     line-height: 1.6;
-    margin-left: 20px;
+    margin-right: 20px;
     background-color: black;
     padding: 2rem 2rem;
     border-radius: 5px;
@@ -91,7 +92,7 @@
         padding:1rem;
     }
     .information-text{
-        margin-left: 0;
+        margin-right: 0;
         padding:1.5rem;
     }
     .view-all-button-wrapper{
@@ -116,6 +117,7 @@
       }
     .information-text p {
         font-size: 1.2rem;
+        margin-right: 0;
     }
     .view-all-button{
         font-size: 18px;

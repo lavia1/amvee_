@@ -11,15 +11,11 @@ import ShoppingCart from "./pages/ShoppingCart";
 import AdminLogin from "./pages/admin/AdminLoginPage";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
+import SuccesssPage from "./pages/SuccessPage";
 import { CartProvider } from "./context/CartContext";
 import './App.css';
 
-const SuccesssPage = () => (
-  <div>
-      <h1>Maksu suoritettu onnistuneesti</h1>
-      <p>Kiitos tilauksestasi. Tilauksesi käsitellään.</p>
-  </div>
-);
+
 
 const CancelPage = () => (
   <div>

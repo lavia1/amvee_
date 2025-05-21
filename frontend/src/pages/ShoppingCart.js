@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { useCart } from "../context/CartContext";
 import "../styles/ShoppingCart.css"; 
-import CheckoutForm from "../components/CheckoutForm";
 import { NavLink } from "react-router-dom";
+import { loadStripe } from "@stripe/stripe-js";
+import Axios from "axios";
+
+const stripePromise = loadStripe("pk_test_51RLIDHQ9NhEBHsgQXEPib5zurVebbxC5qoabP2gWrrN2iwL2yC2PbBvv9Yfst6twlpav2x4Fr1crGF4p0XZg2J7r0024uXAaBP");
 
 const ShoppingCart = () => {
   const { cart, removeFromCart, clearCart, updateQuantity } = useCart();
-
-  const [showCheckout, setShowCheckout] = useState(false);
 
   // Calculate total price of items in the cart
   const totalPrice = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
@@ -26,35 +27,36 @@ const ShoppingCart = () => {
     setShippingMethod(event.target.value);
   };
 
-  // Show checkout form
-  const handleCheckoutClick = () => {
-    setShowCheckout(true);
+
+  const handleStripeCheckout = async () => {
+    try {
+      const response = await Axios.post("http://localhost:3000/api/create-checkout-session", {
+        items: cart.map((item) => ({
+          id: item.part_id,
+          name: item.name,
+          price: item.price,
+          quantity: item.quantity,
+
+        })),
+        shippingMethod,
+      });
+
+      const stripe = await stripePromise;
+      await stripe.redirectToCheckout({sessionId: response.data.id});
+    } catch (err) {
+      console.error("Stripe checkout error:",err);
+      alert("Maksun aloittaminen epäonnistui. Yritä uudelleen");
+    }
   };
 
-  // Cancel checkout and return to cart
-  const handleCancelCheckout = () => {
-    setShowCheckout(false);
-  };
+
 
   // If cart is empty, show a message
   if (cart.length === 0) {
     return <div className="cart-empty">Ostoskorisi on tyhjä. Siirry <NavLink className="to-shopping-link"to ="/Carparts" >ostoksille ;)</NavLink> </div>;
   }
 
-  // If checkout is active, show the checkout form
-  if (showCheckout) {
-    return (
-      <CheckoutForm 
-        cartTotal={totalPrice}
-        shippingCost={shippingCost}
-        grandTotal={grandTotal}
-        shippingMethod={shippingMethod}
-        onCancel={handleCancelCheckout}
-        cartItems={cart}
-        clearCart={clearCart}
-      />
-    );
-  }
+ 
 
   return (
     <div className="shopping-cart">
@@ -129,7 +131,7 @@ const ShoppingCart = () => {
       {/* Checkout buttons */}
       <div className="checkout">
         <button className="clear-cart-btn" onClick={clearCart}>Tyhjennä kori</button>
-        <button className="checkout-btn" onClick={handleCheckoutClick}>Kassa</button>
+        <button className="checkout-btn" onClick={handleStripeCheckout}>Kassa</button>
       </div>
     </div>
   );

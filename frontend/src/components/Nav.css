@@ -1,6 +1,6 @@
 nav{
     background-color: #2b2b2b94;
-    box-shadow: 5px 5px 15px rgba(33, 89, 135, 0.5);
+    
 }
 nav ul{
     width: 100%;
@@ -219,6 +219,7 @@ nav li:first-child img:hover {
     }
     nav li {
         height:80px;
+        
     }
     nav li:first-child img {
         height:80px;

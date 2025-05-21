@@ -34,9 +34,6 @@ const HomePage = () => {
                 imageUrl="/assets/car_bmw.jpg"
             />
         <div className="information-container">
-            <div className="information-image">
-                <img src="assets/bmw-headlights.jpg" alt="BMW headlights" />
-            </div>
             <div className="information-text">
                 <p>
                     Hoidamme sähköjärjestelmien korjaukset, perus korjaukset, 
@@ -48,6 +45,9 @@ const HomePage = () => {
                     ota yhteyttä  
                     </Link> 
                 </p>
+            </div>
+            <div className="information-image">
+                <img src="assets/bmw-headlights.jpg" alt="BMW headlights" />
             </div>
         </div>
 
