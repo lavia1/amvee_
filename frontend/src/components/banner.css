@@ -57,7 +57,7 @@
   }
 
   .banner-title {
-    font-size: 2rem;
+    font-size: 3rem;
     text-align: center;
   }
 
@@ -88,15 +88,15 @@
   .banner-mobile-title {
     display: block;
     text-align: center;
-    padding-top:30px;
+    padding-top:35px;
   }
 
   .banner-mobile-title .banner-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   .banner-mobile-title .banner-subtitle {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
 }
 @media (max-width: 768px) {
@@ -113,7 +113,7 @@
   }
 
   .banner-title {
-    font-size: 2rem;
+    font-size: 3rem;
     text-align: center;
   }
 
@@ -142,16 +142,16 @@
   .banner-mobile-title {
     display: block;
     text-align: center;
-    padding-top: 30px;
+    padding-top: 35px;
     
   }
 
   .banner-mobile-title .banner-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   .banner-mobile-title .banner-subtitle {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
 }
 

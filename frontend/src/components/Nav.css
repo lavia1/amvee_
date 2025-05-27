@@ -101,11 +101,29 @@ nav li:first-child img:hover {
     cursor: pointer;           
     transition: color 0.5s, text-shadow 0.5s; 
 }
-
+.sidebar .menu-button {
+  position: absolute;
+  top:20px;
+  right: 180px;
+  width: 50px;  /* Adjust size as needed */
+  height: 50px;
+  display: flex ; /* Make sure it’s visible */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 0;
+  margin-bottom:30px;
+  background: transparent;
+  cursor: pointer;
+}
 .menu-button-icon:hover {
     text-shadow: 5px 5px 20px rgba(33, 89, 135, 0.8);
     color: #2f7bb9; 
 }
+.sidebar li.menu-button + li {
+  margin-top: 50px; 
+}
+
 
 .menu-button-icon i {
     font-size: 22px; /* Match the size of the icon in the previous links */
@@ -139,8 +157,8 @@ nav li:first-child img:hover {
 }
 .cart-modal {
     position:absolute;
-    top:100px;
-    right:20px;
+    top:110px;
+    right:10px;
     background: #1a1a1a43;
     padding:10px;
     border-radius: 8px;
@@ -152,7 +170,8 @@ nav li:first-child img:hover {
     gap:8px;
     min-width: 220px;
     width:300px;
-    backdrop-filter: blur(8px);
+    background-color: #2b2b2b94;
+    backdrop-filter: blur(10px);
     opacity:1;
     transform: translateY(-10px);
     pointer-events:auto;
@@ -229,25 +248,51 @@ nav li:first-child img:hover {
 .cart-modal-buttons a:hover {
     background-color: black;
 }
+.cart-icon-wrapper {
+  position: relative;
+  height: 100px; /* match nav li height */
+  display: flex;
+  align-items: center;
+}
 @media(max-width: 800px){
-    .hideOnMobile{
-        display: none;
-        right: -250px;
-    }
-    .menu-button{
-        display:flex;
-    }
-    nav li {
-        height:100px;
-        
-    }
-    nav li:first-child img {
-        height:80px;
-    }
-    
+    .hideOnMobile {
+    display: none ;
+  }
+
+  /* Show hamburger menu */
+  .menu-button {
+    display: flex ;
+  }
+
+  nav ul {
+    justify-content: flex-end;
+    gap: 0;
+  }
+  .cart-icon-wrapper {
+    order: 1;
+  }
+  .menu-button {
+    order: 2;
+  }
+
+  .cart-icon-wrapper button.nav-button-like,
+  .menu-button-icon {
+    padding: 0 20px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+  }
+   .cart-modal {
+    left: 0;
+    top: 90px;
+    right: auto;
+    width: 75vw;
+    max-width: 95vw;
+    min-width: unset;
+    padding: 12px;
+    transform: translate(-50%, -5px); /* center horizontally */
+    box-sizing: border-box;
+  } 
+ 
 }
-@media(max-width: 300px){
-    .sidebar{
-        width: 100%;
-    }
-}
+
