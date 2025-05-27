@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState, useEffect, useRef} from "react";
 import { NavLink } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import "./Nav.css";
@@ -7,6 +7,7 @@ export default function Navbar() {
     const [sidebarVisible, setSidebarVisible] = useState(false);
     const {cart, removeFromCart} = useCart();
     const [showCartModal, setShowCartModal] = useState(false);
+    const modalRef = useRef(null);
 
     const totalPrice = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
@@ -20,6 +21,32 @@ export default function Navbar() {
     const hideSidebar = () => {
         setSidebarVisible(false);
     };
+
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (showCartModal && modalRef.current && !modalRef.current.contains(event.target)){
+                setShowCartModal(false);
+            }
+        }
+
+        function handleKeyDown(event) {
+            if (event.key === "Escape"){
+                setShowCartModal(false);
+            }
+        }
+        if (showCartModal) {
+            document.addEventListener("mousedown", handleClickOutside);
+            document.addEventListener("keydown", handleKeyDown);
+        } else {
+            document.removeEventListener("mousedown", handleClickOutside);
+            document.removeEventListener("keydown", handleKeyDown);
+        }
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+            document.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [showCartModal]);
 
     return <nav className="nav">
         {/* Navigaatio pienemmillä näytöillä */}
@@ -76,61 +103,59 @@ export default function Navbar() {
             <li className="hideOnMobile"><NavLink to ="/Prices" className={(navData) => (navData.isActive ? "active-link" : "")}>Hinnasto</NavLink></li>
             <li className="hideOnMobile"><NavLink to ="/Contact" className={(navData) => (navData.isActive ? "active-link" : "")}>Yhteistiedot</NavLink></li>
             
-            <li className="hideOnMobile cart-icon-wrapper"
-                style={{ position: "relative" }}
-                onMouseEnter={() => setShowCartModal(true)}
-                onMouseLeave={() => setShowCartModal(false)}
-            >
+            <li className="hideOnMobile cart-icon-wrapper" style={{ position: "relative" }}>
             
-            {/* SHOPPING CART MODAL*/}
-            <NavLink
-                to="#"
-                onClick={(e) => e.preventDefault()}
-                style={{ display: "flex", alignItems: "center" }}
+            <button
+                onClick={() => setShowCartModal(!showCartModal)}
+                aria-haspopup="true"
+                aria-expanded={showCartModal}
+                className="nav-button-like"
             >
-            <i className="fa fa-fw fa-shopping-cart"></i>
-            <span>{totalItems}</span>
-            </NavLink>
+                <i className="fa fa-fw fa-shopping-cart"></i>
+                <span>{totalItems}</span>
+            </button>
 
             {showCartModal && (
-            <div className="cart-modal">
-                <h4>Ostoskori</h4>
+                <div ref= {modalRef} className="cart-modal">
+                    <h4>Ostoskori</h4>
 
-                {cart.length === 0 ? (
-                <p>Ostoskori on tyhjä</p>
-            ) : (
-            <>
-            <ul className="cart-item-list">
-                {cart.map((item, index) => (
-                <li key={index} className="cart-item">
-                    <NavLink to = {`/parts/${item.part_number}`} className="item-name-link">
-                    <span className="item-name">{item.name}</span>
-                    </NavLink>
-                    
-                    <span className="item-qty-price">{item.quantity} x {item.price}€</span>
-                    <button
-                        className="delete-btn"
-                        onClick={() => removeFromCart(item.part_id)}
-                        >
-                            <i className="fa fa-trash"></i>
-                        </button>
-                </li>
+      {cart.length === 0 ? (
+        <p>Ostoskori on tyhjä</p>
+      ) : (
+        <>
+          <ul className="cart-item-list">
+            {cart.map((item, index) => (
+              <li key={index} className="cart-item">
+                <NavLink to={`/parts/${item.part_number}`} className="item-name-link">
+                  <span className="item-name">{item.name}</span>
+                </NavLink>
+
+                <span className="item-qty-price">
+                  {item.quantity} x {item.price}€
+                </span>
+                <button className="delete-btn" onClick={() => removeFromCart(item.part_id)}>
+                  <i className="fa fa-trash"></i>
+                </button>
+              </li>
             ))}
-            </ul>
+          </ul>
 
-            <div className="cart-total">
-                <strong>Yhteensä: {totalPrice.toFixed(2)} €</strong>
-            </div>
-            </>
-            )}
+          <div className="cart-total">
+            <strong>Yhteensä: {totalPrice.toFixed(2)} €</strong>
+          </div>
+        </>
+      )}
 
-            <div className="cart-modal-buttons">
-            <NavLink to="/ShoppingCart">Näytä ostoskori</NavLink>
-            <NavLink to="/Checkout">Kassa</NavLink>
-            </div>
-        </div>
-        )}
-        </li>
+      <div className="cart-modal-buttons">
+        <NavLink to="/ShoppingCart">Näytä ostoskori</NavLink>
+        <NavLink to="/Checkout">Kassa</NavLink>
+      </div>
+    </div>
+  )}
+</li>
+
+            
+        
             <li className="menu-button" onClick={showSidebar}>
                 <button type="button" className="menu-button-icon">
                     <i className = "fa fa-bars"
@@ -142,4 +167,4 @@ export default function Navbar() {
 
     </nav>
 
-}
+};

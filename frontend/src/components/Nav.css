@@ -113,6 +113,30 @@ nav li:first-child img:hover {
 .menu-button{
     display:none
 }
+.nav-button-like {
+    all: unset; 
+    display: flex;
+    align-items: center;
+    padding: 0 35px;
+    height: 100%;
+    color: #bac3cb;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    text-shadow: 5px 5px 20px rgba(33, 89, 135, 0.8);
+    user-select: none;
+}
+
+.nav-button-like:hover {
+    color: #2f7bb9;
+    text-shadow: 5px 5px 20px rgba(33, 89, 135, 0.8);
+    transition: color 0.5s;
+}
+
+
+.nav-button-like.active {
+    color: #2f7bb9;
+}
 .cart-modal {
     position:absolute;
     top:100px;
@@ -131,14 +155,10 @@ nav li:first-child img:hover {
     backdrop-filter: blur(8px);
     opacity:1;
     transform: translateY(-10px);
-    pointer-events:none;
+    pointer-events:auto;
     transition:opacity 0.3s ease, transform 0.3s ease;
 }
-.cart-icon-wrapper:hover .cart-modal {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events:auto;
-}
+
 .cart-modal h4{
     margin: 0 ;
     font-size: 18px;
