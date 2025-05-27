@@ -80,16 +80,14 @@
 }
 @media (max-width: 1024px){
     .parts-review-row{
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2,1fr);
         padding: 1rem;
     }
     .information-container {
         flex-direction: column;
         text-align: center;
-        
-    }
-    .information-text{
-        
+        justify-content: center;
+        padding: 0;
     }
     .view-all-button-wrapper{
         margin-left:1rem;
@@ -100,20 +98,12 @@
 }
 @media (max-width: 600px){
     .parts-review-row{
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 1rem;
     }
-    .information-image{
-        width: 100%;
-        max-width: 300px;
-        margin: 0 auto ;
-    }
-    .information-image img {
-        width: 100%;
-        height: auto;
-      }
     .information-text p {
         font-size: 1.2rem;
-        margin-right: 0;
+        text-align: center;
     }
     .view-all-button{
         font-size: 18px;

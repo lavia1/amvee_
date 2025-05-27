@@ -33,6 +33,7 @@ const HomePage = () => {
                 title="ÄmVee Tmi"
                 subtitle=" BMW sähkökorjaus, remontointi ja varaosien myyntiliike"
                 imageUrl="/assets/car_bmw.jpg"
+                className="home-banner"
             />
         <div className="information-container">
             <div className="information-text">
