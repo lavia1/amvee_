@@ -148,7 +148,6 @@ export default function Navbar() {
 
       <div className="cart-modal-buttons">
         <NavLink to="/ShoppingCart">Näytä ostoskori</NavLink>
-        <NavLink to="/Checkout">Kassa</NavLink>
       </div>
     </div>
   )}

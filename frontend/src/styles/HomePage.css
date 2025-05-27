@@ -37,36 +37,31 @@
     margin-left: 8px;
 }
 .information-container {
-    padding: 2rem 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #2b2b2b94;
     background-image: linear-gradient(to right, black,#2b2b2b94);
-    border-radius: 5px;
+    gap:10px;
+    padding-right:0.5rem;
 }
 .information-image {
     flex: 0 0 30%;
-    background-color: black;
+    
 }
 .information-image img {
     width: 100%;
     height:auto;
-    border-radius: 5px;
     object-fit: cover;
-   
     
 }
 .information-text{
     flex:1;
-    margin-right: 20px;
 }
 .information-text p {
     font-size: 1.5rem;
     line-height: 1.6;
-    margin-right: 20px;
-    background-color: black;
-    padding: 3rem 2rem;
+    padding: 1rem;
     border-radius: 5px;
 }
 .information-link {
@@ -91,11 +86,10 @@
     .information-container {
         flex-direction: column;
         text-align: center;
-        padding:1rem;
+        
     }
     .information-text{
-        margin-right: 0;
-        padding:1.5rem;
+        
     }
     .view-all-button-wrapper{
         margin-left:1rem;

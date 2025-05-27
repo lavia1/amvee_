@@ -1,59 +1,40 @@
 .banner {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height:500px;
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    position: relative;
-    padding: 20px;
-}
-.banner-overlay {
-    padding: 10px;
-    border-radius: 8px;
-    max-width: 80%;
-    margin: 0;
-    font-size: 1.8rem ;
-    text-align: left;
-    position: relative;
-    background: linear-gradient(to right, #bac3cb 0%, gray 50%, #666666 100%);
-    background-clip:text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color:transparent;
-    margin-left:2.6px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 500px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  padding: 20px;
 }
 
-@media screen and (max-width: 768px) {
-  .banner {
-    height:40vh;
-    background-position:right center;
-    padding:10px;
-  }
-  .banner-overlay{
-    max-width: 90%;
-    font-size:1rem;
-    padding:8px;
-    text-align: left;
-    align-items: flex-end;
-  }
-  .banner-overlay h1 {
-    margin:20px 0;
-    font-size: 1.8rem;
-    letter-spacing: 4px;
-    text-align: left;
-  }
+.banner-overlay {
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 80%;
+  text-align: center;
+  margin-left: 100px;
 }
-@media screen and (max-width: 480px) {
-  .banner-overlay {
-    font-size: 0.9rem;
-    padding:6px;
-    text-align: left;
-  }
-  .banner-overlay h1{
-    font-size: 1.3rem;
-    letter-spacing: 2px;
-  }
+
+.banner-title {
+  font-size: 3rem;
+  font-weight: bold;
+  background: linear-gradient(to right, #bac3cb 0%, gray 50%, #666666 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
 }
+
+.banner-subtitle {
+  font-size: 1.8rem;
+  margin-top: 15px;
+  background: linear-gradient(to right, #bac3cb 0%, gray 50%, #666666 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+

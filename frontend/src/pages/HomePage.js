@@ -30,7 +30,8 @@ const HomePage = () => {
     return (
         <div>
              <Banner
-                title="ÄmVee Tmi - BMW sähkökorjaus, remontointi ja varaosien myyntiliike"
+                title="ÄmVee Tmi"
+                subtitle=" BMW sähkökorjaus, remontointi ja varaosien myyntiliike"
                 imageUrl="/assets/car_bmw.jpg"
             />
         <div className="information-container">
@@ -45,7 +46,7 @@ const HomePage = () => {
                 </p>
             </div>
             <div className="information-image">
-                <img src="/assets/bmw-headlights.jpg" alt="BMW headlights" />
+                <img src="/assets/bmw-front.jpg" alt="BMW headlights" />
             </div>
         </div>
 
