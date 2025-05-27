@@ -4,7 +4,7 @@ import Axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import "../styles/SuccessPage.css"; 
 
-const SuccesssPage = () => {
+const SuccessPage = () => {
     const {clearCart} = useCart();
     const navigate = useNavigate();
 
@@ -36,5 +36,5 @@ const SuccesssPage = () => {
         </div>
     );
 };
-export default SuccesssPage;
+export default SuccessPage;
 

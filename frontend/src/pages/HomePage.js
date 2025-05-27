@@ -30,15 +30,13 @@ const HomePage = () => {
     return (
         <div>
              <Banner
-                title="ÄmVee Tmi - BMW sähkökorjaus, remontti ja varaosien myyntiliike"
+                title="ÄmVee Tmi - BMW sähkökorjaus, remontointi ja varaosien myyntiliike"
                 imageUrl="/assets/car_bmw.jpg"
             />
         <div className="information-container">
             <div className="information-text">
                 <p>
-                    Hoidamme sähköjärjestelmien korjaukset, perus korjaukset, 
-                    huollot, jälkivarustelun, moottorin ja vaihdelaatikon ohjelmoinnit sekä leimaremontit.
-                    (Onnistuu muutkin merkit kuin BMW)
+                    Korjaamme ja huollamme sähköjärjestelmät, teemme peruskorjaukset, jälkivarustelut sekä moottorin ja vaihteiston ohjelmoinnit. Hoidamme myös leimaremontit – ei pelkästään BMW:lle, vaan muillekin merkeille.
                 </p>
                 <p>Jos kiinnostuit 
                     <Link className="information-link" to = "/Contact">
@@ -47,7 +45,7 @@ const HomePage = () => {
                 </p>
             </div>
             <div className="information-image">
-                <img src="assets/bmw-headlights.jpg" alt="BMW headlights" />
+                <img src="/assets/bmw-headlights.jpg" alt="BMW headlights" />
             </div>
         </div>
 

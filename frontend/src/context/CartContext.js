@@ -1,36 +1,27 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
 const CartContext = createContext();
-
 export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
-
-  
-  useEffect(() => {
+  const [cart, setCart] = useState(() => {
     try {
       const storedCart = localStorage.getItem("cart");
-      if (storedCart) {
-        setCart(JSON.parse(storedCart));  
-      }
+      return storedCart ? JSON.parse(storedCart) : [];
     } catch (error) {
       console.error("Error loading cart from LocalStorage", error);
+      return [];
     }
-  }, []); 
+  });
 
-  
   useEffect(() => {
-    if (cart.length > 0) {
-      try {
-        localStorage.setItem("cart", JSON.stringify(cart));  
-      } catch (error) {
-        console.error("Error saving cart to LocalStorage", error);
-      }
+    try {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    } catch (error) {
+      console.error("Error saving cart to LocalStorage", error);
     }
-  }, [cart]); 
+  }, [cart]);
 
-  // Add a part to the cart or update the quantity if it's already in the cart
   const addToCart = (part, quantity) => {
     setCart((prev) => {
       const existing = prev.find((item) => item.part_id === part.id);
@@ -54,27 +45,16 @@ export const CartProvider = ({ children }) => {
       ];
     });
   };
-  
 
-  // Remove a part from the cart
   const removeFromCart = (part_id) => {
-    setCart((prev) => {
-      const updatedCart = prev.filter((item) => item.part_id !== part_id);
-  
-      localStorage.setItem("cart", JSON.stringify(updatedCart));
-    
-      return updatedCart;
-  });
-};
-
-
-  // Clear the entire cart
-  const clearCart = () => {
-    localStorage.removeItem("cart"); 
-    setCart([]);  
+    setCart((prev) => prev.filter((item) => item.part_id !== part_id));
   };
 
-  // Update the quantity of a part in the cart
+  const clearCart = () => {
+    setCart([]);
+    localStorage.removeItem("cart");
+  };
+
   const updateQuantity = (part_id, newQuantity) => {
     setCart((prev) =>
       prev.map((item) =>
@@ -84,9 +64,7 @@ export const CartProvider = ({ children }) => {
   };
 
   return (
-    <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, clearCart, updateQuantity }}
-    >
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart, updateQuantity }}>
       {children}
     </CartContext.Provider>
   );

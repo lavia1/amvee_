@@ -2,7 +2,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    aspect-ratio: 2340 / 786;
+    height:500px;
     width: 100%;
     display: flex;
     justify-content: flex-start;
@@ -28,7 +28,8 @@
 
 @media screen and (max-width: 768px) {
   .banner {
-    justify-content: flex-start;
+    height:40vh;
+    background-position:right center;
     padding:10px;
   }
   .banner-overlay{

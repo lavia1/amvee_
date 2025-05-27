@@ -218,7 +218,7 @@ nav li:first-child img:hover {
         display:flex;
     }
     nav li {
-        height:80px;
+        height:100px;
         
     }
     nav li:first-child img {

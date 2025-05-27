@@ -11,7 +11,7 @@ import ShoppingCart from "./pages/ShoppingCart";
 import AdminLogin from "./pages/admin/AdminLoginPage";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
-import SuccesssPage from "./pages/SuccessPage";
+import SuccessPage from "./pages/SuccessPage";
 import { CartProvider } from "./context/CartContext";
 import './App.css';
 
@@ -41,7 +41,7 @@ const App = () => {
           <Route path="/admin/login/456759" element={<AdminLogin />} />
 
           <Route path="/admin/dashboard" element={ <ProtectedRoute ><AdminDashboard /> </ProtectedRoute>} />
-          <Route path="/success" element = {<SuccesssPage />} />
+          <Route path="/success" element = {<SuccessPage />} />
           <Route path="/cancel" element = {<CancelPage />} />
         </Routes>
         <Footer />

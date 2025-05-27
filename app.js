@@ -10,6 +10,10 @@ const checkout = require ('./routes/payments');
 const webhooks = require('./routes/webhooks');
 
 const app = express();
+app.use(cors());
+app.use(express.json());
+
+app.use('/api/webhook', express.raw({ type: 'application/json' }));
 
 // Test DB connection
 pool.connect()
@@ -18,9 +22,6 @@ pool.connect()
     console.error("Error connecting to PostgreSQL", err);
     process.exit(1);
   });
-
-app.use(cors());
-app.use(express.json());
 
 // ✅ Serve uploaded images statically
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));

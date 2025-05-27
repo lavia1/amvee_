@@ -31,7 +31,7 @@ const Pricing = () => {
                 </tr>
                 <tr>
                     <td>JBPerformance GM vaihdelaatikko-ohjelma</td>
-                    <td>210 euroa</td>
+                    <td>320 euroa</td>
                 </tr>
                 <tr>
                     <td>6hp -vaihdelaatikko-ohjelma</td>
