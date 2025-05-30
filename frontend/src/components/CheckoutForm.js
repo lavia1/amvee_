@@ -4,8 +4,8 @@ import Axios from "axios";
 import { loadStripe } from "@stripe/stripe-js";
 import "./checkoutform.css";
 
-// Replace with your actual Stripe publishable key
-const stripePromise = loadStripe("pk_test_51RLIDHQ9NhEBHsgQ1Nkxit8D7Cos6wxnf7JLmKvRCPznNY8QJ2Fd8qXYLnlDjlcHpAXuSofTbbTh6pM2MxigFZqu00oadivhVb");
+
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
 const CheckoutForm = ({
   cartTotal,
@@ -45,8 +45,9 @@ const CheckoutForm = ({
     setError(null);
 
     try {
-      const response = await Axios.post("http://localhost:3000/api/create-checkout-session", {
+      const response = await Axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/create-checkout-session`, {
         items: cartItems.map((item) => ({
+          part_id: item.part_id,
           name: item.name,
           price: item.price,
           quantity: item.quantity,

@@ -31,7 +31,7 @@ const HomePage = () => {
         <div>
              <Banner
                 title="ÄmVee Tmi"
-                subtitle=" BMW sähkökorjaus, remontointi ja varaosien myyntiliike"
+                subtitle="BMW sähkökorjaus, remontointi ja varaosien myyntiliike"
                 imageUrl="/assets/car_bmw.jpg"
                 className="home-banner"
             />

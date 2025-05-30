@@ -48,7 +48,7 @@ router.post('/payment-intent', async (req, res) => {
 });
 
 router.post("/create-checkout-session", async (req, res) => {
-  const { items, shippingMethod } = req.body; // <- Add this
+  const { items, shippingMethod } = req.body; 
 
   const lineItems = items.map((item) => ({
     price_data: {
@@ -56,18 +56,18 @@ router.post("/create-checkout-session", async (req, res) => {
       product_data: {
         name: item.name,
       },
-      unit_amount: Math.round(item.price * 100), // in cents
+      unit_amount: Math.round(item.price * 100), 
     },
     quantity: item.quantity,
   }));
 
-  // Add shipping as an extra item
+  // Shipping as an extra item
   if (shippingMethod === "delivery") {
     lineItems.push({
       price_data: {
         currency: "eur",
         product_data: { name: "Shipping" },
-        unit_amount: 1000, // €10
+        unit_amount: 1000, 
       },
       quantity: 1,
     });
@@ -75,7 +75,7 @@ router.post("/create-checkout-session", async (req, res) => {
 
   try {
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ["card", "klarna", "mobilepay"],
+      payment_method_types: ["card", "klarna", "mobilepay"], 
       mode: "payment",
       shipping_address_collection: {
         allowed_countries: ['FI', 'SE', 'US', 'GB', 'DE']
@@ -84,8 +84,8 @@ router.post("/create-checkout-session", async (req, res) => {
         enabled: true,
       },
       line_items: lineItems,
-      success_url: "http://localhost:3001/success?session_id={CHECKOUT_SESSION_ID}",
-      cancel_url: "http://localhost:3001/ShoppingCart",
+      success_url: `${process.env.FRONT_END_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.FRONT_END_URL}/ShoppingCart`,
       metadata: {
         items: JSON.stringify(items),
         shippingMethod,
@@ -99,6 +99,8 @@ router.post("/create-checkout-session", async (req, res) => {
     res.status(500).json({ error: "Stripe session creation failed" });
   }
 });
+
+  // Verify session to clear cart
   router.post('/verify-session', async (req, res) => {
   const { sessionId } = req.body;
   try {

@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import Axios from "axios";
 
-const stripePromise = loadStripe("pk_test_51RLIDHQ9NhEBHsgQozZwNEPF6SZeragbQ0ecrrWrcEdl69eDiHaMScFv5omlyfvbKINXTBJ9uuCM7coILT4JaSTr00PzR4S1Zt");
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
 const ShoppingCart = () => {
   const { cart, removeFromCart, clearCart, updateQuantity } = useCart();
@@ -30,7 +30,7 @@ const ShoppingCart = () => {
 
   const handleStripeCheckout = async () => {
     try {
-      const response = await Axios.post("http://localhost:3000/api/create-checkout-session", {
+      const response = await Axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/create-checkout-session`, {
         items: cart.map((item) => ({
           part_id: item.part_id,
           name: item.name,

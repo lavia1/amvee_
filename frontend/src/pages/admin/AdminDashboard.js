@@ -15,6 +15,8 @@ const AdminDashboard = () => {
     });
     
     const [message, setMessage] = useState('');
+    const [deletePartNumber, setDeletePartNumber] = useState('');
+    const [deleteName, setDeleteName] = useState('');
 
     const handleChange = (e) => {
         const { name, value, files} = e.target;
@@ -64,6 +66,31 @@ const AdminDashboard = () => {
         }
     };
 
+    // Poista osa varaosanumerolla
+    const handleDelete = async (e) => {
+        e.preventDefault();
+        try{
+            const token = localStorage.getItem("token");
+
+            const response = await Axios.delete(
+                `${process.env.REACT_APP_API_BASE_URL}/api/parts/${deletePartNumber}`,
+                {
+                    headers:{
+                        Authorization: `Bearer ${token}`,
+                    },
+                    data: deleteName ? {name: deleteName} : {}
+                }
+            );
+
+            setMessage(response.data.message || "Part deleted successfully");
+            setDeletePartNumber('');
+            setDeleteName('');
+        } catch (err) {
+            console.error(err);
+            setMessage("Error deleting part");
+        }
+    };
+
     return (
         <div className="admin-dashboard">
             <h2 className="dashboard-header">Lisää osa </h2>
@@ -96,7 +123,22 @@ const AdminDashboard = () => {
             </form>
             {message && <p>{message}</p>}
 
+            <h2 className="dashboard-header">Poista osa</h2>
+            <form className="admin-form" onSubmit={handleDelete}>
+                <label htmlFor = "deletePartNumber">Varaosanumero</label>
+                <input 
+                    type="text"
+                    name="deletePartNumber"
+                    value={deletePartNumber}
+                    onChange={(e) => setDeletePartNumber(e.target.value)}
+                    placeholder="..."
+                    required
+                />
+
+                <button type = "submit">Poista</button>
+            </form>
         </div>
+        
     );
 
 

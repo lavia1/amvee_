@@ -118,8 +118,8 @@
 }
 
 .slider-image {
-    width: 100%;
-    max-height: 400px;
+    width:100%;
+    max-height: 600px;
     display: block;
     object-fit: cover;
     margin: 0 auto;
@@ -195,5 +195,9 @@
     .price{
         font-size: 1.3rem;
     }
+    .btn-hover.color-9.card-btn {
+        margin-bottom:20px;
+        height:35px;
+    }               
 
 }

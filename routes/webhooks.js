@@ -1,9 +1,10 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const axios = require ('axios');
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const axios = require("axios");
+const pool = require("../db"); // make sure this is your correct DB connection file
 
-router.post("/webhook", async (req, res) => {
+router.post("/webhook", express.raw({ type: "application/json" }), async (req, res) => {
   const sig = req.headers["stripe-signature"];
   const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
@@ -45,15 +46,27 @@ router.post("/webhook", async (req, res) => {
     };
 
     try {
-  await axios.post('http://localhost:3000/api/orders', orderData);
-  res.status(200).json({ received: true });
-} catch (error) {
-  console.error("Order creation failed:", error?.response?.data || error.message);
-  res.status(500).json({ error: "Order processing failed" });
-}
+      
+      await axios.post("http://localhost:3000/api/orders", orderData);
+
+      
+      for (const item of items) {
+        const { id: partId, quantity } = item;
+        await pool.query(
+          'UPDATE parts SET stock = stock - $1 WHERE id = $2 AND stock >= $1',
+          [quantity, partId]
+        );
+      }
+
+      res.status(200).json({ received: true });
+    } catch (error) {
+      console.error("Order creation or stock update failed:", error?.response?.data || error.message);
+      res.status(500).json({ error: "Order processing failed" });
+    }
   } else {
-    res.status(200).end();
+    res.status(200).end(); 
   }
 });
 
 module.exports = router;
+

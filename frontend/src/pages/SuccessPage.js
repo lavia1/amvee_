@@ -12,7 +12,7 @@ const SuccessPage = () => {
         const sessionId = new URLSearchParams(window.location.search).get("session_id");
 
         if (sessionId) {
-            Axios.post("http://localhost:3000/api/verify-session", {sessionId})
+            Axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/verify-session`, {sessionId})
             .then((response) => {
                 if (response.status === 200) {
                     clearCart(); 
@@ -37,4 +37,3 @@ const SuccessPage = () => {
     );
 };
 export default SuccessPage;
-

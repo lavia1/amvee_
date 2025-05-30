@@ -33,7 +33,7 @@ const Services = () => {
 
             <div className="serviceColumn">
                 <div className="serviceCard">
-                    <img src="assets/bmw_speeder.jpg"
+                    <img src="assets/wires.jpg"
                         alt="" 
                     />
                     <div className="serviceContainer">
@@ -46,7 +46,7 @@ const Services = () => {
 
             <div className="serviceColumn">
                 <div className="serviceCard">
-                    <img src="assets/banner.JPG"
+                    <img src="assets/back_lights.jpg"
                         alt="" 
                     />
                     <div className="serviceContainer">
@@ -158,7 +158,7 @@ const Services = () => {
 
             <div className="serviceColumn">
                 <div className="serviceCard">
-                    <img src="assets/banner.JPG"
+                    <img src="assets/bmw_speeder.jpg"
                         alt="" 
                     />
                     <div className="serviceContainer">

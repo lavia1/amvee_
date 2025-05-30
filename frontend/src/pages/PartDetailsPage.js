@@ -17,7 +17,7 @@ const PartDetailsPage = () => {
     useEffect(() => {
         const fetchPart = async () => {
             try {
-                const response = await Axios.get(`http://localhost:3000/api/parts/${partNumber}`);
+                const response = await Axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/parts/${partNumber}`);
                 setPart(response.data);
             } catch (error) {
                 console.error("Error fetching part details:", error);
@@ -30,7 +30,7 @@ const PartDetailsPage = () => {
     useEffect(() => {
         const fetchRecommendedParts = async () => {
             try {
-                const response = await Axios.get("http://localhost:3000/api/parts");
+                const response = await Axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/parts`);
                 const filtered = response.data
                     .filter(p => p.part_number !== partNumber && p.stock > 0)
                     .slice(0, 4); // take 4 parts only

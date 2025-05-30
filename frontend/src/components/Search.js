@@ -11,7 +11,7 @@ const Search = ({ onSearchResults }) => {
   useEffect(() => {
     const fetchParts = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/parts");
+        const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/parts`);
         setParts(response.data);
       } catch (error) {
         setError('Error fetching parts');

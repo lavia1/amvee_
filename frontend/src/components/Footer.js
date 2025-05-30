@@ -19,11 +19,11 @@ const Footer = () => {
             </a>
             <a href="tel:+358443430792" className="footer-link">
                 <i className="fa fa-phone"></i>
-                <span className="footer-text">0443430792</span>
+                <span className="footer-text">+358 443430792</span>
             </a>
             <a href="https://wa.me/+358443430792" className="footer-link">
                 <i className="fab fa-whatsapp"></i>
-                <span className="footer-text">0443430792</span>
+                <span className="footer-text">+358 443430792</span>
             </a>
             <a href="mailto:amveetmi@gmail.com" className="footer-link">
                 <FontAwesomeIcon icon={faEnvelope} />
