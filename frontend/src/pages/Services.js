@@ -6,7 +6,7 @@ const Services = () => {
     return(
         <div>
             <Banner 
-                
+                className="home-banner"
                 imageUrl="/assets/wheel_banner.jpg"
             />
 
