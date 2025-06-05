@@ -199,9 +199,7 @@ const Services = () => {
 
             <div className="serviceColumn">
                 <div className="serviceCard">
-                    <img src="assets/bmw_lights_front.jpg"
-                        alt="" 
-                    />
+                    
                     <div className="serviceContainer">
                         <h2>Soittaja on voittaja</h2>
                         <p>Kaikki muu mikä mieleen juolahtaa</p>
