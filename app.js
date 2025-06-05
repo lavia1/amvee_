@@ -40,9 +40,7 @@ app.use('/api', checkout);
 // Webhook route (already handled above with raw body middleware)
 app.use('/api', webhooks);
 
-const port = process.env.PORT || 3000;
-
+const port = process.env.PORT || 3000;  // Use Render's port or fallback locally
 app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+  console.log(`Server running on port ${port}`);
 });
-
