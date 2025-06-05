@@ -47,7 +47,7 @@ router.post("/webhook", express.raw({ type: "application/json" }), async (req, r
 
     try {
       
-      await axios.post("http://localhost:3000/api/orders", orderData);
+      await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/orders`, orderData);
 
       
       for (const item of items) {
