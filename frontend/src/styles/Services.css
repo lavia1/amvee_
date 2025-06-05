@@ -92,14 +92,14 @@
         font-size: 1.5rem;
     }
     .serviceContainer p {
-        font-size: 20px;
+        font-size: 30px;
         margin-bottom: 12px;
     }
     .title {
         font-size: 15px;
     }
     .serviceContainer a i {
-        font-size: 20px;
+        font-size: 30px;
     }
     .serviceColumn{
         padding: 15px 8px;
@@ -114,11 +114,11 @@
 }
 @media screen and (max-width: 480px) {
     .serviceContainer h2 {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
     }
   
     .serviceContainer p {
-      font-size: 16px;
+      font-size: 18px;
       margin-bottom: 10px;
     }
   
