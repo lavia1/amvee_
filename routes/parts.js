@@ -90,7 +90,8 @@ router.get('/:part_number', async (req, res) => {
 });
 
 // Put route for updating a part 
-router.put('/:part_number', verifyAdmin, upload.array('images, 5'), async (req, res) => {
+router.put('/:part_number', verifyAdmin, upload.array('images', 5), async (req, res) => {
+
     const {part_number} = req.params;
     const {name, model, description, price, quantity, category} = req.body;
 
