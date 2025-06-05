@@ -14,6 +14,7 @@ const app = express();
 
 app.use(cors());
 
+
 // IMPORTANT: Use express.raw ONLY on the webhook route BEFORE express.json()
 app.use('/api/webhook', express.raw({ type: 'application/json' }));
 
@@ -27,6 +28,9 @@ pool.connect()
     console.error("Error connecting to PostgreSQL", err);
     process.exit(1);
   });
+app.get('/', (req, res) => {
+  res.send('Backend API is running');
+});
 
 // Serve uploaded images statically
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
