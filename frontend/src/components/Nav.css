@@ -14,7 +14,7 @@ nav li{
 }
 nav a{
     height: 100%;
-    padding: 0 35px;
+    padding: 0 25px;
     text-decoration: none;
     display: flex;
     align-items: center;
