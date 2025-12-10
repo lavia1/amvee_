@@ -106,6 +106,11 @@ export default function Navbar() {
             Hinnasto
           </NavLink>
         </li>
+        <li className="hideOnMobile">
+          <NavLink to="/PhotoGallery" className={(navData) => (navData.isActive ? "active-link" : "")}>
+            Kuvagalleria
+          </NavLink>
+        </li>
          <li className="hideOnMobile">
           <NavLink to="/CarParts" className={(navData) => (navData.isActive ? "active-link" : "")}>
             Osat

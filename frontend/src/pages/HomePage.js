@@ -42,28 +42,33 @@ const HomePage = () => {
                 className="home-banner"
             />
         <div className="information-container">
-            <div className="information-text">
-                <p>
-                    Korjaamme ja huollamme sähköjärjestelmät, teemme peruskorjaukset, jälkivarustelut sekä moottorin ja vaihteiston ohjelmoinnit. Hoidamme myös leimaremontit – ei pelkästään BMW:lle, vaan muillekin merkeille.
-                </p>
-                <p>Jos kiinnostuit 
-                    <Link className="information-link" to = "/Contact">
-                    ota yhteyttä  
-                    </Link> 
-                </p>
-            </div>
-            <div className="information-image">
-                <img src="/assets/bmw-front.jpg" alt="BMW headlights" />
-            </div>
-        </div>
-        
-        {/*Tarjousosio*/}
-        <div className="offer-section">
-            <h2 className="offer-title">Ajankohtaiset tarjoukset</h2>
-            <p className="offer-text">Kontin piuhasarja BMW:hen - vain 120 euroa</p>
-            
+  {/* Left - Offer */}
+  <div className="offer-section">
+    <h2 className="offer-title">Ajankohtaiset tarjoukset</h2>
+    
+    <p className="offer-text">Kontin piuhasarja BMW:hen - vain 120 euroa</p>
+  </div>
 
-        </div>
+  {/* Center - Text */}
+  <div className="information-text">
+    <p>
+      Korjaamme ja huollamme sähköjärjestelmät, teemme peruskorjaukset, jälkivarustelut sekä moottorin ja vaihteiston ohjelmoinnit. Hoidamme myös leimaremontit – ei pelkästään BMW:lle, vaan muillekin merkeille.
+    </p>
+    <p>
+      Jos kiinnostuit 
+      <Link className="information-link" to="/Contact">
+        ota yhteyttä  
+      </Link> 
+    </p>
+  </div>
+
+  {/* Right - Image */}
+  <div className="information-image">
+    <img src="/assets/bmw-front.jpg" alt="BMW headlights" />
+  </div>
+</div>
+
+        
 
         {/*Osat-osio*/}
         <div className="Carparts-section">

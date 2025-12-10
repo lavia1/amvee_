@@ -7,6 +7,7 @@ import CarParts from './pages/CarParts';
 import PartDetailsPage from "./pages/PartDetailsPage";
 import Pricing from "./pages/Prices";
 import Contact from "./pages/Contact";
+import PhotoGallery from "./pages/PhotoGallery";
 import ShoppingCart from "./pages/ShoppingCart";
 import AdminLogin from "./pages/admin/AdminLoginPage";
 import AdminDashboard from "./pages/admin/AdminDashboard";
@@ -35,6 +36,7 @@ const App = () => {
           <Route path="/Services" element={<Services />} />
           <Route path="/Prices" element={<Pricing />}/>
           <Route path="/CarParts" element={<CarParts />} />
+          <Route path="/PhotoGallery" element={<PhotoGallery />} />
           <Route path="/parts/:partNumber" element={<PartDetailsPage />} />
           <Route path="/Contact" element={<Contact />}/>
           <Route path="/ShoppingCart" element={<ShoppingCart />}></Route>
