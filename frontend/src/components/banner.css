@@ -9,6 +9,7 @@
   align-items: center;
   position: relative;
   padding: 20px;
+  
 }
 
 .banner-overlay {
@@ -27,15 +28,18 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin: 0;
+  
 }
 
 .banner-subtitle {
   font-size: 1.8rem;
+  font-weight: 500;
   margin-top: 15px;
   background: linear-gradient(to right, #bac3cb 0%, gray 50%, #666666 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  line-height: 3rem;
 }
 .home-banner {
   background-position: right center;

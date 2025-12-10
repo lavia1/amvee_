@@ -6,6 +6,7 @@
     background-color: #2b2b2b94;
     letter-spacing: 0.5px;   
     box-sizing: border-box;
+    font-weight: 500;
 }
 .footer a {
     display: flex;

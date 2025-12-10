@@ -31,7 +31,13 @@ const HomePage = () => {
         <div>
              <Banner
                 title="ÄmVee Tmi"
-                subtitle="BMW sähkökorjaus, remontointi ja varaosien myyntiliike"
+                subtitle={
+                    <>
+                    BMW sähkökorjaus, remontointi ja varaosien myyntiliike 
+                    <br /> 
+                    
+                    Nivala - Oulu
+                </>}
                 imageUrl="/assets/car_bmw.jpg"
                 className="home-banner"
             />
@@ -50,10 +56,18 @@ const HomePage = () => {
                 <img src="/assets/bmw-front.jpg" alt="BMW headlights" />
             </div>
         </div>
-
         
+        {/*Tarjousosio*/}
+        <div className="offer-section">
+            <h2 className="offer-title">Ajankohtaiset tarjoukset</h2>
+            <p className="offer-text">Kontin piuhasarja BMW:hen - vain 120 euroa</p>
+            
+
+        </div>
+
+        {/*Osat-osio*/}
         <div className="Carparts-section">
-            <h1>Tutustu osiin: </h1>
+            <h2 className="carparts-title">Tutustu osiin: </h2>
                 <div className="parts-review-row">
                     {randomParts.length > 0 ? (
                         randomParts.map((part) => (
@@ -65,7 +79,7 @@ const HomePage = () => {
                 </div>
                 <div className="view-all-button-wrapper">
                     <Link className="view-all-button" to = "/CarParts"> 
-                        Siirry koko valikoimaan  <FontAwesomeIcon icon = {faArrowRight} className="right-icon"/>
+                        Siirry koko valikoimaan
                     </Link>
                 </div>
             </div>

@@ -71,6 +71,7 @@
 .serviceContainer p{
     font-size: 19px;
     margin-bottom: 15px;
+    font-weight: 500;
 }
 .serviceContainer::after, .row1::after {
     content:"";

@@ -1,3 +1,111 @@
+.information-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2b2b2b94;
+    background-image: linear-gradient(to right, black,#2b2b2b94);
+    gap:10px;
+    padding-right:0.5rem;
+    color:#bac3cb;
+}
+.information-image {
+    flex: 0 0 30%;
+    
+}
+.information-image img {
+    display:block;
+    width: 100%;
+    height:auto;
+    object-fit: cover;
+}
+.information-text{
+    flex:1;
+}
+.information-text p {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    padding: 1rem;
+    border-radius: 5px;
+    font-weight:500;
+}
+.information-link {
+    color:#bac3cb;
+    text-decoration: line;
+    margin-left:4px;
+    cursor: pointer;
+    transition: color 0.4s ease;
+}
+.information-link:hover{
+    color: #2f7bb9;
+}
+.information-link-prices{
+    text-decoration:none;
+    color:#bac3cb;
+}
+.offer-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px 20px;
+  color: #bac3cb;
+  text-align: center;
+
+  background: linear-gradient(
+    270deg,
+    #000000,  
+    #202020,  
+    #151515,  
+    #000000 
+  );
+  background-size: 600% 600%;
+
+  animation: gradientMove 8s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.offer-title {
+  margin-bottom: 20px;
+  font-size: 2rem;
+
+  background: linear-gradient(
+    90deg,
+    #bac3cb,
+    #4da6ff,
+    #1c5fa8,
+    #bac3cb
+  );
+  background-size: 300% 300%;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: textGradientMove 6s ease infinite;
+}
+
+@keyframes textGradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.offer-text{
+    font-size:1.5rem;
+    font-weight:500;
+}
+
 .parts-review-row {
     display: grid;
     grid-template-columns: repeat(4,1fr);
@@ -6,16 +114,17 @@
 }
 .Carparts-section {
     margin-top:2rem;
+    text-align: center;
+    justify-content: center;
 }
-.Carparts-section h1 {
-    margin-left:2.7rem;
-    
+.carparts-title{
+    font-size: 2rem;
+    color:#bac3cb;
 }
 .view-all-button-wrapper{
     margin-bottom:50px;
-    text-align: left;
-    justify-content: left;
-    margin-left: 2.5rem;
+    text-align: center;
+    justify-content: center;
 }
 
 .view-all-button {
@@ -35,48 +144,6 @@
 .right-icon {
     font-size: 1.5rem;
     margin-left: 8px;
-}
-.information-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #2b2b2b94;
-    background-image: linear-gradient(to right, black,#2b2b2b94);
-    gap:10px;
-    padding-right:0.5rem;
-}
-.information-image {
-    flex: 0 0 30%;
-    
-}
-.information-image img {
-    width: 100%;
-    height:auto;
-    object-fit: cover;
-    
-}
-.information-text{
-    flex:1;
-}
-.information-text p {
-    font-size: 1.5rem;
-    line-height: 1.6;
-    padding: 1rem;
-    border-radius: 5px;
-}
-.information-link {
-    color:#bac3cb;
-    text-decoration: line;
-    margin-left:4px;
-    cursor: pointer;
-    transition: color 0.4s ease;
-}
-.information-link:hover{
-    color: #2f7bb9;
-}
-.information-link-prices{
-    text-decoration:none;
-    color:#bac3cb;
 }
 @media (max-width: 1024px){
     .parts-review-row{
