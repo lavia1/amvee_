@@ -5,10 +5,7 @@ import "../styles/Prices.css";
 const Pricing = () => {
     return(
         <div>
-            <Banner 
-                
-                imageUrl="/assets/m_logo_banner.jpg"
-            />
+            
         <div className="priceContainer">
         {/* Pricing page content */}  
         <table className = "priceTable">

@@ -6,10 +6,7 @@ import ContactForm from "../components/ContactForm";
 const Contact = () => {
     return (
         <div>
-            <Banner
-                
-                imageUrl="/assets/interior_banner.jpg"
-            />
+           
            <ContactForm />
           
         </div>
