@@ -70,7 +70,7 @@ const HomePage = () => {
 
         
 
-        {/*Osat-osio*/}
+        {/*Osat-osio
         <div className="Carparts-section">
             <h2 className="carparts-title">Tutustu osiin: </h2>
                 <div className="parts-review-row">
@@ -87,7 +87,7 @@ const HomePage = () => {
                         Siirry koko valikoimaan
                     </Link>
                 </div>
-            </div>
+            </div>/*/}
         </div>
     );
 };
