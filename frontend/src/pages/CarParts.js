@@ -97,7 +97,7 @@ const CarParts = () => {
                 <ProductCard key={part.part_number} part={part} />
               ))
             ) : (
-              <p>Osaa ei ole valikoimassa</p>
+              <p>Osia lisätään parhaillaan :) </p>
             )}
           </div>
 
