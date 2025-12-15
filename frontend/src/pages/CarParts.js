@@ -2,23 +2,22 @@ import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 import ReactPaginate from "react-paginate"; 
-import Banner from "../components/Banner";
 import ProductCard from '../components/ProductCard';
-import Search from '../components/Search';
-import Dropdown from '../components/Dropdown';
 import { useLocation, useNavigate } from 'react-router-dom';  
 import "../styles/CarParts.css";
+import CategoryList from '../components/CategoryList';
 
 const CarParts = () => {
   const [parts, setParts] = useState([]);
   const [filteredParts, setFilteredParts] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [partsPerPage] = useState(12);
+  const [selectedCategoryPath, setSelectedCategoryPath] = useState(""); 
 
   const location = useLocation();  
   const navigate = useNavigate();  
 
-  // Fetch parts from the API
+  // Fetch parts
   useEffect(() => {
     const getData = async () => {
       try {
@@ -30,35 +29,44 @@ const CarParts = () => {
         console.error("Error fetching parts: ", error);
       }
     };
-
     getData();
   }, []);
 
-  // Checking the current url and page
+  // URL page handling
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
     const page = queryParams.get("page") || 0; 
     setCurrentPage(Number(page));
-  }, [location]);  
+  }, [location]);
 
   const handleSearchResults = (results) => {
     const availableParts = results.filter(part => part.stock > 0);
     setFilteredParts(availableParts);
-    setCurrentPage(0);  
+    setCurrentPage(0);
+  };
+
+  const handleCategorySelect = (fullPath, isParent) => {
+    setSelectedCategoryPath(fullPath);
+    let filtered;
+    if (isParent) {
+      // Pääkategoria: kaikki osat, joiden category alkaa pääkategorian nimellä
+      filtered = parts.filter(p => p.category.startsWith(fullPath));
+    } else {
+      // Alakategoria: vain tarkka alikategoria
+      filtered = parts.filter(p => p.category === fullPath);
+    }
+    setFilteredParts(filtered);
+    setCurrentPage(0);
   };
 
   const handlePageClick = (data) => {
     const selectedPage = data.selected;
-    
-    // Ensure that the selected page is within bounds
     if (selectedPage < Math.ceil(filteredParts.length / partsPerPage)) {
       setCurrentPage(selectedPage);
-      // Update the URL with the new page number
       navigate(`?page=${selectedPage}`);
     }
   };
 
-  // Get the parts for the current page
   const currentParts = filteredParts.slice(
     currentPage * partsPerPage,
     (currentPage + 1) * partsPerPage
@@ -67,40 +75,34 @@ const CarParts = () => {
   const pageCount = Math.ceil(filteredParts.length / partsPerPage);
 
   return (
-    <div>
-      <Banner imageUrl="/assets/bmw_logo_banner.jpg">
-      </Banner>
-      <div className="filters-bar">
-        <Search onSearchResults={handleSearchResults} />
-        <Dropdown parts={parts} onFilter={handleSearchResults} />
-      </div>
-      
-      <div className="carParts-container">
-        {currentParts.length > 0 ? (
-          currentParts.map((part) => (
-            <ProductCard key={part.part_number} part={part} />
-          ))
-        ) : (
-          <p>Osaa ei löytynyt</p>
-        )}
-      </div>
+    <div className="carParts-page">
 
-      <div className="pagination-container">
-        <ReactPaginate
-          previousLabel={<FaArrowLeft />}
-          nextLabel={<FaArrowRight />}
-          pageCount={pageCount}  // Safe page count
-          onPageChange={handlePageClick}  
-          containerClassName={"pagination-container"}
-          pageClassName={"page-item"}
-          pageLinkClassName={"page-link"}
-          activeClassName={"active"}  
-          forcePage={currentPage}  // Ensure the page index is within bounds
-          previousClassName={"page-item previous"}  
-          nextClassName={"page-item next"}
-          previousLinkClassName={"page-link previous"}
-          nextLinkClassName={"page-link next"}
-        />
+      <div className="carParts-layout">
+        {/* Vasemmanpuoleinen kategoria */}
+        <aside className="category-sidebar">
+          <CategoryList onSelectCategory={handleCategorySelect} />
+        </aside>
+
+        {/* Oikeanpuoleinen osat */}
+        <main className="parts-main">
+          {selectedCategoryPath && (
+            <div className="selected-category-path">
+              <strong>{selectedCategoryPath}</strong>
+            </div>
+          )}
+
+          <div className="carParts-container">
+            {currentParts.length > 0 ? (
+              currentParts.map((part) => (
+                <ProductCard key={part.part_number} part={part} />
+              ))
+            ) : (
+              <p>Osaa ei ole valikoimassa</p>
+            )}
+          </div>
+
+          
+        </main>
       </div>
     </div>
   );

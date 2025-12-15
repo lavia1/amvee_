@@ -1,13 +1,13 @@
 .carParts-container {
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap:20px;
-    padding:20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  
 }
+
 .carParts-container .card {
-    flex: 0 0 calc(25% - 40px);
-    box-sizing: border-box;
+  flex: 0 0 calc(33.333% - 20px); 
+  box-sizing: border-box;
 }
 .pagination-container{
     display:flex;
@@ -56,7 +56,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 1rem; /* or 2rem for more space */
+    gap: 1rem; 
     padding: 1rem 0;
   }
   
@@ -64,14 +64,45 @@
     flex: 1;
     min-width: 250px; /* Ensures they don’t get too narrow on small screens */
   }
-  
-@media (max-width: 900px) {
-    .carParts-container .card {
-        flex: 0 0 calc(50% - 40px);
-    }
+  .carParts-page {
+  padding: 1rem;
 }
+
+.carParts-layout {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Kategoriapalkki vasemmalla */
+.category-sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  background-color: #2b2b2b94;
+  padding: 1rem;
+  color: #bac3cb;
+  height:auto;
+  
+  
+}
+
+/* Osat oikealla */
+.parts-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 900px) {
+  .carParts-container .card {
+    flex: 0 0 calc(50% - 20px);
+  }
+}
+
 @media (max-width: 600px) {
-    .carParts-container .card {
-        flex: 0 0 100%;
-    }
+  .carParts-layout {
+    flex-direction: column;
+  }
+  .carParts-container .card {
+    flex: 0 0 100%;
+  }
 }
