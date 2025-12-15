@@ -4,6 +4,7 @@ import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 import ReactPaginate from "react-paginate"; 
 import ProductCard from '../components/ProductCard';
 import { useLocation, useNavigate } from 'react-router-dom';  
+import { Link } from "react-router-dom";
 import "../styles/CarParts.css";
 import CategoryList from '../components/CategoryList';
 
@@ -97,7 +98,9 @@ const CarParts = () => {
                 <ProductCard key={part.part_number} part={part} />
               ))
             ) : (
-              <p>Osia lisätään parhaillaan :) </p>
+              <p style={{ fontSize: "18px" }}>Osia lisätään parhaillaan. Voit ottaa myös <Link className="information-link" to="/Contact">yhteyttä
+      </Link>, jospa osa sittenkin löytyisi :)   </p>
+              
             )}
           </div>
 
