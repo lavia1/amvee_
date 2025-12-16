@@ -9,13 +9,13 @@ const Footer = () => {
     return(
         <div className="footer">
              <a 
-                href="https://www.google.com/maps?q=Ruuskanpääntie+99+85660+Nivala" 
+                
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer-link"
              >
                 <FontAwesomeIcon icon={faLocationDot} />
-                <span className="footer-text">Ruuskanpääntie 99 85660 Nivala</span>
+                <span className="footer-text">Nivala - Oulu</span>
             </a>
             <a href="tel:+358443430792" className="footer-link">
                 <i className="fa fa-phone"></i>
