@@ -1,7 +1,6 @@
 import React from "react";
 import Banner from "../components/Banner";
 import "../styles//Services.css";
-
 const Services = () => {
     return(
         <div>
@@ -218,7 +217,7 @@ const Services = () => {
 
         </div>
 
-
+ 
 
 
         </div>

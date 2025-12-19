@@ -60,13 +60,14 @@ export default function Navbar() {
             Etusivu
           </NavLink>
         </li>
+        
         <li>
           <NavLink to="/Services" onClick={hideSidebar} className={(navData) => (navData.isActive ? "active-link" : "")}>
             Palvelut
           </NavLink>
         </li>
         <li>
-          <NavLink to="/Prices" onClick={hideSidebar} className={(navData) => (navData.isActive ? "active-link" : "")}>
+          <NavLink to="/Hinnasto" onClick={hideSidebar} className={(navData) => (navData.isActive ? "active-link" : "")}>
             Hinnasto
           </NavLink>
         </li>
@@ -76,7 +77,7 @@ export default function Navbar() {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/Contact" onClick={hideSidebar} className={(navData) => (navData.isActive ? "active-link" : "")}>
+          <NavLink to="/Yhteystiedot" onClick={hideSidebar} className={(navData) => (navData.isActive ? "active-link" : "")}>
             Yhteistiedot
           </NavLink>
         </li>
@@ -96,18 +97,23 @@ export default function Navbar() {
             Etusivu
           </NavLink>
         </li>
+         <li className="hideOnMobile">
+          <NavLink to="/Palvelut" className={(navData) => (navData.isActive ? "active-link" : "")}>
+            Palveluttt
+          </NavLink>
+        </li>
         <li className="hideOnMobile">
           <NavLink to="/Services" className={(navData) => (navData.isActive ? "active-link" : "")}>
             Palvelut
           </NavLink>
         </li>
         <li className="hideOnMobile">
-          <NavLink to="/Prices" className={(navData) => (navData.isActive ? "active-link" : "")}>
+          <NavLink to="/Hinnasto" className={(navData) => (navData.isActive ? "active-link" : "")}>
             Hinnasto
           </NavLink>
         </li>
         <li className="hideOnMobile">
-          <NavLink to="/PhotoGallery" className={(navData) => (navData.isActive ? "active-link" : "")}>
+          <NavLink to="/Kuvagalleria" className={(navData) => (navData.isActive ? "active-link" : "")}>
             Kuvagalleria
           </NavLink>
         </li>
@@ -117,8 +123,8 @@ export default function Navbar() {
           </NavLink>
         </li>
         <li className="hideOnMobile">
-          <NavLink to="/Contact" className={(navData) => (navData.isActive ? "active-link" : "")}>
-            Yhteistiedot
+          <NavLink to="/Yhteystiedot" className={(navData) => (navData.isActive ? "active-link" : "")}>
+            Yhteystiedot
           </NavLink>
         </li>
 

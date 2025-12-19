@@ -3,7 +3,7 @@ import Banner from "../components/Banner";
 import "../styles/Contact.css";
 import ContactForm from "../components/ContactForm";
 
-const Contact = () => {
+const Yhteystiedot = () => {
     return (
         <div>
            
@@ -13,4 +13,4 @@ const Contact = () => {
     );
 }
 
-export default Contact;
+export default Yhteystiedot;

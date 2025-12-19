@@ -3,7 +3,10 @@ import Banner from "../components/Banner";
 import "../styles/Prices.css";
 
 
-const Pricing = () => {
+
+
+
+const Hinnasto = () => {
     return (
 
         <div>
@@ -83,9 +86,9 @@ const Pricing = () => {
             </div>
             </div>
                
-
+                       
         </div>
     );
 };
 
-export default Pricing;
+export default Hinnasto;

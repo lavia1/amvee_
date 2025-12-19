@@ -5,10 +5,11 @@ import Footer from "./components/Footer";
 import Services from "./pages/Services";
 import CarParts from './pages/CarParts';
 import PartDetailsPage from "./pages/PartDetailsPage";
-import Pricing from "./pages/Prices";
-import Contact from "./pages/Contact";
-import PhotoGallery from "./pages/PhotoGallery";
+import Hinnasto from "./pages/Hinnasto";
+import Yhteystiedot from "./pages/Yhteystiedot";
+import Kuvagalleria from "./pages/Kuvagalleria";
 import ShoppingCart from "./pages/ShoppingCart";
+import Palvelut from "./pages/Palvelut";
 import AdminLogin from "./pages/admin/AdminLoginPage";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -33,12 +34,13 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/Palvelut" element={<Palvelut />} />
           <Route path="/Services" element={<Services />} />
-          <Route path="/Prices" element={<Pricing />}/>
+          <Route path="/Hinnasto" element={<Hinnasto />}/>
           <Route path="/CarParts" element={<CarParts />} />
-          <Route path="/PhotoGallery" element={<PhotoGallery />} />
+          <Route path="/Kuvagalleria" element={<Kuvagalleria />} />
           <Route path="/parts/:partNumber" element={<PartDetailsPage />} />
-          <Route path="/Contact" element={<Contact />}/>
+          <Route path="/Yhteystiedot" element={<Yhteystiedot />}/>
           <Route path="/ShoppingCart" element={<ShoppingCart />}></Route>
           <Route path="/admin/login/456759" element={<AdminLogin />} />
 
