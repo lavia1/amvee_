@@ -181,7 +181,7 @@ export default function Palvelut() {
   return (
     <div>
       {/* --- Ensimmäinen slider --- */}
-      <h1 className="otsikko">Asennus- ja vianhakutyöt</h1>
+      <h1 className="otsikko">Asennus- ja vianhakutyöt, koodaus sekä jälkivarustelu</h1>
       <div className="sliderContainer">
         <ArrowButtons active={active1} setActive={setActive1} slides={slides1} />
         <div className="slider"
@@ -221,7 +221,7 @@ export default function Palvelut() {
       </div>
 
       {/* --- Kolmas slider --- */}
-      <h1 className="otsikko">Muita palveluita</h1>
+      <h1 className="otsikko">Teemme muutakin kuin sähkökorjauksia, myös muihinkin autoihin kuin BMW</h1>
       <div className="sliderContainer">
         <ArrowButtons active={active3} setActive={setActive3} slides={slides3} />
         <div className="slider" style={sliderStyle}

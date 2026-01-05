@@ -5,7 +5,7 @@
   overflow: hidden;
   cursor: grab;
   user-select: none;
-
+  margin-bottom: 30px;
 }
 
 .slider:active {
