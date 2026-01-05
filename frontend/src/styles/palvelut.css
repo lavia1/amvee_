@@ -1,0 +1,54 @@
+.slider {
+  position: relative;
+  width: 100%;
+  height: 470px;
+  overflow: hidden;
+  cursor: grab;
+  user-select: none;
+}
+
+.slider:active {
+  cursor: grabbing;
+}
+
+.item {
+  position: absolute;
+  width: 370px;
+  max-height: 430px;      
+  overflow-y: auto;       
+  background: #1a1a1a;
+  border-radius: 5px;
+  padding: 20px;
+  transition: transform 0.6s, opacity 0.8s, filter 0.6s;
+  left: calc(50% - 150px);
+  top: 0;
+  pointer-events: auto;   /* scroll ja klikit toimivat */
+}
+.otsikko {
+  text-align:center;
+  background-color: #2b2b2b94;
+  padding: 5px 10px;
+  margin-bottom:40px;
+}
+.itemRow {
+  display: flex;
+  align-items: center; /* keskittää pystysuunnassa */
+  justify-content: center; /* keskittää vaakasuunnassa */
+  gap: 8px;
+  margin: 4px 0;
+}
+
+.itemRow .wheelIcon {
+  font-size: 0.8em;
+  color: #bac3cb;
+  flex-shrink: 0;
+}
+.itemRow .steeringIcon {
+   font-size: 0.8em;
+}
+@media (max-width: 768px) {
+
+  .otsikko {
+    font-size: 1.5rem ;
+  }
+}

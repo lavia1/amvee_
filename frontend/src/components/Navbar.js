@@ -62,7 +62,7 @@ export default function Navbar() {
         </li>
         
         <li>
-          <NavLink to="/Services" onClick={hideSidebar} className={(navData) => (navData.isActive ? "active-link" : "")}>
+          <NavLink to="/Palvelut" onClick={hideSidebar} className={(navData) => (navData.isActive ? "active-link" : "")}>
             Palvelut
           </NavLink>
         </li>
@@ -99,9 +99,10 @@ export default function Navbar() {
         </li>
          <li className="hideOnMobile">
           <NavLink to="/Palvelut" className={(navData) => (navData.isActive ? "active-link" : "")}>
-            Palveluttt
+            Palvelut
           </NavLink>
         </li>
+       
         <li className="hideOnMobile">
           <NavLink to="/Services" className={(navData) => (navData.isActive ? "active-link" : "")}>
             Palvelut
