@@ -122,21 +122,24 @@ const slides3 = [
     price: "Kaikki muu mikä mieleen juolahtaa",
     items: [
      
-      "Ota rohkeasti yhteyttä:", 
+      "Ota rohkeasti yhteyttä:",
+      <a className="linkki" href="tel:+358443430792">
+                                <span>puh. +358 443430792</span>
+                            </a>
+       
 
     ],
   },
 ];
 
 export default function Palvelut() {
-  // --- State ja ref jokaiselle sliderille ---
+  // --- State jokaiselle sliderille ---
   const [active1, setActive1] = useState(0);
-  const startX1 = useRef(null);
-
   const [active2, setActive2] = useState(0);
-  const startX2 = useRef(null);
-
   const [active3, setActive3] = useState(0);
+
+  const startX1 = useRef(null);
+  const startX2 = useRef(null);
   const startX3 = useRef(null);
 
   // --- Swipe-logiikat ---
@@ -145,113 +148,96 @@ export default function Palvelut() {
     onEnd: (x) => {
       if (startRef.current === null) return;
       const diff = x - startRef.current;
-      if (diff > 50) setActiveFn((prev) => (prev - 1 >= 0 ? prev - 1 : prev));
-      if (diff < -50) setActiveFn((prev) => (prev + 1 < slides.length ? prev + 1 : prev));
+      if (diff > 50) setActiveFn(prev => Math.max(prev - 1, 0));
+      if (diff < -50) setActiveFn(prev => Math.min(prev + 1, slides.length - 1));
       startRef.current = null;
     },
   });
 
+  // --- Korttien tyylit ---
   const getStyle = (index, active) => {
     const diff = index - active;
     const abs = Math.abs(diff);
     if (diff === 0) return { transform: "none", zIndex: 1, filter: "none", opacity: 1 };
     return {
-      transform: `
-        translateX(${120 * diff}px)
-        scale(${1 - 0.2 * abs})
-        perspective(16px)
-        rotateY(${diff > 0 ? "-1deg" : "1deg"})
-      `,
+      transform: `translateX(${120*diff}px) scale(${1-0.2*abs}) perspective(16px) rotateY(${diff>0 ? "-1deg":"1deg"})`,
       zIndex: -abs,
       filter: "blur(5px)",
       opacity: abs > 2 ? 0 : 0.6,
+      transition: "0.5s"
     };
   };
 
-  const sliderStyle = { marginTop: "10px" }; // rivien väli
+  const sliderStyle = { marginTop: "10px", position: "relative" };
+
+  // --- Nuolipainikkeet ---
+  const ArrowButtons = ({active, setActive, slides}) => (
+    <>
+      <button className="prev" onClick={() => setActive(prev => Math.max(prev-1,0))}>&#10094;</button>
+      <button className="next" onClick={() => setActive(prev => Math.min(prev+1, slides.length-1))}>&#10095;</button>
+    </>
+  );
 
   return (
-    
     <div>
-      <h1 className="otsikko">Asennus- ja vianhakutyöt, koodaus sekä jälkivarustelu</h1>
-      {/* --- Ensimmäinen rivi --- */}
-      <div
-        className="slider"
-        onMouseDown={(e) => swipeLogic(startX1, setActive1, slides1).onStart(e.clientX)}
-        onMouseUp={(e) => swipeLogic(startX1, setActive1, slides1).onEnd(e.clientX)}
-        onTouchStart={(e) => swipeLogic(startX1, setActive1, slides1).onStart(e.touches[0].clientX)}
-        onTouchEnd={(e) => swipeLogic(startX1, setActive1, slides1).onEnd(e.changedTouches[0].clientX)}
-      >
-        {slides1.map((slide, index) => (
-          <div key={index} className="item" style={getStyle(index, active1)}>
-            <div className="serviceContainer">
+      {/* --- Ensimmäinen slider --- */}
+      <h1 className="otsikko">Asennus- ja vianhakutyöt</h1>
+      <div className="sliderContainer">
+        <ArrowButtons active={active1} setActive={setActive1} slides={slides1} />
+        <div className="slider"
+          onMouseDown={(e) => swipeLogic(startX1, setActive1, slides1).onStart(e.clientX)}
+          onMouseUp={(e) => swipeLogic(startX1, setActive1, slides1).onEnd(e.clientX)}
+          onTouchStart={(e) => swipeLogic(startX1, setActive1, slides1).onStart(e.touches[0].clientX)}
+          onTouchEnd={(e) => swipeLogic(startX1, setActive1, slides1).onEnd(e.changedTouches[0].clientX)}
+        >
+          {slides1.map((slide,i) => (
+            <div key={i} className="item" style={getStyle(i,active1)}>
               <h2>{slide.title}</h2>
               {slide.price && <p className="title">{slide.price}</p>}
-              {slide.items.map((row, i) => (
-                <p key={i} className="itemRow">
-                <GiSteeringWheel className="steeringIcon" />
-              {row}
-              </p>
-        ))}
-
+              {slide.items.map((it,j) => <p key={j} className="itemRow"><GiSteeringWheel /> {it}</p>)}
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-      
+
+      {/* --- Toinen slider --- */}
       <h1 className="otsikko">Ohjelmointi</h1>
-      {/* --- Toinen rivi --- */}
-      <div
-      
-        className="slider"
-        style={sliderStyle}
-        onMouseDown={(e) => swipeLogic(startX2, setActive2, slides2).onStart(e.clientX)}
-        onMouseUp={(e) => swipeLogic(startX2, setActive2, slides2).onEnd(e.clientX)}
-        onTouchStart={(e) => swipeLogic(startX2, setActive2, slides2).onStart(e.touches[0].clientX)}
-        onTouchEnd={(e) => swipeLogic(startX2, setActive2, slides2).onEnd(e.changedTouches[0].clientX)}
-      >
-        {slides2.map((slide, index) => (
-          <div key={index} className="item" style={getStyle(index, active2)}>
-            <div className="serviceContainer">
+      <div className="sliderContainer">
+        <ArrowButtons active={active2} setActive={setActive2} slides={slides2} />
+        <div className="slider" style={sliderStyle}
+          onMouseDown={(e) => swipeLogic(startX2, setActive2, slides2).onStart(e.clientX)}
+          onMouseUp={(e) => swipeLogic(startX2, setActive2, slides2).onEnd(e.clientX)}
+          onTouchStart={(e) => swipeLogic(startX2, setActive2, slides2).onStart(e.touches[0].clientX)}
+          onTouchEnd={(e) => swipeLogic(startX2, setActive2, slides2).onEnd(e.changedTouches[0].clientX)}
+        >
+          {slides2.map((slide,i) => (
+            <div key={i} className="item" style={getStyle(i,active2)}>
               <h2>{slide.title}</h2>
               {slide.price && <p className="title">{slide.price}</p>}
-              {slide.items.map((row, i) => (
-  <p key={i} className="itemRow">
-    <GiCarWheel className="wheelIcon" />
-    {row}
-  </p>
-))}
-
+              {slide.items.map((it,j) => <p key={j} className="itemRow"><GiCarWheel /> {it}</p>)}
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-      
-       <h1 className="otsikko">Teemme muutakin kuin sähkökorjauksia, myös muihinkin autoihin kuin BMW</h1>
-      {/* --- Kolmas rivi --- */}
-      <div
-        className="slider"
-        style={sliderStyle}
-        onMouseDown={(e) => swipeLogic(startX3, setActive3, slides3).onStart(e.clientX)}
-        onMouseUp={(e) => swipeLogic(startX3, setActive3, slides3).onEnd(e.clientX)}
-        onTouchStart={(e) => swipeLogic(startX3, setActive3, slides3).onStart(e.touches[0].clientX)}
-        onTouchEnd={(e) => swipeLogic(startX3, setActive3, slides3).onEnd(e.changedTouches[0].clientX)}
-      >
-        {slides3.map((slide, index) => (
-          <div key={index} className="item" style={getStyle(index, active3)}>
-            <div className="serviceContainer">
+
+      {/* --- Kolmas slider --- */}
+      <h1 className="otsikko">Muita palveluita</h1>
+      <div className="sliderContainer">
+        <ArrowButtons active={active3} setActive={setActive3} slides={slides3} />
+        <div className="slider" style={sliderStyle}
+          onMouseDown={(e) => swipeLogic(startX3, setActive3, slides3).onStart(e.clientX)}
+          onMouseUp={(e) => swipeLogic(startX3, setActive3, slides3).onEnd(e.clientX)}
+          onTouchStart={(e) => swipeLogic(startX3, setActive3, slides3).onStart(e.touches[0].clientX)}
+          onTouchEnd={(e) => swipeLogic(startX3, setActive3, slides3).onEnd(e.changedTouches[0].clientX)}
+        >
+          {slides3.map((slide,i) => (
+            <div key={i} className="item" style={getStyle(i,active3)}>
               <h2>{slide.title}</h2>
               {slide.price && <p className="title">{slide.price}</p>}
-              {slide.items.map((row, i) => (
-  <p key={i} className="itemRow">
-    <GiCarWheel className="wheelIcon" />
-    {row}
-  </p>
-))}
-
+              {slide.items.map((it,j) => <p key={j} className="itemRow"><GiCarWheel /> {it}</p>)}
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
