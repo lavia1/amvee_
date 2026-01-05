@@ -39,16 +39,16 @@
 }
 
 .itemRow .wheelIcon {
-  font-size: 0.8em;
+  font-size: 1em;
   color: #bac3cb;
   flex-shrink: 0;
 }
 .itemRow .steeringIcon {
-   font-size: 0.8em;
+   font-size: 1em;
 }
 @media (max-width: 768px) {
   .item {
-    width: 92%;
+    width: 91%;
     max-height: 400px;
     padding: 16px;
   }

@@ -104,11 +104,6 @@ export default function Navbar() {
         </li>
        
         <li className="hideOnMobile">
-          <NavLink to="/Services" className={(navData) => (navData.isActive ? "active-link" : "")}>
-            Palvelut
-          </NavLink>
-        </li>
-        <li className="hideOnMobile">
           <NavLink to="/Hinnasto" className={(navData) => (navData.isActive ? "active-link" : "")}>
             Hinnasto
           </NavLink>

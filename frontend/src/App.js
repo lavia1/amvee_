@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import Footer from "./components/Footer";
-import Services from "./pages/Services";
 import CarParts from './pages/CarParts';
 import PartDetailsPage from "./pages/PartDetailsPage";
 import Hinnasto from "./pages/Hinnasto";
@@ -35,7 +34,6 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/Palvelut" element={<Palvelut />} />
-          <Route path="/Services" element={<Services />} />
           <Route path="/Hinnasto" element={<Hinnasto />}/>
           <Route path="/CarParts" element={<CarParts />} />
           <Route path="/Kuvagalleria" element={<Kuvagalleria />} />
