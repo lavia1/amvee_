@@ -82,11 +82,11 @@ const slides3 = [
     title: "Öljynvaihto",
     price: "Alkaen 390 €",
     items: [
-      "Moottorin öljynvaihto (Valvoline -öljy) 100 €",
-      "Automaattivaihdelaatikon öljynvaihto 150 €",
-      "Manuaalivaihdelaatikon öljynvaihto 60 €",
-      "Perä öljynvaihto 60 €",
-      "Jakolaatikon öljynvaihto 80 €"
+      "Moottorin öljynvaihto (Valvoline -öljy) 100€",
+      "Automaattivaihdelaatikon öljynvaihto 150€",
+      "Manuaalivaihdelaatikon öljynvaihto 60€",
+      "Perä öljynvaihto 60€",
+      "Jakolaatikon öljynvaihto 80€"
     ],
   },
   {
@@ -173,7 +173,6 @@ export default function Palvelut() {
   return (
     
     <div>
-      
       <h1 className="otsikko">Asennus- ja vianhakutyöt, koodaus sekä jälkivarustelu</h1>
       {/* --- Ensimmäinen rivi --- */}
       <div

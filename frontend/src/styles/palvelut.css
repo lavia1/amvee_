@@ -13,8 +13,8 @@
 
 .item {
   position: absolute;
-  width: 370px;
-  max-height: 430px;      
+  width: 400px;
+  max-height: 450px;      
   overflow-y: auto;       
   background: #1a1a1a;
   border-radius: 5px;
@@ -24,36 +24,64 @@
   top: 0;
   pointer-events: auto;   /* scroll ja klikit toimivat */
 }
+.item h2{
+  text-align: center;
+  font-size: 1.6rem;
+}
 .otsikko {
   text-align:center;
+  align-items: center;
+  justify-content: center;
   background-color: #2b2b2b94;
-  padding: 15px 15px;
+  padding: 10px 10px;
   margin-bottom:40px;
 }
 .itemRow {
   display: flex;
   align-items: center; /* keskittää pystysuunnassa */
   justify-content: center; /* keskittää vaakasuunnassa */
-  gap: 8px;
-  margin: 4px 0;
+  gap: 10px;
+  margin: 10px 0;
+  text-align: center;
+  font-size: 1.5rem;
+}
+.title{
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom:15px;
+  color: #bac3cb78;
 }
 
 .itemRow .wheelIcon {
-  font-size: 1em;
+  font-size: 0.8em;
   color: #bac3cb;
   flex-shrink: 0;
 }
 .itemRow .steeringIcon {
-   font-size: 1em;
+   font-size: 0.8em;
 }
 @media (max-width: 768px) {
   .item {
-    width: 91%;
+    width: 92%;
     max-height: 400px;
     padding: 16px;
   }
 
   .otsikko {
+    font-size: 1.5rem ;
+    font-size: 1.5rem;
+    margin-top:1px;
+  }
+}
+@media (max-width: 768px) {
+  .item {
+    width: 92%;
+    max-height: 400px;
+    padding: 16px;
+  }
+
+  .otsikko {
+    font-size: 1.5rem ;
     font-size: 1.5rem;
     margin-top:1px;
   }
