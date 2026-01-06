@@ -116,9 +116,12 @@
 }
 @media (max-width: 768px) {
   .item {
-    margin-bottom:0;
-    max-height: 400px;
-    padding: 16px;
+    width: 80%;           /* kortti vie 90% ruudusta */
+    left:10%;         /* keskitä vaakasuunnassa */
+    transform: translateX(-50%) translateY(-5px); /* keskitetty + pientä nostoa */
+    max-width: 500px; 
+    
+    
   }
   .item h2{
   text-align: center;
