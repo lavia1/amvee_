@@ -10,7 +10,24 @@ const Hinnasto = () => {
     return (
 
         <div>
+            {/* --- Hero image --- 
+      <div className="heroImage"
+                style={{
+                    backgroundImage: "url(/assets/bmw_logo_banner.jpg)",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                    height: "400px",
+                    width: "100%",
 
+                }}
+                >
+                    <div className="heroText">
+                        
+                    </div>
+                
+            </div>
+          */}
 
             <div className="priceContainer"  
                     style={{

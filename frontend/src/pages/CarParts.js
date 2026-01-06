@@ -98,7 +98,7 @@ const CarParts = () => {
                 <ProductCard key={part.part_number} part={part} />
               ))
             ) : (
-              <p style={{ fontSize: "18px" }}>Osia lisätään parhaillaan. Voit ottaa myös <Link className="information-link" to="/Contact">yhteyttä
+              <p style={{ fontSize: "18px" }}>Osia lisätään parhaillaan. Voit ottaa myös <Link className="information-link" to="/Yhteystiedot">yhteyttä
       </Link>, jospa osa sittenkin löytyisi :)   </p>
               
             )}

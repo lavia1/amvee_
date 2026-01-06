@@ -53,12 +53,12 @@ const ContactForm = () => {
           <div className="contacts-section">
             <h2>Ota yhteyttä</h2>
             <a
-              href="https://www.google.com/maps?q=Ruuskanpääntie+99+85660+Nivala"
+             
               target="_blank"
               rel="noopener noreferrer"
             >
               <FontAwesomeIcon icon={faLocationDot} />
-              <span className="contactText">Ruuskanpääntie 99 85660 Nivala</span>
+              <span className="contactText">Nivala - Oulu</span>
             </a>
             <a href="tel:+358443430792">
               <i className="fa fa-phone"></i>

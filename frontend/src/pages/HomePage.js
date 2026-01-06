@@ -56,7 +56,7 @@ const HomePage = () => {
     </p>
     <p>
       Jos kiinnostuit 
-      <Link className="information-link" to="/Contact">
+      <Link className="information-link" to="/Yhteystiedot">
         ota yhteyttä  
       </Link> 
     </p>

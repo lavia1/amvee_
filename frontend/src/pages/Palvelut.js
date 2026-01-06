@@ -180,6 +180,24 @@ export default function Palvelut() {
 
   return (
     <div>
+       {/* --- Hero image --- 
+      <div className="heroImage"
+                style={{
+                    backgroundImage: "url(/assets/bmw_logo_banner.jpg)",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                    height: "400px",
+                    width: "100%",
+
+                }}
+                >
+                    <div className="heroText">
+                        
+                    </div>
+                
+            </div>
+          */}
       {/* --- Ensimmäinen slider --- */}
       <h1 className="otsikko">Asennus- ja vianhakutyöt, koodaus sekä jälkivarustelu</h1>
       <div className="sliderContainer">

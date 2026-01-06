@@ -10,7 +10,24 @@
     font-size: 17px;
     
 }
+.heroImage {
+    display: flex;              
+    align-items: center;         
+    justify-content: flex-start; 
+    height: 400px;               
+    width: 100%;
+    position: relative;          
+}
 
+.heroText h1{
+    font-size: 2rem;
+    text-align: left;         
+    color: #bac3cb;
+    background-color: #00000094;
+    padding: 20px;               
+    margin-left: 30px;           
+    max-width: 700px;           
+}
 table.priceTable {
     background-color: rgba(0, 0, 0, 0.75);
     background-blend-mode: darken;
