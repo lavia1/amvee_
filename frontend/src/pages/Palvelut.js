@@ -160,9 +160,9 @@ export default function Palvelut() {
     const abs = Math.abs(diff);
     if (diff === 0) return { transform: "none", zIndex: 1, filter: "none", opacity: 1 };
     return {
-      transform: `translateX(${120*diff}px) scale(${1-0.2*abs}) perspective(16px) rotateY(${diff>0 ? "-1deg":"1deg"})`,
+      transform: `translateX(${120*diff}px) scale(${1-0.2*abs})`,
       zIndex: -abs,
-      filter: "blur(5px)",
+      filter: "blur(2px)",
       opacity: abs > 2 ? 0 : 0.6,
       transition: "0.5s"
     };
