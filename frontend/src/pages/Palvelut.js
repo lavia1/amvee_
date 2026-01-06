@@ -214,7 +214,7 @@ export default function Palvelut() {
             <div key={i} className="item" style={getStyle(i,active2)}>
               <h2>{slide.title}</h2>
               {slide.price && <p className="title">{slide.price}</p>}
-              {slide.items.map((it,j) => <p key={j} className="itemRow"><GiCarWheel /> {it}</p>)}
+              {slide.items.map((it,j) => <p key={j} className="itemRow"><GiCarWheel className="wheelIcon" /> {it}</p>)}
             </div>
           ))}
         </div>
@@ -234,7 +234,7 @@ export default function Palvelut() {
             <div key={i} className="item" style={getStyle(i,active3)}>
               <h2>{slide.title}</h2>
               {slide.price && <p className="title">{slide.price}</p>}
-              {slide.items.map((it,j) => <p key={j} className="itemRow"><GiCarWheel /> {it}</p>)}
+              {slide.items.map((it,j) => <p key={j} className="itemRow"><GiCarWheel className="wheelIcon" /> {it}</p>)}
             </div>
           ))}
         </div>
