@@ -55,14 +55,16 @@ nav li:first-child img:hover {
     height: 100vh;
     width: 250px;
     z-index: 999;
-    background-color: #2b2b2b94;
-    backdrop-filter: blur(6px);
-    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
     transition: right 0.4s ease-in-out;
+}
+.nav .sidebar{
+    background-color: #2b2b2bd2;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.534),#2b2b2b94);
+
 }
 .sidebar.show {
     right: 0;
@@ -85,6 +87,7 @@ nav li:first-child img:hover {
 }
 .sidebar li{
     width: 100%;
+    
 }
 .sidebar a{
     width: 100%;
@@ -102,9 +105,10 @@ nav li:first-child img:hover {
     transition: color 0.5s, text-shadow 0.5s; 
 }
 .sidebar .menu-button {
+
   position: absolute;
   top:20px;
-  right: 180px;
+  left: 180px;
   width: 50px;  /* Adjust size as needed */
   height: 50px;
   display: flex ; /* Make sure it’s visible */
@@ -113,7 +117,6 @@ nav li:first-child img:hover {
   z-index: 1000;
   padding: 0;
   margin-bottom:30px;
-  background: transparent;
   cursor: pointer;
 }
 .menu-button-icon:hover {
