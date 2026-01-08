@@ -95,10 +95,10 @@ const Hinnasto = () => {
                     
                 </table>
                 <div className="infoContainer">
-                <h2>
+                <h3 className="infoText">
                     Suuremmat remontit / toimenpiteet olethan yhteydessä niin
                     sovimme urakkahinnan
-                </h2>
+                </h3>
                 
             </div>
             </div>

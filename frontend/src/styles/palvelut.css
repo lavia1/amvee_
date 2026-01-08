@@ -19,14 +19,14 @@
   max-height: 450px;      
   overflow-y: auto;       
   background-color: #2b2b2b94;
-    background-image: linear-gradient(to bottom, #000000, #2b2b2b);
+  background-image: linear-gradient(to bottom, #000000, #2b2b2b);
   border-radius: 4px;
   padding: 20px;
   transition: transform 0.6s, opacity 0.8s, filter 0.6s;
   left: calc(50% - 200px);
   top: 0;
   pointer-events: auto;   /* scroll ja klikit toimivat */
- transform: translateY(-5px);
+  transform: translateY(-5px);
   box-shadow: 0 14px 30px #2f7bb93b;
 }
 .item h2{
@@ -40,8 +40,8 @@
   text-align:center;
   align-items: center;
   justify-content: center;
-    background-color: #2b2b2b94;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.534),#2b2b2b3e,rgba(0, 0, 0, 0.534));
+  background-color: #2b2b2b94;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.534),#2b2b2b3e,rgba(0, 0, 0, 0.534));
   padding: 10px 10px;
   margin-bottom:50px;
   color:#bac3cb;
