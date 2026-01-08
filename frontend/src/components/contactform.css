@@ -5,6 +5,7 @@
   }
   
 .checkout-container {
+  
     display:flex;
     justify-content: space-between;
     gap:20px;
@@ -21,7 +22,6 @@
     border-radius: 4px;
     resize: vertical;
 }
-
 .form-section label {
     padding: 12px 12px 12px 0;
     display: inline-block;
@@ -30,23 +30,39 @@
     word-wrap: break-word;
     max-width: 100%;
     margin-right: 10px;
+    font-size: 1.2rem;
 }
 h2{
-    color:#2f7bb9;
+    background: linear-gradient(
+    90deg,
+    #bac3cb,
+    #4da6ff,
+    #1c5fa8,
+    #bac3cb
+  );
+  background-size: 300% 300%;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: textGradientMove 6s ease infinite;
     margin-bottom: 30px;
 }
-
+.contacts-section h2{
+  padding-top:10px;
+}
 
 .contacts-section a{
     display: flex;
     align-items: center;
     gap: 20px;
-    font-size: 20px;  
+    font-size: 23px;  
     color: #bac3cb;     
     text-decoration: none;  
     transition: color 0.4s;
     margin-bottom: 20px;
-    margin-top:10px; 
+    margin-top:15px; 
 }
 .contacts-section a:hover{
     color: #2f7bb9 ;
@@ -136,13 +152,12 @@ h2{
   .checkout-container {
     flex-direction: column;
     gap: 30px;
-    padding: 20px;
+    padding: 15px;
   }
 
-  .contacts-section,
   .form-section {
     width: 100%;
-    padding: 20px;
+    padding: 10px;
   }
 
   .form-row {
@@ -167,17 +182,28 @@ h2{
     padding:10px;
   }
   .form-section label {
-    font-size: 15px;
+    font-size: 1.1rem;
 
+  }
+  .form-section h2 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
   }
   
+  
   .contacts-section a {
-    font-size: 18px;
+    font-size: 1.3rem;
     gap: 10px;
   }
+  .contacts-section h2 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    
+  }
+  
 
   .icon-link i {
-    font-size: 24px;
+    font-size: 1.px;
   }
 
   .btn-hover {

@@ -165,8 +165,13 @@
     }
     .offer-section{
         width: 100%;
-        padding-top:30px;
+        padding-top:40px;
         padding-bottom:50px;
+    }
+     .information-text p {
+        
+        font-size: 1.3rem;
+        text-align: center;
     }
    .offer-title{
     font-size: 1.8rem;
@@ -179,7 +184,7 @@
     }
     .information-text p {
         padding-top:30px;
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         text-align: center;
     }
     .view-all-button{
