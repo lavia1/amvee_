@@ -160,6 +160,17 @@
     .Carparts-section h1 {
         margin-left:1rem;
     }
+    .offer-text{
+        font-size: 1.3rem;
+    }
+    .offer-section{
+        width: 100%;
+        padding-top:30px;
+        padding-bottom:50px;
+    }
+   .offer-title{
+    font-size: 1.8rem;
+   }
 }
 @media (max-width: 600px){
     .parts-review-row{
@@ -167,7 +178,8 @@
         gap: 1rem;
     }
     .information-text p {
-        font-size: 1.2rem;
+        padding-top:30px;
+        font-size: 1.3rem;
         text-align: center;
     }
     .view-all-button{
