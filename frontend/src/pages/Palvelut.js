@@ -180,24 +180,16 @@ export default function Palvelut() {
 
   return (
     <div>
-       {/* --- Hero image --- 
-      <div className="heroImage"
-                style={{
-                    backgroundImage: "url(/assets/bmw_logo_banner.jpg)",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                    height: "400px",
-                    width: "100%",
-
-                }}
-                >
-                    <div className="heroText">
-                        
-                    </div>
-                
-            </div>
-          */}
+       <Banner
+                title="Palvelut"
+                subtitle={
+                    <>
+                    Ohjelmointi, asennustyöt tai mitä mieleen juolahtaa 
+                </>}
+                imageUrl="/assets/mustaheroimage.jpg"
+                className="home-banner"
+      />
+          
       {/* --- Ensimmäinen slider --- */}
       <h1 className="otsikko">Asennus- ja vianhakutyöt, koodaus sekä jälkivarustelu</h1>
       <div className="sliderContainer">
@@ -221,6 +213,7 @@ export default function Palvelut() {
       {/* --- Toinen slider --- */}
       <h1 className="otsikko">Ohjelmointi</h1>
       <div className="sliderContainer">
+        
         <ArrowButtons active={active2} setActive={setActive2} slides={slides2} />
         <div className="slider" style={sliderStyle}
           onMouseDown={(e) => swipeLogic(startX2, setActive2, slides2).onStart(e.clientX)}

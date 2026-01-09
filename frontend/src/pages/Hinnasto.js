@@ -10,31 +10,25 @@ const Hinnasto = () => {
     return (
 
         <div>
-            {/* --- Hero image --- 
-      <div className="heroImage"
-                style={{
-                    backgroundImage: "url(/assets/bmw_logo_banner.jpg)",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                    height: "400px",
-                    width: "100%",
-
-                }}
-                >
-                    <div className="heroText">
-                        
-                    </div>
-                
-            </div>
-          */}
-
+             <Banner
+                title="Hinnasto"
+                subtitle={
+                    <>
+                    Hinnasto koskee alla mainittuja palveluita
+                    <br /> 
+                    
+                    Muut työt erikseen sovittaessa
+                </>}
+                imageUrl="/assets/mustaheroimage.jpg"
+                className="home-banner"
+            />
             <div className="priceContainer"  
                     style={{
-                        backgroundImage: "url(/assets/gearbox.jpg)",
+                        backgroundImage: "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(/assets/engine_bmw.jpg)",
                         backgroundSize: "cover",
                         backgroundPosition: "center",
-                        backgroundRepeat: "no-repeat"
+                        backgroundRepeat: "no-repeat",
+                        
                         
                     }}>
                     

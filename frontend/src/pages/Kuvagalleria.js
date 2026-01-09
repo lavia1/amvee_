@@ -1,9 +1,21 @@
 import React from "react";
 import "../styles/Photogallery.css";
+import Banner from "../components/Banner";
 
 export default function PhotoGallery() {
   return (
+    
     <div className="photo-gallery-container">
+      <Banner
+                title="Kuvagalleria"
+                subtitle={
+                    <>
+               Kuvia projekteista – autoja, asennuksia ja kaikkea siltä väliltä
+                </>}
+                imageUrl="/assets/mustaheroimage.jpg"
+                className="home-banner"
+      />
+
       <aside className="sidebar">
         <div className="logo">&#8734;</div>
       </aside>

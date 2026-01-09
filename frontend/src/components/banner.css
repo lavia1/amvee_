@@ -47,87 +47,29 @@
 .banner-mobile-title {
   display: none;
 }
-@media (max-width: 600px) {
-  .banner {
-    height: 300px;
-    justify-content: center;
-    background-position: 85% center;
-  }
-
-  .banner-overlay {
-    margin-left: 0;
-    max-width: 100%;
-    padding: 10px;
-  }
-
-  .banner-title {
-    font-size: 3rem;
-    text-align: center;
-  }
-
-  .banner-subtitle {
-    font-size: 1.2rem;
-    text-align: center;
-    padding-bottom: 0;
-    margin-bottom: 0;
-  }
-
-
-  .home-banner {
-    background-position: 95% center;
-    justify-content: flex-end;
-  }
-
-  .home-banner .banner-overlay {
-    text-align: right;
-    padding-right: 20px;
-    padding-left: 0;
-  }
-
-
-  .banner-overlay {
-    display: none;
-  }
-
-  .banner-mobile-title {
-    display: block;
-    text-align: center;
-    padding-top:35px;
-  }
-
-  .banner-mobile-title .banner-title {
-    font-size: 2.5rem;
-  }
-
-  .banner-mobile-title .banner-subtitle {
-    font-size: 1.5rem;
-  }
-}
 @media (max-width: 768px) {
   .banner {
     height: 300px;
     justify-content: center;
     background-position: 85% center;
   }
-
   .banner-overlay {
+    display: none;
     margin-left: 0;
     max-width: 100%;
     padding: 10px;
   }
-
   .banner-title {
-    font-size: 3rem;
+    font-size: 2.5rem;
     text-align: center;
   }
 
   .banner-subtitle {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     text-align: center;
     padding-bottom: 0;
     margin-bottom: 0;
   }
-
   .home-banner {
     background-position: 95% center;
     justify-content: flex-end;
@@ -138,25 +80,9 @@
     padding-right: 20px;
     padding-bottom: 0;
   }
-  .banner-overlay {
-    display: none;
-
-  }
-
   .banner-mobile-title {
     display: block;
     text-align: center;
-    padding-top: 35px;
-    
-  }
-
-  .banner-mobile-title .banner-title {
-    font-size: 2.5rem;
-  }
-
-  .banner-mobile-title .banner-subtitle {
-    font-size: 1.5rem;
+    padding-top: 30px;
   }
 }
-
-
