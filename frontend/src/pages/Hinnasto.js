@@ -19,7 +19,7 @@ const Hinnasto = () => {
                     
                     Muut työt erikseen sovittaessa
                 </>}
-                imageUrl="/assets/mustaheroimage.jpg"
+                imageUrl="/assets/otusbanner.jpg"
                 className="home-banner"
             />
             <div className="priceContainer"  
@@ -36,7 +36,7 @@ const Hinnasto = () => {
                 <table
                     className="priceTable"
                     style={{
-                        backgroundImage: "url(/assets/bmw_logo2.jpg)",
+                        backgroundImage: "url(/assets/bmw_logo.jpg)",
                         backgroundSize: "cover",
                         backgroundPosition: "center",
                         backgroundRepeat: "no-repeat",

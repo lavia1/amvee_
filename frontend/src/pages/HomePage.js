@@ -64,7 +64,7 @@ const HomePage = () => {
 
   {/* Right - Image */}
   <div className="information-image">
-    <img src="/assets/etukuvamusta2.jpg" alt="BMW headlights" />
+    <img src="/assets/bmw_etukuva.jpg" alt="BMW headlights" />
   </div>
 </div>
 
