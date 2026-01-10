@@ -36,7 +36,7 @@ const Hinnasto = () => {
                 <table
                     className="priceTable"
                     style={{
-                        backgroundImage: "url(/assets/bmwmerkki.jpg)",
+                        backgroundImage: "url(/assets/bmw_logo2.jpg)",
                         backgroundSize: "cover",
                         backgroundPosition: "center",
                         backgroundRepeat: "no-repeat",

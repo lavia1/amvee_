@@ -7,7 +7,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import "../styles/CarParts.css";
 import CategoryList from '../components/CategoryList';
-
+import Search from '../components/Search';
 const CarParts = () => {
   const [parts, setParts] = useState([]);
   const [filteredParts, setFilteredParts] = useState([]);
@@ -76,8 +76,9 @@ const CarParts = () => {
   const pageCount = Math.ceil(filteredParts.length / partsPerPage);
 
   return (
+    
     <div className="carParts-page">
-
+      <Search onSearchResults={handleSearchResults} />
       <div className="carParts-layout">
         {/* Vasemmanpuoleinen kategoria */}
         <aside className="category-sidebar">
@@ -98,7 +99,7 @@ const CarParts = () => {
                 <ProductCard key={part.part_number} part={part} />
               ))
             ) : (
-              <p style={{ fontSize: "18px" }}>Osia lisätään parhaillaan. Voit ottaa myös <Link className="information-link" to="/Yhteystiedot">yhteyttä
+              <p className="osa"style={{ fontSize: "18px" }}>Osia lisätään parhaillaan. Voit ottaa myös <Link className="information-link" to="/Yhteystiedot">yhteyttä
       </Link>, jospa osa sittenkin löytyisi :)   </p>
               
             )}

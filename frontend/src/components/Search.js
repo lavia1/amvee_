@@ -14,7 +14,6 @@ const Search = ({ onSearchResults }) => {
         const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/parts`);
         setParts(response.data);
       } catch (error) {
-        setError('Error fetching parts');
         console.error("Error fetching parts:", error);
       }
     };
@@ -23,7 +22,7 @@ const Search = ({ onSearchResults }) => {
 
   const handleSearch = () => {
     if (!searchQuery) {
-      setError('Please enter a search term');
+      setError('Hakusana puuttuu');
       onSearchResults([]);
       return;
     }
@@ -64,6 +63,7 @@ const Search = ({ onSearchResults }) => {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           className="search-input"
+          
         />
 
         <button

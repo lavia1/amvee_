@@ -18,7 +18,10 @@
     list-style-type: none;
     margin: 0 5px;
 }
-
+.osa{
+  margin-bottom:400px;
+  
+}
 .page-link{
     text-decoration: none;
     padding: 10px 15px;
