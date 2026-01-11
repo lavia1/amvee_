@@ -3,7 +3,7 @@ import { categories } from "./categories";
 import CategoryNode from "./CategoryNode";
 import "./categorylist.css";
 
-export default function CategoryList({ onSelectCategory, parts }) {
+export default function CategoryList({ onSelectCategory, parts, selectedCategoryPath, setSelectedCategoryPath }) {
   const [openCategory, setOpenCategory] = useState(null);
 
   return (
@@ -18,10 +18,13 @@ export default function CategoryList({ onSelectCategory, parts }) {
             onToggle={() =>
               setOpenCategory((prev) => (prev === cat.name ? null : cat.name))
             }
-            parts={parts} // Lähetetään osat myös CategoryNodeen
+            parts={parts}
+            selectedCategoryPath={selectedCategoryPath}  // Valittu kategoria
+            setSelectedCategoryPath={setSelectedCategoryPath} // Aseta valittu
           />
         ))}
       </ul>
     </div>
   );
 }
+

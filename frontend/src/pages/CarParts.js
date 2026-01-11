@@ -95,6 +95,8 @@ const CarParts = () => {
           <CategoryList
             onSelectCategory={handleCategorySelect}
             parts={parts}
+            selectedCategoryPath={selectedCategoryPath}
+  setSelectedCategoryPath={setSelectedCategoryPath}
           />
         </aside>
 
