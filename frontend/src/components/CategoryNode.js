@@ -1,25 +1,26 @@
 import React, { useState } from "react";
 
-function CategoryNode({ node, onSelect, parentPath = "", isOpen: controlledIsOpen, onToggle }) {
+function CategoryNode({ node, onSelect, parentPath = "", isOpen: controlledIsOpen, onToggle, parts }) {
   const [openChild, setOpenChild] = useState(null);
   const hasChildren = node.children && node.children.length > 0;
 
   const fullPath = parentPath ? `${parentPath}/${node.name}` : node.name;
-
-  // Päätason isOpen
   const isOpen = controlledIsOpen ?? false;
 
-  // Klikki pääkategoriaan tai alikategoriaan
+  // Laske osien määrä tälle kategorialle
+  const count = parts
+    ? parts.filter((p) => p.category && p.category.startsWith(fullPath)).length
+    : 0;
+
   const handleClick = () => {
     if (hasChildren) {
       onToggle?.();
-      onSelect?.(fullPath, true); // pääkategoria
+      onSelect?.(fullPath, true);
     } else {
-      onSelect?.(fullPath, false); // alikategoria
+      onSelect?.(fullPath, false);
     }
   };
 
-  // Toggle lapsille (vain yksi lapsi auki kerrallaan)
   const handleToggleChild = (childName) => {
     setOpenChild((prev) => (prev === childName ? null : childName));
   };
@@ -30,7 +31,7 @@ function CategoryNode({ node, onSelect, parentPath = "", isOpen: controlledIsOpe
         className={`category-span ${hasChildren ? "has-children" : ""}`}
         onClick={handleClick}
       >
-        {node.name}
+        {node.name} ({count}) {/* Näytetään osien määrä */}
         {hasChildren && <span>{isOpen ? "▼" : "▶"}</span>}
       </span>
 
@@ -44,6 +45,7 @@ function CategoryNode({ node, onSelect, parentPath = "", isOpen: controlledIsOpe
               parentPath={fullPath}
               isOpen={openChild === child.name}
               onToggle={() => handleToggleChild(child.name)}
+              parts={parts} // Lähetetään lapsille
             />
           ))}
         </ul>
@@ -53,4 +55,3 @@ function CategoryNode({ node, onSelect, parentPath = "", isOpen: controlledIsOpe
 }
 
 export default CategoryNode;
-

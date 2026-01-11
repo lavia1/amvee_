@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import "../styles/CarParts.css";
 import CategoryList from '../components/CategoryList';
 import Search from '../components/Search';
+
 const CarParts = () => {
   const [parts, setParts] = useState([]);
   const [filteredParts, setFilteredParts] = useState([]);
@@ -18,19 +19,21 @@ const CarParts = () => {
   const location = useLocation();  
   const navigate = useNavigate();  
 
-  // Fetch parts
+  // --- Hae osat backendistä ---
+  const fetchParts = async () => {
+    try {
+      const response = await Axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/parts`);
+      const availableParts = response.data.filter(part => part.stock > 0);
+      setParts(availableParts);
+      setFilteredParts(availableParts);
+    } catch (error) {
+      console.error("Error fetching parts: ", error);
+    }
+  };
+
+  // Fetch osat ensimmäisellä renderöinnillä
   useEffect(() => {
-    const getData = async () => {
-      try {
-        const response = await Axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/parts`);
-        const availableParts = response.data.filter(part => part.stock > 0);
-        setParts(availableParts);
-        setFilteredParts(availableParts);
-      } catch (error) {
-        console.error("Error fetching parts: ", error);
-      }
-    };
-    getData();
+    fetchParts();
   }, []);
 
   // URL page handling
@@ -40,26 +43,33 @@ const CarParts = () => {
     setCurrentPage(Number(page));
   }, [location]);
 
+  // --- Päivitä suodatus hakutulosten mukaan ---
   const handleSearchResults = (results) => {
     const availableParts = results.filter(part => part.stock > 0);
     setFilteredParts(availableParts);
     setCurrentPage(0);
   };
 
+  // --- Päivitä suodatus kategorian mukaan ---
   const handleCategorySelect = (fullPath, isParent) => {
     setSelectedCategoryPath(fullPath);
+
     let filtered;
     if (isParent) {
-      // Pääkategoria: kaikki osat, joiden category alkaa pääkategorian nimellä
-      filtered = parts.filter(p => p.category.startsWith(fullPath));
+      filtered = parts.filter(
+        (p) => p.category && p.category.startsWith(fullPath)
+      );
     } else {
-      // Alakategoria: vain tarkka alikategoria
-      filtered = parts.filter(p => p.category === fullPath);
+      filtered = parts.filter(
+        (p) => p.category && p.category === fullPath
+      );
     }
+
     setFilteredParts(filtered);
     setCurrentPage(0);
   };
 
+  // --- Selaa sivuja ---
   const handlePageClick = (data) => {
     const selectedPage = data.selected;
     if (selectedPage < Math.ceil(filteredParts.length / partsPerPage)) {
@@ -75,14 +85,17 @@ const CarParts = () => {
 
   const pageCount = Math.ceil(filteredParts.length / partsPerPage);
 
+  // --- JSX ---
   return (
-    
     <div className="carParts-page">
       <Search onSearchResults={handleSearchResults} />
       <div className="carParts-layout">
         {/* Vasemmanpuoleinen kategoria */}
         <aside className="category-sidebar">
-          <CategoryList onSelectCategory={handleCategorySelect} />
+          <CategoryList
+            onSelectCategory={handleCategorySelect}
+            parts={parts}
+          />
         </aside>
 
         {/* Oikeanpuoleinen osat */}
@@ -99,13 +112,29 @@ const CarParts = () => {
                 <ProductCard key={part.part_number} part={part} />
               ))
             ) : (
-              <p className="osa"style={{ fontSize: "18px" }}>Osia lisätään parhaillaan. Voit ottaa myös <Link className="information-link" to="/Yhteystiedot">yhteyttä
-      </Link>, jospa osa sittenkin löytyisi :)   </p>
-              
+              <p className="osa" style={{ fontSize: "18px" }}>
+                Osia lisätään parhaillaan. Voit ottaa myös{" "}
+                <Link className="information-link" to="/Yhteystiedot">
+                  yhteyttä
+                </Link>
+                , jospa osa sittenkin löytyisi :)
+              </p>
             )}
           </div>
 
-          
+          {/* Paginaatio */}
+          {pageCount > 1 && (
+            <ReactPaginate
+              previousLabel={<FaArrowLeft />}
+              nextLabel={<FaArrowRight />}
+              pageCount={pageCount}
+              onPageChange={handlePageClick}
+              containerClassName={"pagination"}
+              activeClassName={"active"}
+              pageRangeDisplayed={3}
+              marginPagesDisplayed={1}
+            />
+          )}
         </main>
       </div>
     </div>
