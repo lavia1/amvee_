@@ -109,7 +109,13 @@ const ContactForm = () => {
       
           <div className="form-section">
             <form onSubmit={handleSubmit}>
-              <div className="form-backgroundcolor">
+              <div className="form-backgroundcolor"
+               style={{
+                        backgroundImage: "url(/assets/engine_bmw.jpg)",
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        backgroundRepeat: "no-repeat",
+                    }}>
                 <h2>Lähetä viesti</h2>
       
                 <div className="form-row">

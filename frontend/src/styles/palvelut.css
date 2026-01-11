@@ -109,11 +109,11 @@
 }
 
 .prev {
-  left: 50px;
+  left: 300px;
 }
 
 .next {
-  right: 50px;
+  right: 300px;
 }
 @media (max-width: 768px) {
   .item {
