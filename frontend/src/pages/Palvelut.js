@@ -7,6 +7,7 @@ const slides1 = [
   {
     title: "Sähköjärjestelmien vianhaku ja korjaus",
     price: "55e/h",
+    image:"assets/bmw_etukuva.jpg",
     items: [
       " Airbag-järjestelmän korjaus",
       "Moduulien vaihto",
@@ -15,6 +16,8 @@ const slides1 = [
   },
   {
     title: "Johtotehtävät",
+
+    image:"/assets/wires.jpg",
     price: "55e/h",
     items: [
       "Peräkontin piuhasarjan uusiminen",
@@ -23,6 +26,7 @@ const slides1 = [
   },
    {
     title: "Koodaaminen",
+    image:"/assets/back_lights.jpg",
     items: [
       "Jenkkiparkkien aktivointi",
       "Tervetulo-valojen koodaus",
@@ -38,6 +42,7 @@ const slides1 = [
   },
   {
     title: "Jälkivarustelu eli retrofit, esimerkiksi",
+    image:"assets/sisusta.jpg",
     items: [
       "Ajotietokoneen jälkiasennus",
       "Penkkien jälkiasennus",
@@ -50,6 +55,7 @@ const slides1 = [
 const slides2 = [
   {
     title: "Moottorin ohjelmointi",
+    image:"assets/engine_bmw.jpg",
     price: "Ota kaikki irti autostasi. Alkaen 390 euroa",
     items: [
       "BMW-dieselmoottoreiden optimointi",
@@ -62,6 +68,7 @@ const slides2 = [
   },
   {
     title: "Vaihdelaatikko-ohjelmat",
+    image:"assets/gearbox.jpg",
     items: [
       "JBPerformance GM, 6hp sekä 8hp vaihdelaatikko-ohjelmat",
       "Tekee kuminauhavaihdelaatikosta napakan, fiksun ja luotettavan",
@@ -70,6 +77,7 @@ const slides2 = [
   },
   {
     title: "Auton ohjelmiston päivittäminen",
+     image:"assets/bmw_etukuva.jpg",
     price: "60 euroa",
     items:[
       "Koko auton ohjainmoodulien päivittäminen uusimpaan versioon"
@@ -80,17 +88,19 @@ const slides2 = [
 const slides3 = [
   {
     title: "Öljynvaihto",
+    image:"assets/engine_bmw.jpg",
     price: "Alkaen 390 €",
     items: [
-      "Moottorin öljynvaihto (Valvoline -öljy) 100€",
-      "Automaattivaihdelaatikon öljynvaihto 150€",
-      "Manuaalivaihdelaatikon öljynvaihto 60€",
-      "Perä öljynvaihto 60€",
-      "Jakolaatikon öljynvaihto 80€"
+      "Moottori (Valvoline -öljy) 100€",
+      "Automaattivaihdelaatikko 150€",
+      "Manuaalivaihdelaatikko 60€",
+      "Perä 60€",
+      "Jakolaatikko 80€"
     ],
   },
   {
-    title: "BMW-diagnostiikka ja koodaamisohjelmien asennus",
+    title: "BMW-diagnostiikka & koodaamisohjelmien asennus",
+    image:"assets/bmw_logo.jpg",
     price: "Asennus onnistuu joko etänä tai paikanpäällä",
     items: [
       "Ista+ (ISTA D ja ISTA P) ",
@@ -105,6 +115,7 @@ const slides3 = [
   },
     {
     title: "Esimerkkejä muista töistä",
+    image:"assets/fvanne.jpg",
     price: "60 euroa",
     items: [
       "Diagnostiikka -työt kaiken maailman muihin vikoihin",
@@ -116,9 +127,11 @@ const slides3 = [
       "Jarrujen korjaus"
 
     ],
+    
   },
     {
     title: "Soittaja on voittaja",
+    image:"assets/wheel_banner.jpg",
     price: "Kaikki muu mikä mieleen juolahtaa",
     items: [
      
@@ -132,15 +145,51 @@ const slides3 = [
   },
 ];
 
+const slides4 = [
+  {
+    title: "Jakoketjuremontit",
+    items: [
+      "Bmw N57/N47 Jakoketjuremontti 2100e",
+      "Kaikki muutkin jakoketjun/hihnan vaihdot onnistuvat. Esim M57, volvot, foordit yms.",
+      
+      
+      
+    ],
+  },
+  {
+    title: "Moottorinvaihdot",
+    image:"assets/moottori.jpg",
+    items: [
+      "Bmw M47/M57/N47/N57 Venttiilikopan tiivistevaihto 220e",
+      "Turbon vaihto pelkän keskiön kanssa. Normaalia paljon halvempi",
+      
+    ],
+  },
+  {
+    title: "Apulaitteiden vaihdot",
+    image:"assets/startstop.jpg",
+    items:[
+      "Startti",
+      "Laturi",
+      "Ilmastoinnin kompura jne.",
+      "Hehkun rele ja hehkujen vaihto"
+    ],
+  },
+];
+
+
+
 export default function Palvelut() {
   // --- State jokaiselle sliderille ---
   const [active1, setActive1] = useState(0);
   const [active2, setActive2] = useState(0);
   const [active3, setActive3] = useState(0);
+  const [active4, setActive4] = useState(0);
 
   const startX1 = useRef(null);
   const startX2 = useRef(null);
   const startX3 = useRef(null);
+  const startX4 = useRef(null);
 
   // --- Swipe-logiikat ---
   const swipeLogic = (startRef, setActiveFn, slides) => ({
@@ -191,45 +240,74 @@ export default function Palvelut() {
       />
           
       {/* --- Ensimmäinen slider --- */}
-      <h1 className="otsikko">Asennus- ja vianhakutyöt, koodaus sekä jälkivarustelu</h1>
-      <div className="sliderContainer">
-        <ArrowButtons active={active1} setActive={setActive1} slides={slides1} />
-        <div className="slider"
-          onMouseDown={(e) => swipeLogic(startX1, setActive1, slides1).onStart(e.clientX)}
-          onMouseUp={(e) => swipeLogic(startX1, setActive1, slides1).onEnd(e.clientX)}
-          onTouchStart={(e) => swipeLogic(startX1, setActive1, slides1).onStart(e.touches[0].clientX)}
-          onTouchEnd={(e) => swipeLogic(startX1, setActive1, slides1).onEnd(e.changedTouches[0].clientX)}
-        >
-          {slides1.map((slide,i) => (
-            <div key={i} className="item" style={getStyle(i,active1)}>
-              <h2>{slide.title}</h2>
-              {slide.price && <p className="title">{slide.price}</p>}
-              {slide.items.map((it,j) => <p key={j} className="itemRow"><GiSteeringWheel /> {it}</p>)}
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* --- Toinen slider --- */}
-      <h1 className="otsikko">Ohjelmointi</h1>
-      <div className="sliderContainer">
+<h1 className="otsikko">Asennus- ja vianhakutyöt, koodaus sekä jälkivarustelu</h1>
+<div className="sliderContainer">
+  <ArrowButtons active={active1} setActive={setActive1} slides={slides1} />
+  <div
+    className="slider"
+    onMouseDown={(e) => swipeLogic(startX1, setActive1, slides1).onStart(e.clientX)}
+    onMouseUp={(e) => swipeLogic(startX1, setActive1, slides1).onEnd(e.clientX)}
+    onTouchStart={(e) => swipeLogic(startX1, setActive1, slides1).onStart(e.touches[0].clientX)}
+    onTouchEnd={(e) => swipeLogic(startX1, setActive1, slides1).onEnd(e.changedTouches[0].clientX)}
+  >
+    {slides1.map((slide, i) => (
+      <div key={i} className="item" style={getStyle(i, active1)}>
         
-        <ArrowButtons active={active2} setActive={setActive2} slides={slides2} />
-        <div className="slider" style={sliderStyle}
-          onMouseDown={(e) => swipeLogic(startX2, setActive2, slides2).onStart(e.clientX)}
-          onMouseUp={(e) => swipeLogic(startX2, setActive2, slides2).onEnd(e.clientX)}
-          onTouchStart={(e) => swipeLogic(startX2, setActive2, slides2).onStart(e.touches[0].clientX)}
-          onTouchEnd={(e) => swipeLogic(startX2, setActive2, slides2).onEnd(e.changedTouches[0].clientX)}
-        >
-          {slides2.map((slide,i) => (
-            <div key={i} className="item" style={getStyle(i,active2)}>
-              <h2>{slide.title}</h2>
-              {slide.price && <p className="title">{slide.price}</p>}
-              {slide.items.map((it,j) => <p key={j} className="itemRow"><GiCarWheel className="wheelIcon" /> {it}</p>)}
-            </div>
-          ))}
+        {/* Wrapper otsikolle + kuvalle */}
+        <div className="titleWithImageWrapper">
+          {slide.image && (
+            <img src={slide.image} alt={slide.title} className="titleBgImage" />
+          )}
+          <h2 className="titleOverlay">{slide.title}</h2>
         </div>
+
+        {slide.price && <p className="title">{slide.price}</p>}
+
+        {slide.items.map((it, j) => (
+          <p key={j} className="itemRow">
+            <GiSteeringWheel className="steeringIcon" /> {it}
+          </p>
+        ))}
       </div>
+    ))}
+  </div>
+</div>
+
+
+    {/* --- Toinen slider --- */}
+<h1 className="otsikko">Ohjelmointi</h1>
+<div className="sliderContainer">
+  <ArrowButtons active={active2} setActive={setActive2} slides={slides2} />
+  <div
+    className="slider"
+    onMouseDown={(e) => swipeLogic(startX2, setActive2, slides2).onStart(e.clientX)}
+    onMouseUp={(e) => swipeLogic(startX2, setActive2, slides2).onEnd(e.clientX)}
+    onTouchStart={(e) => swipeLogic(startX2, setActive2, slides2).onStart(e.touches[0].clientX)}
+    onTouchEnd={(e) => swipeLogic(startX2, setActive2, slides2).onEnd(e.changedTouches[0].clientX)}
+  >
+    {slides2.map((slide, i) => (
+      <div key={i} className="item" style={getStyle(i, active2)}>
+        
+        {/* Wrapper otsikolle + kuvalle */}
+        <div className="titleWithImageWrapper">
+          {slide.image && (
+            <img src={slide.image} alt={slide.title} className="titleBgImage" />
+          )}
+          <h2 className="titleOverlay">{slide.title}</h2>
+        </div>
+
+        {slide.price && <p className="title">{slide.price}</p>}
+
+        {slide.items.map((it, j) => (
+          <p key={j} className="itemRow">
+            <GiSteeringWheel className="steeringIcon" /> {it}
+          </p>
+        ))}
+      </div>
+    ))}
+  </div>
+</div>
+
 
       {/* --- Kolmas slider --- */}
       <h1 className="otsikko">Teemme muutakin kuin sähkökorjauksia, myös muihinkin autoihin kuin BMW</h1>
@@ -243,13 +321,52 @@ export default function Palvelut() {
         >
           {slides3.map((slide,i) => (
             <div key={i} className="item" style={getStyle(i,active3)}>
-              <h2>{slide.title}</h2>
+               <div className="titleWithImageWrapper">
+          {slide.image && (
+            <img src={slide.image} alt={slide.title} className="titleBgImage" />
+          )}
+          <h2 className="titleOverlay">{slide.title}</h2>
+        </div>
               {slide.price && <p className="title">{slide.price}</p>}
               {slide.items.map((it,j) => <p key={j} className="itemRow"><GiCarWheel className="wheelIcon" /> {it}</p>)}
             </div>
           ))}
         </div>
       </div>
+
+        {/* --- Neljäs slider --- */}
+<h1 className="otsikko">Remontit</h1>
+<div className="sliderContainer">
+  <ArrowButtons active={active4} setActive={setActive4} slides={slides4} />
+  <div
+    className="slider"
+    onMouseDown={(e) => swipeLogic(startX4, setActive4, slides4).onStart(e.clientX)}
+    onMouseUp={(e) => swipeLogic(startX4, setActive4, slides4).onEnd(e.clientX)}
+    onTouchStart={(e) => swipeLogic(startX4, setActive4, slides4).onStart(e.touches[0].clientX)}
+    onTouchEnd={(e) => swipeLogic(startX4, setActive4, slides4).onEnd(e.changedTouches[0].clientX)}
+  >
+    {slides4.map((slide, i) => (
+      <div key={i} className="item" style={getStyle(i, active4)}>
+        {/* Wrapper otsikolle + kuvalle */}
+        <div className="titleWithImageWrapper">
+          {slide.image && (
+            <img src={slide.image} alt={slide.title} className="titleBgImage" />
+          )}
+          <h2 className="titleOverlay">{slide.title}</h2>
+        </div>
+
+        {slide.price && <p className="title">{slide.price}</p>}
+
+        {slide.items.map((it, j) => (
+          <p key={j} className="itemRow">
+            <GiCarWheel className="wheelIcon" /> {it}
+          </p>
+        ))}
+      </div>
+    ))}
+  </div>
+</div>
+
     </div>
   );
 }
