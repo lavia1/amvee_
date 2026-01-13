@@ -87,40 +87,6 @@ const slides2 = [
 
 const slides3 = [
   {
-    title: "Jakoketjuremontit",
-    image:"assets/otuskylki.jpg",
-    items: [
-      "Bmw N57/N47 Jakoketjuremontti 2100e",
-      "Kaikki muutkin jakoketjun/hihnan vaihdot onnistuvat. Esim M57, volvot, foordit yms.",
-      
-      
-      
-    ],
-  },
-  {
-    title: "Moottorinvaihdot",
-    image:"assets/moottori.jpg",
-    items: [
-      "Bmw M47/M57/N47/N57 Venttiilikopan tiivistevaihto 220e",
-      "Turbon vaihto pelkän keskiön kanssa. Normaalia paljon halvempi",
-      
-    ],
-  },
-  {
-    title: "Apulaitteiden vaihdot",
-    image:"assets/startstop.jpg",
-    items:[
-      "Startti",
-      "Laturi",
-      "Ilmastoinnin kompura jne.",
-      "Hehkun rele ja hehkujen vaihto"
-    ],
-  },
-];
-
-
-const slides4 = [
-  {
     title: "Öljynvaihto",
     image:"assets/engine_bmw.jpg",
     price: "Alkaen 390 €",
@@ -178,6 +144,42 @@ const slides4 = [
     ],
   },
 ];
+
+
+
+const slides4 = [
+    {
+    title: "Jakoketjuremontit",
+    image:"assets/otuskylki.jpg",
+    items: [
+      "Bmw N57/N47 Jakoketjuremontti 2100e",
+      "Kaikki muutkin jakoketjun/hihnan vaihdot onnistuvat. Esim M57, volvot, foordit yms.",
+      
+      
+      
+    ],
+  },
+  {
+    title: "Moottorinvaihdot",
+    image:"assets/moottori.jpg",
+    items: [
+      "Bmw M47/M57/N47/N57 Venttiilikopan tiivistevaihto 220e",
+      "Turbon vaihto pelkän keskiön kanssa. Normaalia paljon halvempi",
+      
+    ],
+  },
+  {
+    title: "Apulaitteiden vaihdot",
+    image:"assets/startstop.jpg",
+    items:[
+      "Startti",
+      "Laturi",
+      "Ilmastoinnin kompura jne.",
+      "Hehkun rele ja hehkujen vaihto"
+    ],
+  },
+];
+
 
 
 
@@ -312,7 +314,7 @@ export default function Palvelut() {
 
 
       {/* --- Kolmas slider --- */}
-      <h1 className="otsikko">Remontit</h1>
+      <h1 className="otsikko">Teemme muutakin kuin sähkökorjauksia, myös muihinkin autoihin kuin BMW</h1>
       <div className="sliderContainer">
         <ArrowButtons active={active3} setActive={setActive3} slides={slides3} />
         <div className="slider" style={sliderStyle}
@@ -337,7 +339,7 @@ export default function Palvelut() {
       </div>
 
         {/* --- Neljäs slider --- */}
-<h1 className="otsikko">Teemme muutakin kuin sähkökorjauksia, myös muihinkin autoihin kuin BMW</h1>
+<h1 className="otsikko">Remontit</h1>
 <div className="sliderContainer">
   <ArrowButtons active={active4} setActive={setActive4} slides={slides4} />
   <div
