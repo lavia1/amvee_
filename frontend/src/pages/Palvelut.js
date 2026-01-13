@@ -154,9 +154,7 @@ const slides4 = [
     items: [
       "Bmw N57/N47 Jakoketjuremontti 2100e",
       "Kaikki muutkin jakoketjun/hihnan vaihdot onnistuvat. Esim M57, volvot, foordit yms.",
-      
-      
-      
+
     ],
   },
   {
