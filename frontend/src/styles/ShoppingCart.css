@@ -2,6 +2,7 @@
     padding: 20px;
     padding-bottom:200px;
     padding-top:50px;
+    font-size:1.5rem;
 }
 .cart-empty {
     margin-left:50px;
@@ -40,7 +41,7 @@
 }
 .total-price{
     margin-top:20px;
-    font-size: 1.5rem;
+    font-size: 2rem;
     text-align: right;
 }
 .checkout {
