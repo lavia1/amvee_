@@ -11,7 +11,7 @@ const checkout = require('./routes/payments');
 const webhooks = require('./routes/webhooks');
 
 const app = express();
-app.set('trust proxy', true);
+app.set('trust proxy', 1);
 
 app.use(cors());
 

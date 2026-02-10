@@ -23,15 +23,13 @@ const CarParts = () => {
   const fetchParts = async () => {
     try {
       const response = await Axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/parts`);
-      const availableParts = response.data.filter(part => part.stock > 0);
-      setParts(availableParts);
-      setFilteredParts(availableParts);
+      setParts(response.data);
+      setFilteredParts(response.data);
     } catch (error) {
       console.error("Error fetching parts: ", error);
     }
   };
 
-  // Fetch osat ensimmäisellä renderöinnillä
   useEffect(() => {
     fetchParts();
   }, []);
@@ -45,8 +43,7 @@ const CarParts = () => {
 
   // --- Päivitä suodatus hakutulosten mukaan ---
   const handleSearchResults = (results) => {
-    const availableParts = results.filter(part => part.stock > 0);
-    setFilteredParts(availableParts);
+    setFilteredParts(results);
     setCurrentPage(0);
   };
 
@@ -69,7 +66,7 @@ const CarParts = () => {
     setCurrentPage(0);
   };
 
-  // --- Selaa sivuja ---
+  // --- Paginaatio ---
   const handlePageClick = (data) => {
     const selectedPage = data.selected;
     if (selectedPage < Math.ceil(filteredParts.length / partsPerPage)) {
@@ -85,22 +82,19 @@ const CarParts = () => {
 
   const pageCount = Math.ceil(filteredParts.length / partsPerPage);
 
-  // --- JSX ---
   return (
     <div className="carParts-page">
       <Search onSearchResults={handleSearchResults} />
       <div className="carParts-layout">
-        {/* Vasemmanpuoleinen kategoria */}
         <aside className="category-sidebar">
           <CategoryList
             onSelectCategory={handleCategorySelect}
             parts={parts}
             selectedCategoryPath={selectedCategoryPath}
-  setSelectedCategoryPath={setSelectedCategoryPath}
+            setSelectedCategoryPath={setSelectedCategoryPath}
           />
         </aside>
 
-        {/* Oikeanpuoleinen osat */}
         <main className="parts-main">
           {selectedCategoryPath && (
             <div className="selected-category-path">
@@ -124,7 +118,6 @@ const CarParts = () => {
             )}
           </div>
 
-          {/* Paginaatio */}
           {pageCount > 1 && (
             <ReactPaginate
               previousLabel={<FaArrowLeft />}

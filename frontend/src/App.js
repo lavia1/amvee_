@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import Footer from "./components/Footer";
 import CarParts from './pages/CarParts';
+import { PartsProvider } from "./context/PartsContext";
 import PartDetailsPage from "./pages/PartDetailsPage";
 import Hinnasto from "./pages/Hinnasto";
 import Yhteystiedot from "./pages/Yhteystiedot";
@@ -28,6 +29,7 @@ const CancelPage = () => (
 const App = () => {
 
   return (
+    <PartsProvider>
     <CartProvider>
       <Router>
         <Navbar />
@@ -49,6 +51,7 @@ const App = () => {
         <Footer />
       </Router>
     </CartProvider>
+    </PartsProvider>
   )
 }
 
