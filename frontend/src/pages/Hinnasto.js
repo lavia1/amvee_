@@ -1,14 +1,18 @@
 import React from "react";
 import Banner from "../components/Banner";
 import "../styles/Prices.css";
-
-
-
+import { Helmet } from "react-helmet";
 
 
 const Hinnasto = () => {
     return (
-
+        <>
+            <Helmet>
+               <title>Hinnasto | ÄmVee Tmi, Nivala & Oulu</title>
+                    <meta name="description" 
+                    content="Tutustu hinnastoon. BMW remontointi ja varaosanmyynti"
+                    />
+            </Helmet>
         <div>
              <Banner
                 title="Hinnasto"
@@ -99,6 +103,7 @@ const Hinnasto = () => {
                
                        
         </div>
+        </>
     );
 };
 

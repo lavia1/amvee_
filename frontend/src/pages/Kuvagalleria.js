@@ -1,10 +1,17 @@
 import React from "react";
 import "../styles/Photogallery.css";
 import Banner from "../components/Banner";
+import { Helmet } from "react-helmet";
 
 export default function PhotoGallery() {
   return (
-    
+    <>
+    <Helmet>
+       <title>Kuvagalleria | ÄmVee Tmi, Nivala & Oulu</title>
+            <meta name="description" 
+            content="Tutustu tehtyihin remontteihin ja autoihin. BMW remontointi ja varaosanmyynti"
+            />
+    </Helmet>
     <div className="photo-gallery-container">
       <Banner
                 title="Kuvagalleria"
@@ -164,5 +171,6 @@ export default function PhotoGallery() {
         </div>
       </main>
     </div>
+    </>
   );
 }

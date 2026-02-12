@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import "../styles/palvelut.css";
+import { Helmet } from "react-helmet";
 import { GiCarWheel,GiSteeringWheel } from "react-icons/gi";
 import Banner from "../components/Banner";
 // --- DATA --- 
@@ -230,6 +231,13 @@ export default function Palvelut() {
   );
 
   return (
+    <>
+    <Helmet>
+           <title>Palvelut | ÄmVee Tmi, Nivala & Oulu</title>
+                <meta name="description" 
+                content="Tutustu ÄmVee Tmi:n palveluihin (jbperfomance, piuhasarjat jne). BMW remontointi, ohjelmointi ja varaosanmyynti"
+                />
+        </Helmet>
     <div>
        <Banner
                 title="Palvelut"
@@ -370,5 +378,6 @@ export default function Palvelut() {
 </div>
 
     </div>
+    </>
   );
 }

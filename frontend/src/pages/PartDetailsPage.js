@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Axios from "axios";
 import "../styles/PartDetails.css";
 import { useCart } from "../context/CartContext";
+import {Helmet} from "react-paginate";
 
 const PartDetailsPage = () => {
   const { partNumber } = useParams();
@@ -74,6 +75,14 @@ const PartDetailsPage = () => {
   const price = isNaN(part.price) ? 0 : Number(part.price);
 
   return (
+    <>
+  <Helmet>
+    <title>{part ? `${part.name} | ÄmVee Tmi` : "Varaosa | ÄmVee Tmi"}</title>
+    <meta
+      name="description"
+      content={part ? `${part.name} (${part.model})  - ${part.description?.slice(0, 150)}...` : "Varaosa tarkempi kuvaus."}
+    />
+  </Helmet>
     <div className="detail-container">
       <div className="container-background">
         <h1>{part.name}</h1>
@@ -133,6 +142,7 @@ const PartDetailsPage = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

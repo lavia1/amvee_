@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import Banner from "../components/Banner";
+import {Helmet} from "react-helmet";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import "../styles/HomePage.css"
@@ -28,6 +29,14 @@ const HomePage = () => {
     }, []);
 
     return (
+        <>
+        <Helmet>
+            <title>BMW korjaus Nivala & Oulu | Ämvee Tmi </title>
+            <meta 
+                name="description"
+                content="BMW sähkökorjaus, remontointi ja varaosamyynti Nivala-Oulu"
+            />
+        </Helmet>
         <div>
              <Banner
                 title="ÄmVee Tmi"
@@ -41,6 +50,10 @@ const HomePage = () => {
                 imageUrl="/assets/car_bmw.jpg"
                 className="home-banner"
             />
+            <h1 style={{ display: "none" }}>
+            BMW sähkökorjaus ja varaosat Nivala & Oulu
+            </h1>
+
         <div className="information-container">
   {/* Left - Offer */}
   <div className="offer-section">
@@ -89,6 +102,7 @@ const HomePage = () => {
                 </div>
             </div>
         </div>
+    </>
     );
 };
 export default HomePage;
