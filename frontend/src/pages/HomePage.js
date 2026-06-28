@@ -83,24 +83,6 @@ const HomePage = () => {
 
         
 
-        
-        <div className="Carparts-section">
-            <h2 className="carparts-title">Tutustu osiin: </h2>
-                <div className="parts-review-row">
-                    {randomParts.length > 0 ? (
-                        randomParts.map((part) => (
-                        <ProductCard key={part.part_number} part={part} />
-                    ))
-                ) : (
-                <p>Ladataan osia...</p>
-                )}
-                </div>
-                <div className="view-all-button-wrapper">
-                    <Link className="view-all-button" to = "/CarParts"> 
-                        Siirry koko valikoimaan
-                    </Link>
-                </div>
-            </div>
         </div>
     </>
     );
