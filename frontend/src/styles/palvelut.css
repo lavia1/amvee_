@@ -28,11 +28,13 @@
   pointer-events: auto;   /* scroll ja klikit toimivat */
   transform: translateY(-5px);
   box-shadow: 0 14px 30px #2f7bb93b;
+  line-height:1.5;
 }
 .item h2{
   text-align: center;
   font-size: 1.7rem;
   margin-bottom: 15px;
+
   
   
 }
@@ -65,7 +67,7 @@
 }
 
 .itemRow .wheelIcon {
-  font-size: 1em;
+  font-size: 0.8em;
   color: #bac3cb;
   flex-shrink: 0;
 }
