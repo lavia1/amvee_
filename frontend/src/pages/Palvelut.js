@@ -148,7 +148,7 @@ const slides3 = [
 
 const slides4 = [
     {
-    title: "Jakoketjuremontit BMW",
+    title: "BMW jakoketjuremontit",
     image:"assets/otuskylki.jpg",
     items: [
       "N57 jakoketjuremontti 2000e",
