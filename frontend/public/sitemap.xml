@@ -4,25 +4,33 @@
       <loc>https://www.amvee.fi/</loc>
       <lastmod>2025-06-17</lastmod>
       <changefreq>monthly</changefreq>
+       <priority>1.0</priority>
+      
    </url>
    <url>
-      <loc>https://www.amvee.fi/Services</loc>
+      <loc>https://www.amvee.fi/Palvelut</loc>
       <lastmod>2025-06-17</lastmod>
       <changefreq>monthly</changefreq>
    </url>
    <url>
-      <loc>https://www.amvee.fi/Prices</loc>
+      <loc>https://www.amvee.fi/Hinnasto</loc>
       <lastmod>2025-06-17</lastmod>
       <changefreq>yearly</changefreq>
+   </url>
+    <url>
+      <loc>https://www.amvee.fi/Kuvagalleria</loc>
+      <lastmod>2026-01-04</lastmod>
+      <changefreq>monthly</changefreq>
    </url>
    <url>
       <loc>https://www.amvee.fi/CarParts</loc>
       <lastmod>2025-06-17</lastmod>
-      <changefreq>yearly</changefreq>
+      <changefreq>weekly</changefreq>
+      <priority>0.9</priority>
    </url>
    <url>
-      <loc>https://www.amvee.fi/Contact</loc>
-      <lastmod>2025-06-17</lastmod>
+      <loc>https://www.amvee.fi/Yhteystiedot</loc>
+      <lastmod>2026-01-05</lastmod>
       <changefreq>yearly</changefreq>
    </url>
 </urlset>
