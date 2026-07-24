@@ -59,7 +59,7 @@ const HomePage = () => {
   <div className="offer-section">
     <h2 className="offer-title">Ajankohtaiset tarjoukset</h2>
     
-    <p className="offer-text">Kontin piuhasarja BMW:hen - vain 120 euroa</p>
+    <p className="offer-text">E-sarjan 6HP XHP -lootasoftat vain 120e</p>
   </div>
 
   {/* Center - Text */}

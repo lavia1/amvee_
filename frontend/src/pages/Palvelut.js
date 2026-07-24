@@ -79,7 +79,7 @@ const slides2 = [
   {
     title: "Auton ohjelmiston päivittäminen",
      image:"assets/bmw_etukuva.jpg",
-    price: "60 euroa",
+    price: "80 euroa",
     items:[
       "Koko auton ohjainmoodulien päivittäminen uusimpaan versioon"
     ],
@@ -90,13 +90,12 @@ const slides3 = [
   {
     title: "Öljynvaihto",
     image:"assets/engine_bmw.jpg",
-    price: "Alkaen 390 €",
     items: [
-      "Moottorin öljynvaihto (Valvoline -öljy) 100€",
-      "Automaattivaihdelaatikon öljynvaihto 150€",
-      "Manuaalivaihdelaatikon öljynvaihto 60€",
-      "Perän öljynvaihto 60€",
-      "Jakolaatikon öljynvaihto 80€"
+      "Moottorin öljynvaihto (Valvoline -öljy) alk. 100€",
+      "Automaattivaihdelaatikon öljynvaihto alk. 150€",
+      "Manuaalivaihdelaatikon öljynvaihto alk. 100€",
+      "Perän öljynvaihto alk. 80€",
+      "Jakolaatikon öljynvaihto alk. 100€"
     ],
   },
   {
@@ -117,7 +116,6 @@ const slides3 = [
     {
     title: "Esimerkkejä muista töistä",
     image:"assets/fvanne.jpg",
-    price: "60 euroa",
     items: [
       "Diagnostiikka -työt kaiken maailman muihin vikoihin",
       "Muiden kuin BMW -merkkisten autojen sähkövikojen korjaus",
@@ -150,11 +148,15 @@ const slides3 = [
 
 const slides4 = [
     {
-    title: "Jakoketjuremontit",
+    title: "Jakoketjuremontit BMW",
     image:"assets/otuskylki.jpg",
     items: [
-      "Bmw N57/N47 Jakoketjuremontti 2100e",
-      "Kaikki muutkin jakoketjun/hihnan vaihdot onnistuvat. Esim M57, volvot, foordit yms.",
+      "N57 jakoketjuremontti 2000e",
+      "N47 jakoketjuremontti 1800e",
+      "N20 jakoketjuremontti 1800e",
+      "M57 jakoketjuremontti 1700e",
+      "M47 N52 ymsyms onnistuu KYSY!",
+      "Kaikki muutkin merkit onnistuvat! Volvot, Audit yms.",
 
     ],
   },
@@ -162,7 +164,16 @@ const slides4 = [
     title: "Moottorinvaihdot",
     image:"assets/moottori.jpg",
     items: [
-      "Bmw M47/M57/N47/N57 Venttiilikopan tiivistevaihto 220e",
+      "Rikkoutuneen moottorin sattuessa voimme diagnisoida ja tarvittaessa vaihtaa uuden tilalle",
+      
+    ],
+  },
+    {
+    title: "Peruskorjaukset",
+    image:"assets/moottori.jpg",
+    items: [
+      "Bmw M47/M57 venttiilikopan tiivisteen vaihto 260e",
+      "N47/M57 venttiilikopan tiivisteen vaihto 280e",
       "Turbon vaihto pelkän keskiön kanssa. Normaalia paljon halvempi",
       
     ],
