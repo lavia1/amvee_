@@ -34,7 +34,7 @@ export default function PhotoGallery() {
           <figure>
             <img
               src="/assets/otusetukuva.jpg"
-              alt="BMW E61 535d"
+              alt="BMW E61 535d päivitys"
             />
             <figcaption>
               <h3 className="kuvateksti">BMW E61 535d</h3>
@@ -104,7 +104,7 @@ export default function PhotoGallery() {
            <figure>
             <img
               src="/assets/wires.jpg"
-              alt="johtosarja"
+              alt="BMW johtosarjan korjaus"
             />
             
             

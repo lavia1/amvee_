@@ -83,7 +83,7 @@ export default function Navbar() {
         </li>
         <li>
           <NavLink to="/Yhteystiedot" onClick={hideSidebar} className={(navData) => (navData.isActive ? "active-link" : "")}>
-            Yhteistiedot
+            Yhteystiedot
           </NavLink>
         </li>
       </ul>
