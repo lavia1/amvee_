@@ -74,7 +74,10 @@
     background-position: 0% 50%;
   }
 }
-
+.palvelutLinkki{
+    color:#bac3cb;
+    text-decoration-color: #2f7bb9;
+}
 .offer-title {
   margin-bottom: 20px;
   font-size: 2rem;

@@ -71,6 +71,8 @@ const HomePage = () => {
     <p>
       Korjaamme ja huollamme sähköjärjestelmät, teemme peruskorjaukset, jälkivarustelut sekä moottorin ja vaihteiston ohjelmoinnit. Hoidamme myös leimaremontit – ei pelkästään BMW:lle, vaan muillekin merkeille.
     </p>
+    <p><Link to="/Palvelut" className="palvelutLinkki">
+            <span>Palveluihin</span></Link> kuuluu mm. JBPerformance GM -ohjelmat, jakoketjuremontit sekä vikakoodien luku.</p>
     <p>
       Jos kiinnostuit 
       <Link className="information-link" to="/Yhteystiedot">

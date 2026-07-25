@@ -15,6 +15,7 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import SuccessPage from "./pages/SuccessPage";
 import { CartProvider } from "./context/CartContext";
+import ScrollToTop from "./components/ScrollTop";
 import './App.css';
 
 
@@ -39,6 +40,7 @@ const App = () => {
     <PartsProvider>
     <CartProvider>
       <Router>
+        <ScrollToTop />
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
