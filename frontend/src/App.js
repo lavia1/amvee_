@@ -26,6 +26,13 @@ const CancelPage = () => (
   </div>
 ); 
 
+const NotFound = () => (
+  <div style={{ padding: "2rem", textAlign: "center" }}>
+    <h1>404</h1>
+    <p>Sivua ei löytynyt.</p>
+  </div>
+);
+
 const App = () => {
 
   return (
@@ -48,6 +55,9 @@ const App = () => {
           <Route path="/admin/dashboard" element={ <ProtectedRoute ><AdminDashboard /> </ProtectedRoute>} />
           <Route path="/success" element = {<SuccessPage />} />
           <Route path="/cancel" element = {<CancelPage />} />
+          <Route path="*" element={<NotFound />} />
+          
+          
         </Routes>
         <Footer />
       </Router>
