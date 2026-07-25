@@ -246,7 +246,7 @@ export default function Palvelut() {
     <Helmet>
            <title>Palvelut | ÄmVee Tmi, Nivala & Oulu</title>
                 <meta name="description" 
-                content="Tutustu ÄmVee Tmi:n palveluihin (jbperfomance, piuhasarjat jne). BMW remontointi, ohjelmointi ja varaosanmyynti"
+                content="BMW sähkövikojen korjaus, ISTA-diagnostiikka, ohjelmointi, koodaus, jakopääremontit ja varaosat Oulussa. Ota yhteyttä ÄmVee Tmi:hin."
                 />
         </Helmet>
     <div>
@@ -254,7 +254,7 @@ export default function Palvelut() {
                 title="Palvelut"
                 subtitle={
                     <>
-                    Ohjelmointi, asennustyöt tai mitä mieleen juolahtaa 
+                    BMW ohjelmointi, jakoketjuremontit tai mitä mieleen juolahtaa 
                 </>}
                 imageUrl="/assets/mustaheroimage.jpg"
                 className="home-banner"

@@ -42,7 +42,7 @@ const HomePage = () => {
                 title="ÄmVee Tmi"
                 subtitle={
                     <>
-                    BMW sähkökorjaus, remontointi ja varaosien myyntiliike 
+                    BMW sähkökorjaus, huolto ja varaosien myyntiliike 
                     <br /> 
                     
                     Nivala - Oulu

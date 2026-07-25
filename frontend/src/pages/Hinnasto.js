@@ -95,7 +95,7 @@ const Hinnasto = () => {
                 <div className="infoContainer">
                 <h3 className="infoText">
                     Suuremmat remontit / toimenpiteet olethan yhteydessä niin
-                    sovimme urakkahinnan
+                    sovimme urakkahinnan. Jakoketjuremontteihin pyydä tarjousta!
                 </h3>
                 
             </div>
