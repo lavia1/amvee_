@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import Footer from "./components/Footer";
@@ -35,6 +35,7 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/Prices" element={<Navigate to="/Hinnasto" replace />} />
           <Route path="/Palvelut" element={<Palvelut />} />
           <Route path="/Hinnasto" element={<Hinnasto />}/>
           <Route path="/CarParts" element={<CarParts />} />
