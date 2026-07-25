@@ -296,6 +296,7 @@ export default function Palvelut() {
 
 
     {/* --- Toinen slider --- */}
+<div id="ohjelmointi">
 <h1 className="otsikko">Ohjelmointi</h1>
 <div className="sliderContainer">
   <ArrowButtons active={active2} setActive={setActive2} slides={slides2} />
@@ -327,6 +328,7 @@ export default function Palvelut() {
       </div>
     ))}
   </div>
+</div>
 </div>
 
 

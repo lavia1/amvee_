@@ -60,7 +60,7 @@ const HomePage = () => {
     <h2 className="offer-title">Ajankohtaiset tarjoukset</h2>
     
     <p className="offer-text">E-sarjan 6HP XHP -lootasoftat vain 120e</p>
-     <Link to ="/Palvelut" className="offer-button">
+     <Link to ="/Palvelut#ohjelmointi" className="offer-button">
     Tutustu →
     
     </Link>
