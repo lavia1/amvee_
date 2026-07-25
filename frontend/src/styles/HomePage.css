@@ -77,6 +77,11 @@
 .palvelutLinkki{
     color:#bac3cb;
     text-decoration-color: #2f7bb9;
+      transition: color 0.4s ease;
+}
+.palvelutLinkki:hover{
+    color:#2f7bb9;
+    
 }
 .offer-title {
   margin-bottom: 20px;
