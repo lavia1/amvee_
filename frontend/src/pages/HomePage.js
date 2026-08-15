@@ -30,13 +30,7 @@ const HomePage = () => {
 
     return (
         <>
-        <Helmet>
-            <title>BMW korjaus Nivala & Oulu | Ämvee Tmi </title>
-            <meta 
-                name="description"
-                content="BMW sähkökorjaus, remontointi ja varaosamyynti Nivala-Oulu"
-            />
-        </Helmet>
+      
         <div>
              <Banner
                 title="ÄmVee Tmi"
